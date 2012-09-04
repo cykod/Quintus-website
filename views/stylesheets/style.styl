@@ -1,8 +1,224 @@
+@import 'normalize'
+
+lightGray = #f2f5f6
+titleGray = #727e86
+textGray = #93a5ab
+contentGray = #2b3e4f
+highlightOrange = #ef6529
+
+@font-face {
+  font-family: 'Pico';src: url('/images/fonts/23D28C_0_0.eot');src: url('/images/fonts/23D28C_0_0.eot?#iefix') format('embedded-opentype'),url('/images/fonts/23D28C_0_0.woff') format('woff'),url('/images/fonts/23D28C_0_0.ttf') format('truetype');
+}
+
 body {
-  padding: 200px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  font: 14px arial
+  color: contentGray
 }
 
 a {
   color: #00B7FF
 }
+
+
+h1 {
+  padding:0px;
+  margin:0px;
+  font: normal 4em Pico
+  padding-top:20px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  line-height:1em;
+  color:textGray
+}
+
+
+.clear { clear:both; }
+
+.CodeMirror { border:1px solid #CCC; background: ghostWhite; }
+
+button {
+  border-radius:5px;
+  background-color:highlightOrange
+  border:0px;
+  padding:10px;
+  color:white;
+  text-transform:uppercase;
+  font-weight:bold;
+
+}
+
+// Structural Styles
+
+header#site-header {
+  max-width:1024px
+  margin:0 auto
+  position:relative;
+
+  .cannon {
+    position:absolute;
+    bottom:0px
+    width:176px
+    height:62px
+  }
+
+  .cannon-left {
+    position:absolute;
+    left:0px
+    background:url(/images/cannons-left.png) no-repeat top left
+  }
+
+  .cannon-right {
+    position:absolute;
+    right:0px
+    background:url(/images/cannons-right.png) no-repeat top left
+  }
+
+  #site-top {
+    max-width: 400px;
+    margin: 0 auto;
+    position:relative;
+
+
+      h1 {
+        text-align:center;
+        font-size:7em;
+        a { 
+          text-decoration:none
+          color: textGray
+        }
+
+        span {
+          display:inline-block
+          width:93px
+          height:102px
+          text-indent:-9999px
+          background:url(/images/logo.png) no-repeat top left
+        }
+
+      }
+
+      nav#site-nav {
+        bottom:0px;
+
+        li { 
+          height:30px;
+          text-align:center;
+          list-style:none;
+          float:left; 
+          padding-right:25px;
+
+          &:last-child { padding-right:0px; }
+
+          a { 
+             text-transform:uppercase;
+             color: textGray
+             text-decoration:none;
+             font: bold 1.2em arial;
+
+             &:hover { color: titleGray }
+          }
+
+          li a.selected { color: titleGray }
+        }
+      }
+    }
+
+}
+
+
+
+section#leader {
+  background-color:lightGray
+  padding:20px 0
+
+  h1 {
+    text-align:center;
+    font: normal 2em arial
+    color: titleGray
+    max-width:750px
+    margin:0 auto
+    padding:0px
+  }
+
+  p { text-align: center; }
+}
+
+section#content {
+  margin:0 auto
+  max-width:1100px
+
+  #demo-game {
+    h1 { text-align:center; }
+    p { text-align:center; }
+
+    }
+
+  article {
+    p {
+      margin:10px 0px;
+    }
+
+  }
+
+} 
+
+
+// Example Game
+
+#example-game {
+  position:relative;
+
+  .button-container {
+     position:absolute;
+     width:100%;
+     text-align:center;
+
+     button {
+      position:relative;
+       top: 20px;
+       z-index:1000;
+    }
+  }
+
+  padding: 10px 0px
+  .left { 
+    width:50%; float: left; 
+    height:420px;
+
+    textarea {
+      width:100%
+      height:420px;
+    }
+  }
+
+  .right { 
+    width:50%; float:right; 
+    height:420px;
+    overflow:hidden;
+
+    iframe { 
+      width:100%; height:420px; 
+      border:1px solid #CCC; 
+    }
+  }
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+  #example-game {
+    .left, .right { float:none; width:100%; }
+
+  }
+  .cannon { display:none; }
+
+  #example-game {
+    .button-container {
+       button {
+         top: 440px;
+       }
+    }
+  }
+}
+
