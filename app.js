@@ -41,6 +41,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/documentation', routes.documentation);
 
 // Socket.i
 

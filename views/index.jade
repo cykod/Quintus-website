@@ -7,45 +7,21 @@ block content
       <head>
         <title>Platformer Example</title>
         <meta name="viewport" content="width=device-width, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
-        <script src='/quintus/lib/underscore.js'>SCRIPTEND
-        <script src='/quintus/lib/jquery.min.js'>SCRIPTEND
-        <script src='/quintus/src/quintus.js'>SCRIPTEND
-        <script src='/quintus/src/quintus_sprites.js'>SCRIPTEND
-        <script src='/quintus/src/quintus_scenes.js'>SCRIPTEND
-        <script src='/quintus/src/quintus_input.js'>SCRIPTEND
-        <script src='/quintus/src/quintus_platformer.js'>SCRIPTEND
+        <script src='/quintus/lib/quintus.js'>SCRIPTEND
+        <script src='/quintus/lib/quintus_sprites.js'>SCRIPTEND
+        <script src='/quintus/lib/quintus_scenes.js'>SCRIPTEND
+        <script src='/quintus/lib/quintus_input.js'>SCRIPTEND
+        <script src='/quintus/lib/quintus_2d.js'>SCRIPTEND
         <style> body { padding:0px; margin:0px; } </style>
       </head>
       <body>
   script(type='quintus',id='game-footer').
     </body>
     </html>
-  header#site-header
-    #title-game
-    .cannon.cannon-left
-    .cannon.cannon-right
-    section#site-top
-      h1
-        a(href="#")
-          span Q
-          | uintus
-      nav#site-nav
-        ul
-          li
-            a(href="#") home
-          li
-            a(href="#") documentation
-          li
-            a(href="http://github.com/cykod/Quintus") github
-        .clear
-  section#leader
-    h1
-      | Quintus is an easy-to-learn, fun-to-use HTML5 game engine
-      | for mobile, desktop and beyond!
   section#content
     article#demo-game
       h1 Demo Game
-      p a platfomer in ~60 lines of code, you can edit the code on the left.
+      p a platfomer in ~60 lines of code, you can edit the code on the left. Click to focus, arrow keys to move.
       #example-game
         .button-container 
           button#rungame
@@ -53,7 +29,7 @@ block content
         .left
           textarea#example.
             var Q = Quintus()
-                    .include("Sprites, Scenes, Input, Platformer")
+                    .include("Sprites, Scenes, Input, 2D")
                     .setup({ maximize: true })
                     .controls();
 
@@ -117,7 +93,7 @@ block content
         .right
           iframe(src='about:blank;',id='demo')
         .clear
-      p A breakdown of the example is below, check out the more advanced version as well.
+      p A breakdown of the example is below, there is also a more advanced version, with paralax, animation, particles and sound.
     article.example
       h1 
         | Getting Started
@@ -140,6 +116,9 @@ block content
                         .controls()                        // Add in default controls (keyboard, touch)
                         .setup();                          // Add the canvas element onto the page
 
+                /*
+                  ... Actual game code goes here ... 
+                 */
               &lt;/script&gt;
              &lt;/body&gt;
           &lt;/html&gt;
@@ -151,39 +130,64 @@ block content
       p Quintus supports an event-based, hybrid Object-Oriented and Component-based approach, allowing for both a standard inheritance model with support for reusable components.
       pre
         code.javascript.
-          // You can create a sub-class by extending the Q.Sprite class
-          // this will create class called Q.Player
-          Q.Sprite.extend("Player", {
 
-            // the init constructor is called automatically
+          // You can create a sub-class by extending the Q.Sprite class to create Q.Player
+          Q.Sprite.extend("Player",{
+
+            // the init constructor is called on creation
             init: function(p) {
+
               // You can call the parent's constructor with this._super(..)
-              // this will initialize a properties object p that contains all a 
-              // Sprite's properties
               this._super(p, {
-                sheet: "player",  // Setting a sheet property will set the sprite sheet
-                x: 50,           // You can also set additional properties that can
-                y: -100,           // be overridden on object creation
+                sheet: "player",  // Setting a sprite sheet sets sprite width and height
+                x: 390,           // You can also set additional properties that can
+                y: 40,            // be overridden on object creation
               });
 
-              this.add("2d, controlled"); // Add in pre-created components to create some default
-                                          // behavior
+              // Add in pre-made components to get up and running quickly
+              this.add('2d, platformerControls');
+
+              // Write event handlers to respond hook into behaviors.
+              // hit.sprite is called everytime the player collides with a sprite
+              this.on("hit.sprite",function(collision) {
+
+                // Check the collision, if it's the Tower, you win!
+                if(collision.obj.isA("Tower")) {
+                  alert("You Win!");
+                  Q.stageScene("level1");
+                }
+              });
             }
           });
 
-          // Give the player an enemy to run into
-          Q.Sprite.extend("Enemy", {
+          // Sprites can be simple, the Tower sprite just sets a custom sprite sheet
+          Q.Sprite.extend("Tower", {
             init: function(p) {
-              this._super(p, { 
-                vx: 100,
-                sheet: 'enemy' 
-              });
+              this._super(p, { sheet: 'tower' });
+            }
+          });
+
+          // Create the Enemy class to add in some baddies
+          Q.Sprite.extend("Enemy",{
+            init: function(p) {
+              this._super(p, { sheet: 'enemy', vx: 100 });
+
+              // Enemies use the Bounce AI to change direction 
+              // whenver they run into something.
               this.add('2d, aiBounce');
-            },
+
+              // Listen for a sprite collision, if it's the player,
+              // restart the level
+              this.on("hit.sprite",function(collision) {
+                if(collision.obj.isA("Player")) { 
+                  Q.stageScene("level1"); 
+                }
+              });
+            }
           });
     article.example
       h1 
-        | Set up a scene
+        | Set the scene
         span.whirlwind
         span.rocket
       p Quintus let's you easily create reusable scenes that can be swapped in and out by loading them onto stages. Stages stack on top of each other.
@@ -192,22 +196,24 @@ block content
           // Create a new scene called level 1
           Q.scene("level1",function(stage) {
 
-            // Add in a tile layer for background tiles
-            stage.insert(new Q.TileLayer({
-                          dataAsset: 'level.json',
-                          sheet: 'tiles' }));
+            // Add in a tile layer, and make it the collision layer
+            stage.collisionLayer(new Q.TileLayer({
+                                       dataAsset: 'level.json',
+                                       sheet:     'tiles' }));
 
             // Create the player and add him to the stage
             var player = stage.insert(new Q.Player());
 
-            // Add in a couple of enemies
-            stage.insert(new Q.Enemy({ x: 500, y: -200 }));
-            stage.insert(new Q.Enemy({ x: 800, y: -200 }));
-
             // Give the stage a moveable viewport and tell it
             // to follow the player.
-            stage.add("viewport")
-                 .follow(player);
+            stage.add("viewport").follow(player);
+
+            // Add in a couple of enemies
+            stage.insert(new Q.Enemy({ x: 700, y: 0 }));
+            stage.insert(new Q.Enemy({ x: 800, y: 00 }));
+
+            // Finally add in the tower goal
+            stage.insert(new Q.Tower({ x: 180, y: 35 }));
           });
     article.example
       h1 
@@ -217,11 +223,18 @@ block content
       p Quintus features easy asset loading, sprite sheet generation. Launch your game by staging a scene.
       pre
         code.javascript.
+          // Q.load can be called at any time to load additional assets
+          // assets that are already loaded will be skipped
           Q.load("sprites.png, sprites.json, level.json, tiles.png",
+            // The callback will be triggered when everything is loaded
             function() {
+              // Sprites sheets can be created manually
               Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+
+              // Or from a .json asset that defines sprite locations
               Q.compileSheets("sprites.png","sprites.json");
 
+              // Finally, call stageScene to run the game
               Q.stageScene("level1");
             });
 

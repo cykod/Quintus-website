@@ -56,6 +56,6 @@ $(function() {
 
   example.setSize("100%","420px");
 
-  var socket = window.socket = io.connect();
+  //var socket = window.socket = io.connect();
 
 });
