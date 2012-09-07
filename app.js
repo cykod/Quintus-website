@@ -43,6 +43,7 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/documentation', routes.documentation);
 
+app.use(express.favicon(__dirname + '/public/favicon.ico', { maxAge: 2592000000 }));
 // Socket.i
 
 var server = http.createServer(app).listen(app.get('port'), function(){
