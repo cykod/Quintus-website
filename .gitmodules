@@ -1,3 +1,3 @@
 [submodule "public/quintus"]
 	path = public/quintus
-	url = git@github.com:cykod/Quintus.git
+	url = https://github.com/cykod/Quintus.git
