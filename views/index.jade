@@ -99,7 +99,7 @@ block content
         | Getting Started
         span.target
         span.lightning
-      p Create an HTML file, pull in the Quintus library and setup the engine. Quintus has a modular engine that lets you pull in just the components you need and can run in multiple instances on a page. 
+      p Create an HTML file, pull in the Quintus library and setup the engine. Quintus has a modular engine that lets you pull in just the modules you need and can run in multiple instances on a page. 
       pre
         code.html.
           &lt;html&gt;
@@ -110,11 +110,11 @@ block content
              &lt;body&gt;
                &lt;script&gt;
 
-                // Now set up up your game (most games will load a separte .js file)
+                // Now set up your game (most games will load a separate .js file)
                 var Q = Quintus()                          // Create a new engine instance
                         .include("Sprites, Scenes, Input, 2D") // Load any needed modules
                         .controls()                        // Add in default controls (keyboard, touch)
-                        .setup();                          // Add the canvas element onto the page
+                        .setup();                          // Add a canvas element onto the page
 
                 /*
                   ... Actual game code goes here ... 
