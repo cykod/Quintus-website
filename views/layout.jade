@@ -29,6 +29,13 @@ html
             li
               a(href="http://github.com/cykod/Quintus") github
           .clear
+      #social
+        .addthis_toolbox.addthis_default_style
+          a.addthis_button_facebook_like("fb:like:layout"='button_count')
+          a.addthis_button_tweet 
+        script
+          var addthis_config = {"data_track_addressbar":true};
+        script(async="true",src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e5d96511b13dffd")
     section#leader
       h1
         | Quintus is an easy-to-learn, fun-to-use HTML5 game engine
