@@ -54,6 +54,7 @@ header#site-header #site-top nav#site-nav li:last-child{padding-right:0}
 header#site-header #site-top nav#site-nav li a{text-transform:uppercase;color:#93a5ab;text-decoration:none;font:bold 1.2em arial;}
 header#site-header #site-top nav#site-nav li a:hover{color:#727e86}
 header#site-header #site-top nav#site-nav li.selected a{color:#727e86}
+#social{position:absolute;top:0;right:0}
 section#leader{background-color:#f2f5f6;padding:20px 0;}
 section#leader h1{text-align:center;font:normal 2em arial;color:#727e86;max-width:750px;margin:0 auto;padding:0}
 section#leader p{text-align:center}
