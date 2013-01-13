@@ -15,7 +15,8 @@
     "stylus": "*",
     "socket.io": "0.9.6",
     "underscore": "*",
-    "mongodb": "1.0.2"
+    "mongodb": "1.0.2",
+    "express-markdown": "*"
   },
   "subdomain": "quintus"
 }

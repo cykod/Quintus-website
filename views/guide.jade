@@ -1,0 +1,16 @@
+extends layout
+
+
+extends layout
+
+block content
+  section#content
+    article#guide
+      != markdown
+
+block footer
+  script(src='http://foundatypo.com/found_a_typo.js')
+  script
+    FoundATypo.init("3jg01hx4phjb16k8");
+    $("#guide").foundATypo();  // Replace .target with a selector for your element(s)
+

@@ -9,6 +9,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+
 var app = express();
 
 app.configure(function(){
@@ -32,6 +33,10 @@ app.configure(function(){
 		.set('compress', true);
 	}
   }));
+  app.use(require('express-markdown')({
+    directory: __dirname + '/public',
+    view: "guide"
+  }));
   
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -42,6 +47,10 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/documentation', routes.documentation);
+
+console.log(routes.guide);
+
+app.get('/guide', routes.guide);
 
 app.use(express.favicon(__dirname + '/public/favicon.ico', { maxAge: 2592000000 }));
 // Socket.i
