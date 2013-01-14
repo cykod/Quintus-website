@@ -34,7 +34,7 @@ button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
 textarea{overflow:auto;vertical-align:top;}
 table{border-collapse:collapse;border-spacing:0}
 @font-face{font-family:'Pico';src:url("/images/fonts/23D28C_0_0.eot");src:url("/images/fonts/23D28C_0_0.eot?#iefix") format('embedded-opentype'),url("/images/fonts/23D28C_0_0.woff") format('woff'),url("/images/fonts/23D28C_0_0.ttf") format('truetype')}
-body{font:14px arial;color:#2b3e4f}
+body{font:16px arial;color:#2b3e4f}
 a{color:#00b7ff}
 h1{padding:0;margin:0;font:normal 4em Pico;padding-top:20px;-webkit-margin-before:0;-webkit-margin-after:0;line-height:1em;color:#93a5ab}
 .clear{clear:both}
@@ -62,6 +62,12 @@ section#content{margin:0 auto;max-width:1100px;}
 section#content #demo-game h1{text-align:center}
 section#content #demo-game p{text-align:center}
 section#content article p{margin:10px 0}
+nav#sidebar{float:left;width:180px;padding-top:20px;}
+nav#sidebar ol{margin-left:0;padding-left:0;list-style-type:none;}
+nav#sidebar ol li{padding:5px 0}
+nav#sidebar ol li.selected{font-weight:bold}
+nav#sidebar ol a{color:#93a5ab;text-decoration:none}
+article#guide{margin-left:200px;font-size:1.2em}
 #example-game{position:relative;padding:10px 0;}
 #example-game .button-container{position:absolute;width:100%;text-align:center;}
 #example-game .button-container button{position:relative;top:20px;z-index:1000}

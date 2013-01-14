@@ -2,9 +2,9 @@
 
 The Quintus `Anim` module adds in support for both frame based animation and tween based animation via two components: `animation` and `tween`. The first works by setting up sprites that work with sprite sheets to define animations (stuff like, walk left, walk right, jump, etc) the second by animating properties of sprites via keyframes.
 
-# Setting up animation sprites
+## Setting up animation sprites
 
-Before you can add in frame animations to a Sprite, you need to create an animation sheet by calling `Q.animations` and passing in a name and the details about the differen named animations.
+Before you can add in frame animations to a Sprite, you need to create an animation sheet by calling `Q.animations` and passing in a name and the details about the different named animations.
 
 Here's an example:
 
@@ -25,17 +25,17 @@ This will define an animation sprite called "player" and 8 different named anima
 
 You'll notice there are a number of different options you can pass as details for each animation. The only required option is `frames` the rest have reasonable defaults unless you need to override them.
 
-* frames: an array of frame numbers that make up the animation   
-* rate: frames per second, best expressed as a fraction
-* loop: defaults to true, which plays the animation over and over. Set to false to have it play once
-* next: the animation to play directly after this one (automatically sets loop to false)
-* trigger: event to trigger when the animation is done - useful for doing something (like adding a bullet sprite) when the animation is done playing.
+* `frames`: an array of frame numbers that make up the animation   
+* `rate`: frames per second, best expressed as a fraction
+* `loop`: defaults to true, which plays the animation over and over. Set to false to have it play once
+* `next`: the animation to play directly after this one (automatically sets loop to false)
+* `trigger`: event to trigger when the animation is done - useful for doing something (like adding a bullet sprite) when the animation is done playing.
 
 ## Playing animations on sprites
 
 To play an animation you set a "sprite" property on your Sprite with the name of the animation sheet ("player" in the example above), add the "animation" component and then call "play(name)" with the name of the animation to play.
 
-All the animation component actually does is set the frame variable to the appropriate number at the appropriate time. For bitmap keyframe animations, however, this can be very powerfull.
+All the animation component actually does is set the frame variable to the appropriate number at the appropriate time. For bitmap keyframe animations, however, this can be very powerful.
 
 Here's an example:
 
@@ -54,7 +54,7 @@ Here's an example:
     
     player.play("fire_right");
     
-The `play` method also take a second parameter which is a priority number. The higher the priority the more important the animation. Combined with the fact that calling `play` with the same animation that is already playing has no effect means that you can have your step method be responsible for playing ongoing effects (like running, jumping and falling) and then have events such as firing or getting hit override the active animation by playing at a higher priority.
+The `play` method also takes a second parameter which is a priority number. The higher the priority the more important the animation. Combined with the fact that calling `play` with the same animation that is already playing has no effect means that you can have your step method be responsible for playing ongoing effects (like running, jumping and falling) and then have events such as firing or getting hit override the active animation by playing at a higher priority.
 
 Here's the last player example fleshed out a little more:
 
@@ -68,7 +68,7 @@ Here's the last player example fleshed out a little more:
         
         this.add("2d, platformerControls, animation");
         
-        Q.input.on("fire",this,fire);
+        Q.input.on("fire");
         
         // Wait until the firing animation has played until
         // actually launching the bullet
@@ -119,17 +119,23 @@ This will animate the sprite linearly over the course of 1 second. If you want m
 
       function animate(properties,[duration,] [easing,] [options])
       
-Where properties is a hash of properties for the end result (you can use set before hand if you need to set the initial state. Duration is a duration in seconds and easing is an easing function that takes in a value from 0 to 1 and returns a number from 0 to 1. Quintus has a few easing functions built-in (taken from Tween.js)
+Where properties is a hash of properties for the end result (you can use set before hand if you need to set the initial state. Duration is a duration in seconds and easing is an easing function that takes in a value from 0 to 1 and returns a number from 0 to 1. Quintus has a few easing functions built-in (taken from [Tween.js](https://github.com/sole/tween.js/))
 
 * `Q.Easing.Linear` - map linearly from 0 to 1
 * `Q.Easing.Quadratic.In` - start slowly and accelerate
 * `Q.Easing.Quadratic.Out` - start fast and slow down
-* `Q.Easing.Quadratic.InOut` - start slow, accelerate, decelarate and end slow
+* `Q.Easing.Quadratic.InOut` - start slow, accelerate, decelerate and end slow
 
-The final options has currently supports two options:
+The final options hash currently supports two options:
 
-* delay - a delay in seconds before starting the animatin
+* delay - a delay in seconds before starting the animation
 * callback - a callback to trigger when the animation is done
 
 The component also adds two additional methods to the Sprite: `chain` and `stop`. `chain` works the exact same way as `animate`, except it calculates the delay automatically to start after the currently playing animation and `stop` stops all currently playing animations
 
+## Chapter Summary
+
+This chapter covered the two different animation mechanisms support by Quintus: keyframe and tweening.
+
+
+Next Up: [Getting noisy: playing sound](sound.md)

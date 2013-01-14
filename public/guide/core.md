@@ -369,3 +369,4 @@ If you have a number of assets to load, it's probably a good idea to add in some
 This covered the basics of the core Quintus engine. It didn't cover the helper methods or the Math and Matrix manipulation methods as those are lower level and often you won't touch em when building a game, but if you'd like to know more please see the [annotated source code](../quintus/docs/quintus.html)
 
 Onto sprites! [Working with Sprites](sprites.md)
+

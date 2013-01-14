@@ -35,26 +35,28 @@ $(function() {
     writeIFrame($("#demo")[0],code);
   }
 
-  var example = CodeMirror.fromTextArea(
-    $("#example")[0], 
-    {
-      lineNumbers: true,
-      matchBrackets: true,
-      mode: 'text/javascript'
+  if($("#example")[0]) { 
+    var example = CodeMirror.fromTextArea(
+      $("#example")[0], 
+      {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: 'text/javascript'
+      }
+    );
+
+    var touchDevice = ('ontouchstart' in document);
+    if(!touchDevice) {
+      runGame();
+      $("#rungame").on("click",runGame);
+    } else {
+      $(".right").remove();
+      $("#rungame").on("click",windowGame);
     }
-  );
+    
 
-  var touchDevice = ('ontouchstart' in document);
-  if(!touchDevice) {
-    runGame();
-    $("#rungame").on("click",runGame);
-  } else {
-    $(".right").remove();
-    $("#rungame").on("click",windowGame);
+    example.setSize("100%","420px");
   }
-  
-
-  example.setSize("100%","420px");
 
   //var socket = window.socket = io.connect();
 

@@ -1,4 +1,4 @@
-# Quintus Guide
+# Introduction
 
 ## Warning: this guide refers to two unreleased features (update instead of step, stage.locate) that will get sorted out in the next release - until then just use `this._super(dt)` inside of `step` and don't use `stage.locate`
 
@@ -12,7 +12,7 @@ The goal of this guide is to provide an overview of the major components of the 
 2. [Working with Sprites](sprites.md)
 3. [Building Scenes and setting the Stage](scenes.md)
 4. [Dealing with Input](input.md)
-5. [Animations](animation.md)
+5. [Adding in Animations](animation.md)
 6. [Getting noisy: playing sound](sound.md)
 7. [The 2D Module](2d.md)
 

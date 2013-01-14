@@ -5,12 +5,40 @@ extends layout
 
 block content
   section#content
+    nav#sidebar
+      h3
+        | Chapters
+      ol
+       li 
+         a(target='_blank',href="/guide/intro.md") Introduction
+       li 
+         a(target='_blank',href="/guide/core.md") Core Quintus Basics
+       li 
+         a(target='_blank',href="/guide/sprites.md") Working with Sprites
+       li 
+         a(target='_blank',href="/guide/scenes.md") Building Scenes and setting the Stage
+       li 
+         a(target='_blank',href="/guide/input.md") Input in Quintus
+       li 
+         a(target='_blank',href="/guide/animation.md") Adding in animation
+       li 
+         a(target='_blank',href="/guide/sound.md") Getting Noisy: playing sound
+       li 
+         a(target='_blank',href="/guide/2d.md") The 2D Module
+
     article#guide
       != markdown
 
 block footer
+  script
+    var select = $("#guide h1").html();
+    $("#sidebar li a").each(function() {
+      if($(this).html().toLowerCase() == select.toLowerCase()) {
+        $(this).parent("li").addClass("selected");
+      }
+    });
+    
   script(src='http://foundatypo.com/found_a_typo.js')
   script
     FoundATypo.init("3jg01hx4phjb16k8");
     $("#guide").foundATypo();  // Replace .target with a selector for your element(s)
-

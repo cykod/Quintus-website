@@ -1,7 +1,7 @@
 
 # Working with Sprites
 
-Sprites are the building block for a large amount of what you'll do in Quintus, but they are are pretty simple creatures in and of themselves. A lot of the magic happens when you combine sprites with scenes, but we'll wait until the next chapter to cover those.
+Sprites are the building block for a large amount of what you'll do in Quintus, but they are are pretty simple creatures in and of themselves. A lot of the magic happens when you combine sprites with stages, but we'll wait until the next chapter to cover those.
 
 To use sprites in your game, make sure you include the `Sprites` module.
 
@@ -9,11 +9,11 @@ The base `Q.Sprite` class inherits from `Q.GameObject`, which means sprites come
 
 ## Initializing sprites
 
-The first overloadable method is the base constructor, `init(p,defaults)`. If you don't overload the method it's primary duties are setting the sprite's properties, stored in the `p` object (whenver you see a varible named, `p`, think "properties").
+The first overloadable method is the base constructor, `init(p,defaults)`. It's primary duties are setting the sprite's properties, stored in the `p` object (whenver you see a varible named, `p`, think "properties").
 
 All a Sprites mutable properties are generally stored in the `p` object on the sprite. The reason for this is to first separate a sprite's state from its methods and secondly to make it easy to know what properties need to be serialized or sent over the wire for a multi-player game. For performance reasons, the properties on the `p` object can be get an set directly and don't need to be set with getters and setters. 
 
-The default constructor takes two parameters, an initial set of properties `p` and a default set of properties `defaults` that are used if the corresponding property is unset on `p`. While this might seem a little surperfluous, the reason for the defaults hash is that it makes it easy to set default properties when creating a subclass of sprite.
+The default constructor takes two parameters, an initial set of properties `p` and a default set of properties `defaults` that are used if the corresponding property is unset on `p`. While this might seem a little surperfluous, the reason for the defaults hash is that it makes it easy to set default properties when creating a subclass of `Q.Sprite`.
 
 For example, let's say you had a Player sprite that you want to set some defaults on:
 
@@ -27,7 +27,7 @@ For example, let's say you had a Player sprite that you want to set some default
         });
     }); 
 
-Whenever you create a player now it will have those default pre-set:
+Whenever you create a player now it will have those defaults pre-set:
 
      var player1 = new Q.Player();
      
@@ -54,12 +54,12 @@ The core properties a sprite has are (some of these only make sense when Sprites
 * `p.h` - the height of the sprite
 * `p.cx` - the distance from the left of the sprite to its center
 * `p.cy` - the distance from the top of the sprite to its center  
-* `p.scale` - the scaling multiplier to grow or shrink the sprite (if not set, it defaults to 1)
+* `p.scale` - the scaling multiplier to grow or shrink the sprite. If not set, it defaults to 1.
 * `p.angle` - the angle of rotation in degrees of the sprite. If not set it defaults to 0
 * `p.type` - the type of Sprite, a bit-mask used for collision detection, defaults to Q.SPRITE_DEFAULT | Q.SPRITE_ACTIVE
 * `p.points` - an array of points in the form [[x0,y1],[x1,y1]..] that define convex collision shape used for collision detection (more on this in the next chapter). If not set defaults to the square bounding box.
 * `p.asset` - the name of the asset used to render a static image for the sprite (see the next couple of sections)
-* `p.sheet` - use a sprite sheet instead of an asset to render (see the next couple of sections)
+* `p.sheet` - use a sprite sheet instead of an asset to render (also, see the next couple of sections)
 * `p.frame` - if using a sprite sheet, this is the frame in the sheet to use.
 
 You can set all these properties directly (i.e. you don't need to use a setter method), but you can also use `Sprite.set({ ... })` to set multiple properties at once (remember this will create an object that will need to be garbage collected however, so use appropriately)
@@ -70,7 +70,7 @@ Sprites recalculate their own translation matrices and bounding boxes each frame
 
 If you add an asset property before you call the predefined `init` method, the Sprite class will use that asset to calculate its width and height, stored in the `w` and `h` properties and the center, stored in the `cx` and `cy` properties (if you can tell, I'm not a huge fan of typing) 
 
-That asset will then be used to render the spite on the screen. For example, to a full example that draws the penguin.png asset:
+That asset will then be used to render the spite on the screen. For example, for a full example that draws the penguin.png asset:
 
    var Q = Quintus().include("Sprites").setup();
 
@@ -84,7 +84,7 @@ That asset will then be used to render the spite on the screen. For example, to 
    
    // Make sure penguin.pn is loaded
    Q.load("penguin.png",function() {
-      var penguin = new Penguin();
+      var penguin = new Q.Penguin();
       
       Q.gameLoop(function(dt) {
          Q.clear();
@@ -95,9 +95,9 @@ That asset will then be used to render the spite on the screen. For example, to 
 
 ## Defining Spritesheets
 
-The Sprites module also includes the Spritesheet class. This allows you to define sprite sheets that have a large number of images in a single asset and define the number of frames for each image.
+The Sprites module also includes the Spritesheet class. This allows you to define sprite sheets that have a large number of images in a single image asset and define a number of frames for each image.
 
-To tell Quintus about a sprite sheet, you call the Q.sheet method with a name, an asset name and a hash of options that define the frames of the sheet.
+To tell Quintus about a sprite sheet, you call the `Q.sheet` method with a name, an asset name, and a hash of options that define the frames of the sheet.
 
 For example, if you had an asset called player.png that had a 40 frames for the player character, each 40 pixels wide by 40 pixels tall, you could tell the engine about this sheet like so:
 
@@ -105,32 +105,14 @@ For example, if you had an asset called player.png that had a 40 frames for the 
             "player.png",
             {
               tilew: 40,  // Each tile is 40 pixels wide
-              tileh: 40,  // and 40 pixels tal
+              tileh: 40,  // and 40 pixels tall
               sx: 0,   // start the sprites at x=0
               sy: 0    // and y=0
              });
              
 (You could actually leave the sx and sy parameters out as they default to 0,0)
 
-### Compiling sprite sheets
-
-Quintus doesn't currently have a method for generating sprite sheets in the main repository, but you can install github.com/cykod/Spriter to generate a sprites.png and sprites.json from a directory of image assets:
-
-    # will generate a sprites.png and sprites.json
-    $ spriter assets/
-    
-The images in the asset directory should be of the form NAME
-
-    assets/spriteOne01.png
-    assets/spriteOne02.png
-    ...
-    assets/spriteTwo01.png
-    assets/spriteTwo02.png
-    ...
-    
-    ...
-    
-It will generate sprite sheets with names `spriteOne` and `spriteTwo`.
+## Compiling sprite sheets
 
 Manually entering the data for sprite sheets is error prone, so a better option is to use a tool to generate the sheets an accompanying data for you. Quintus will eventually support a variety of different input formats, but right now it expects a JSON file with the following input format (it's the same as `Q.sheet` above):
 
@@ -159,11 +141,30 @@ If you have a single JSON data asset with a number of sprites defined as above, 
       Q.compileSheets("sprites.png","sprites.json");
     }
 
+As mentioned, Quintus doesn't currently have a method for generating sprite sheets in the main repository, but you can install github.com/cykod/Spriter to generate a sprites.png and sprites.json from a directory of image assets:
+
+    # will generate a sprites.png and sprites.json
+    $ spriter assets/
+    
+The images in the asset directory should be of the form NAMEXXX.png (or .jpg)
+
+    assets/spriteOne01.png
+    assets/spriteOne02.png
+    ...
+    assets/spriteTwo01.png
+    assets/spriteTwo02.png
+    ...
+    
+    ...
+    
+It will generate sprite sheets with names `spriteOne` and `spriteTwo` in a sprites.json file and a single image sprites.png.
+
+
 ## Using Spritesheets
 
 The most common way to use sprite sheets is to define a `sheet` property on a Sprite instead of a `asset` property. If you also set the `frame` property to a number the sprite will use that frame number to render itself.
 
-To go back to the penguin, you could set up a sprite that uses the Sprite sheet "player" and have it use the 8th frame that was just defined by:
+To go back to the penguin, you could set up a sprite that uses the Sprite sheet "player" and have it use the 8th frame (index 7) that was just defined by:
 
     Q.Sprite.extend("Penguin", {
          init: function(p) {
@@ -224,11 +225,11 @@ The last methhod that you'll often overload when working with sprites is the ste
 
 This means stuff like updating position for player characters based on user input or updating position of enemies based on their AI.
 
-The step method is called by the `frame(dt)` method each frame. Much like `draw` and `render` you don't usually need to override the `frame` method as this method takes care of triggering events and invoking frame on each of a Sprite's child. 
+The step method is called by the `update(dt)` method each frame. Much like `draw` and `render` you don't usually need to override the `update` method as this method takes care of triggering events and invoking frame on each of a Sprite's child. 
 
-The default implementation of frame looks as follows:
+The default implementation of update looks as follows:
 
-     step: function(dt) {
+     update: function(dt) {
       this.trigger('prestep',dt);
       if(this.step) { this.step(dt); }
       this.trigger('step',dt);
@@ -236,9 +237,9 @@ The default implementation of frame looks as follows:
       Q._invoke(this.children,"frame",dt);
     }
     
-All frame does by default is trigger two events `prestep` and `step`, refresh the Sprites transformation matrix (used for drawing and collision detection) and then call frame on any children the sprite might have.
+All frame does by default is trigger two events `prestep` and `step`, refresh the Sprites transformation matrix (used for drawing and collision detection) and then call update on any children the sprite might have.
 
-If you need to override your sprite's `frame` method, you can do so, but make sure you trigger the `step` and `prestep` events as components rely on these to add in additional behaviors.
+If you need to override your sprite's `update` method, you can do so, but make sure you trigger the `step` and `prestep` events as components rely on these to add in additional behaviors.
 
 ## A complete example with sprites
 
@@ -268,7 +269,7 @@ With only the Sprites module and not the Scenes or Input module, the type of exa
     Q.load(["ball.png"],function() {
       var ball = new Q.Ball();
       Q.gameLoop(function(dt) {
-        ball.frame(dt);
+        ball.update(dt);
         Q.clear();
         ball.render(Q.ctx);
       });
@@ -276,6 +277,10 @@ With only the Sprites module and not the Scenes or Input module, the type of exa
  
  This example creates a simple Ball sprite that moves linearly left to right across the board. It flies up with an initial negative velocity but eventually falls back down to earth because of a positive vertical acceleration.
  
- To run the example, the ball.png sprite is loaded and then a scustom game loop that calls frame and render on the single ball sprite is run.
- 
- 
+To run the example, the ball.png sprite is loaded and then a scustom game loop that calls frame and render on the single ball sprite is run.
+
+## Chapter Summary
+
+This chapter covered the basics of using and extending Sprites. The next chapter will talk about how many sprites can work together in a Stage with the Scenes module.
+
+Next up:  [ Building Scenes and setting the Stage](scenes.md)

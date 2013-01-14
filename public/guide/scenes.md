@@ -6,7 +6,7 @@ There are still a few important pieces left to discuss, such as input and sound,
 
 ## Scenes
 
-The Scenes module introduces to important objects into the mix: the Scene class and the Stage class. 
+The Scenes module introduces two important objects into the mix: the Scene class and the Stage class. 
 
 The Scene class is actually a quite simple class that doesn't provide a lot of functionality. It's however quite an important class for Quintus as it serves a single, important purpose: to let you build reusable scenes that can staged.
 
@@ -22,15 +22,15 @@ Here's any example of a simple scene (don't worry about the stage insert command
     
 This simple scene, called "level1", does nothing more than add a sprite called Ball onto the stage.
 
-# Staging a scene, intro
+## Staging a scene, intro
 
 Once you have created a scene, your next task is to stage that scene, which clears out a stage for you and runs your scene function with that stage. To stage the scene you just created, you'd call:
 
-    Q.stageScene("level1");
+     Q.stageScene("level1");
     
 This will stage the scene on the default (0th) stage and remove anything else on that stage.
 
-# Stages
+## Stages
 
 Stages have been mentioned a few times already, but what actually are they? Well, the easiest way to think of a stage is as a container for a bunch of sprites and methods for letting you the developer interact with those sprites and letting those sprites interact with each other.
 
@@ -38,9 +38,9 @@ You can have multiple stages active at once (in fact it's pretty common), but th
 
 The default stage, stage 0, is most commonly used for the main gameplay. Higher level stages are most commonly used for things like HUD elements and UI screens. Higher numbered stages render on top of lower numbered stages, although by default all stages share the same rendering context (this is something that can be overriden however).
 
-The stage class inherits from GameObject, which means that Stages can have components and listen for and trigger events.
+The stage class inherits from GameObject, which means that Stages can have components and listen for and trigger events themselves.
 
-# Staging a scene, in depth
+## Staging a scene, in depth
 
 The most common way to create a new stage is to use the stageScene method, which creates a new empty stage and runs the Scene's stage function on it.
 
@@ -52,28 +52,28 @@ This will stage an empty scene on the first stage.
 
 The second parameter to stageScene can be used to stage a scene on a different stage:
 
-   Q.stageScene("level1",1);
+    Q.stageScene("level1",1);
    
-This will stage a scene on the second (index 1) stage.
+This will stage a scene on the second (index 1) stage, leaving anything on the first stage (index 0) alone.
 
 The third parameter to `stageScene` is an options hash of additional options to pass into the stage. Most of the time you'll use the options hash to pass additional options into the scene function to allow some flexibility in creating scenes.
 
 For example if you had a scene that showed a message on a label that you wanted to be able to control when you stage the scene you could do the following (this example pulled from the platformer example):
 
-    Q.scene("endGame",function(stage) {
-      var label = stage.insert(new Q.UI.Text({
-          x: Q.width/2, 
-          y: Q.height/2,
-          label: stage.options.label
-      }));
-   });
+     Q.scene("endGame",function(stage) {
+       var label = stage.insert(new Q.UI.Text({
+           x: Q.width/2, 
+           y: Q.height/2,
+           label: stage.options.label
+       }));
+    });
    
-   // Stage a scene on stage 1 and pass in a label
-   Q.stageScene("endGame",1, { 
-    label: "This is the label"
-   }); 
+    // Stage a scene on stage 1 and pass in a label
+    Q.stageScene("endGame",1, { 
+     label: "This is the label"
+    }); 
 
-# Getting a stage
+## Getting a stage
 
 To retrieve a stage object, you can call `Q.stage()` to return the current, active stage. Usually this is stage 0, but if you call `Q.stage()` from the `step` method of Sprite, it will return the stage that sprite is a member of.
 
@@ -85,13 +85,13 @@ You can also pass in the number of the stage you'd like to return if it's not th
     
 `Q.stage()` might return a null object if that stage doesn't exist, so beware.
 
-# Inserting objects into a stage
+## Inserting objects into a stage
 
 The main purpose of a stage is to add sprites to it. This is accomplished by passing a sprite to `Stage.insert`:
 
     var ball = stage.insert(new Q.Ball());
     
-You'll note the insert method returns the sprite itself, so you can keep a reference to the sprite if you like.
+You'll note the insert method returns the sprite itself, so you can keep a reference to the sprite if you like in a single line.
 
 You can also pass a second parameter to `Stage.insert` that represents the container sprite. This is most often used for UI elements, but if you have sprites that live in a nested hierarchy, you can use containers as well.
 
@@ -104,7 +104,7 @@ For example:
     var car = stage.insert(new Q.Car());
     var wheel1 = stage.insert(new Q.Wheel(), car);
     
-# Pausing and Unpausing a stage
+## Pausing and Unpausing a stage
 
 Instances of the `Q.Stage` class have two methods for pausing and unpausing stages:
 
@@ -117,7 +117,7 @@ Instances of the `Q.Stage` class have two methods for pausing and unpausing stag
   
 These methods are useful when you want the game to continue to render but at the same time to pop up some screen of information (or a pause screen) to the player on a higher stage number.
 
-# Searching the stage for sprites
+## Searching the stage for sprites
 
 To find objects at a specific location on the stage, you can call the `Stage.locate` method. This method takes an x and y location (note: these points are in stage coordinates, not canvas coordinates) and an optional `collisionMask` and returns the first element on the stage that is found at that coordinate.
 
@@ -129,13 +129,13 @@ For example:
     // Find any enemies that collide with the point 50,50
     var obj2 = Q.stage().locate(50,50,Q.ENEMY_TYPE);
     
-# Collision detection
+## Collision detection
 
 The stage class is also responsible for discovering collisions. The primary way it does this is with the provided `Q.collide` method. This method takes in a Sprite, runs collisions checks on it, and then triggers events when it finds collisions.
 
 By default, all sprites have the Q.SPRITE_DEFAULT and Q.SPRITE_ACTIVE types. In order to control collisions with other objects, you must add a property call `p.collisionMask` that indicates what types of other Sprites a sprite should collide with. If you don't set the `p.collisionMask` property a sprite will collide with all other sprites (but not the collisionLayer).
 
-For example, you may want to separate out enemy sprites from player sprites and not have enemies collide with enemies and players with players. In th is case you can set the types and collisionMasks of sprites from the available options in such a way as to prevent collisions:
+For example, you may want to separate out enemy sprites from player sprites and not have enemies collide with enemies and players with players. In this case you can set the types and collisionMasks of sprites from the available options in such a way as to prevent collisions:
 
       Q.SPRITE_NONE     = 0;
       Q.SPRITE_DEFAULT  = 1;
@@ -183,21 +183,17 @@ In addition to the `separate` property, the `hit` event will pass in a collision
    
    });
 
-# Working with a Stages sprites
+## Working with a Stages sprites
 
 Instances of the Q.Stage class also have a number of methods you can invoke to work with the set of Sprites in the stage:
 
     // Call method name on every sprite in the stage
-    Q.stage().invoke("methodName");
+    Q.stage().invoke("methodName",arg1,arg2);
   
     // Return the first sprite for which method returns truthy
     var sprite = Q.stage().detect(method);
     
-    
-
-
-    
-# Selecting objects from a stage
+## Selecting objects from a stage
 
 Stages suppport a jQuery-like selector syntax to make it easier to find objects in your game.
 
@@ -229,11 +225,11 @@ Is it ok to use selectors if you are worried about performance? The answer for t
 
 One other thing to note - unlike jQuery, the Quintus selector syntax is limited to a single class or component - you can't use a single selector string on multiple components (this is done primarily for performance reasons, as using multiple selections at once would require creating separate arrays to avoid selecting individual sprites twice) This is likely to change in the future as there are optimizations that can be done to avoid this.  
 
-# Selector methods
+## Selector methods
 
 As mentioned above, every time you call Q("selector") the engine returns an instance of the `Q.StageSelector` class.
 
-Once you have a selector you can set properties on all the returned set of elements by calling on of the two forms of `set`:
+Once you have a selector you can set properties on all the returned set of elements by calling one of the two forms of `set`:
 
     // Set y=50 on all Q.Ball's
     Q("Ball").set("y",50);
@@ -263,7 +259,13 @@ This class provides a number of helpful methods for working with multiple object
     // Finally, get rid of all the balls
     balls.destroy();
     
-# Clearing stages
+## Clearing stages
  
 Sometimes you just need to clear out one or more stages. To do this you can use the `Q.clearStage(num)` and `Q.clearStages()` methods. the first clears a single stage while the latter clears all the stages.
+
+## Chapter Summary
+
+This chapter covered the details of how Sprites interact with each other on the Stage and how to create reusable scenes.
+
+Next up: [Dealing with input](input.md)
 

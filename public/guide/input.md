@@ -1,8 +1,8 @@
-## Input in Quintus
+# Input in Quintus
 
 What fun is a game that you can't interact with? Not much. For this reason the two Quintus user input module make it easy to capture gather input from the user for your game.
 
-The two modules are `Quintus.Input`, for button input (pressing up, down left, right, space, fire, etc.) and `Quintus.Touch` for touch input, which consists of clicking on specific Sprites on the page and tracking drag and release events.
+The two modules are `Quintus.Input`, for button input (pressing up, down left, right, space, fire, etc.) and `Quintus.Touch` for touch input, which consists of clicking on specific Sprites on the page and tracking drag and release events. (The Touch module also does work with mouse events).
 
 Both of these modules abstract away from the details of input and make it easy to have your game work both at the desktop and mobile.
 
@@ -10,13 +10,13 @@ Both of these modules abstract away from the details of input and make it easy t
 
 As mentioned, the `Quintus.Input` module is responsible for capturing button input. On the desktop this means listening for keyboard input while on touch screen devices Quintus supports drawing onscreen buttons.
 
-While it supports a fair amount of configuration, to help you get started quickly, the Input module provides \a helper function called `controls()` that gives you some reasonable defaults:
+While it supports a fair amount of configuration, to help you get started quickly, the Input module provides a helper function called `controls()` that gives you some reasonable defaults:
 
     var Q = Quintus().include("Input")
                      .setup()
                      .controls();
                      
-This method will set up default input controls for the keyboard and add buttons for left, right and a and b for touch devices on screen.
+This method will set up default input controls for the keyboard and add buttons for left, right and a and b for touch devices on screen if you are using the Scenes module.
 
 Note: the order here is important as you should call setup() before activating the controls so that the controls have a element to bind events to an a size to calculate from.
 
@@ -42,7 +42,7 @@ The defult controls map to 6 inputs:
 The easiest way to check for the state of a button is by looking at the `Q.inputs` hash and checking whether the named button is true. For example in your sprite step method, you could check if the `action` key has been pressed with:
 
     if(Q.inputs['action']) {
-      // do attatssomething
+      // do something
     }
     
 This method of listening for input is referred to as polling and it's the easiest way to check for the current state of a button. It's most commonly used for movement (i.e. move left whenever the left arrow is held down)
@@ -66,7 +66,16 @@ You can bind to both `action` and `actionUp` events. For example if you have a p
       }
     });
     
-To only caveat here is that because the `Q.input` is a global variable, you should make sure to call `player.destroy()` whenever you get rid of a player object to unbind unnecessary events.
+To only caveat here is that because the `Q.input` is a global variable, you should make sure to call `player.destroy()` whenever you get rid of a player object to unbind unnecessary events. As Scenes do not automatically destroy all their sprites when they are destroyed, you could do th following:
+
+    Q.scene("testerScene",function(stage) {
+        var player = new Q.Player();
+
+        stage.on("destroy",function() {
+            player.destroy();
+            // or you can call player.unbind() directly.
+        });
+    });
 
 ## Customizing the keyboard mapping
 
@@ -162,7 +171,7 @@ This makes it easy to drag objects by simply updating their position on drag to 
 
     Q.Sprite.extend("DraggableObject", {
       init: function() {
-        this.on("drag",this,"drag")
+        this.on("drag")
       },
       
       drag: function(touch) {
@@ -177,3 +186,9 @@ The `Q.input` module also includes two components, `platformerControls` and `ste
 
 You'll learn more about these components in the chapter on the 2D module.
 
+## Chapter Summary
+
+This chapter covered the basics of the two module in Quintus dedicated to input `Input` and `Touch`.
+
+
+Next up: [Adding in Animations](animation.md)
