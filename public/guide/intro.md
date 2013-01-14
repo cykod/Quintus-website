@@ -1,7 +1,5 @@
 # Introduction
 
-## Warning: this guide refers to two unreleased features (update instead of step, stage.locate) that will get sorted out in the next release - until then just use `this._super(dt)` inside of `step` and don't use `stage.locate`
-
 The Quintus engine is an HTML5 game engine designed to be modular and lightweight, with a concise JavaScript-friendly syntax. In lieu of trying to shoehorn a standard OOP-game engine structure into an HTML5 JavaScript engine, Quintus takes some cues from jQuery and provides plugins, events and a selector syntax. Instead of a deep single-inheritance-only model, Quintus provides a flexible component model in addition to traditional inheritance to make it easier to reuse functionality and share it across games and objects.
 
 ## Guide Breakdown
@@ -15,6 +13,11 @@ The goal of this guide is to provide an overview of the major components of the 
 5. [Adding in Animations](animation.md)
 6. [Getting noisy: playing sound](sound.md)
 7. [The 2D Module](2d.md)
+
+## Errata
+
+Warning: this guide refers to two unreleased features (update instead of step, stage.locate) that will get sorted out in the next release - until then just use `this._super(dt)` inside of `step` and don't use `stage.locate`
+
 
 ## History of Quintus
 
