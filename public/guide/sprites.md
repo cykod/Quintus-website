@@ -1,7 +1,7 @@
 
 # Working with Sprites
 
-Sprites are the building block for a large amount of what you'll do in Quintus, but they are are pretty simple creatures in and of themselves. A lot of the magic happens when you combine sprites with stages, but we'll wait until the next chapter to cover those.
+Sprites are the building block for a large amount of what you'll do in Quintus, but they are pretty simple creatures in and of themselves. A lot of the magic happens when you combine sprites with stages, but we'll wait until the next chapter to cover those.
 
 To use sprites in your game, make sure you include the `Sprites` module.
 

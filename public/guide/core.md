@@ -39,7 +39,7 @@ For example, if you wanted to create a `Quintus.Random` module that adds in a `Q
     Quintus.Random = function(Q) {
     
       Q.random = function(min,max) {
-        return min + Math.random() * max;
+        return min + Math.random() * (max - min);
       }
       
     };
@@ -82,7 +82,7 @@ In addition to maximize, setup also takes a number of different options to contr
 
     var Q = Quintus.setup({
       width:   800, // Set the default width to 800 pixels
-      height:  600, // Set the defauylt height to 600 pixels
+      height:  600, // Set the default height to 600 pixels
       upsampleWidth:  420,  // Double the pixel density of the 
       upsampleHeight: 320,  // game if the w or h is 420x320
                             // or smaller (useful for retina phones)
@@ -180,7 +180,7 @@ For example, to continue with our spaceship example, you might have the followin
  
  You'll often create sprites that add a number of existing components to it in the `init` constructor method to set up some basic functionality and then listen for some events on those components. Components are added by calling the `GameObject.add` method and passing a comma separated string of components.
  
- For example the 2D module defines a number of components to make working with 2D games easier and the Input module defines components for have sprites be controlled by player input.
+ For example the 2D module defines a number of components to make working with 2D games easier and the Input module defines components for having sprites be controlled by player input.
  
  To have a sprite that acts like a player-controller 2D platformer, you could simply add those two components to the sprite on `init`:
  
@@ -211,7 +211,7 @@ To create your own component, you use the `Q.component` method with a component 
 
 You generally don't want to override the `init` method of a component, which is called when the component is created but has not yet been added to an object. Instead you should override the `added` method which is called once the component has actually been added to an existing sprite. The object the component is added to is stored in the `entity` property.
 
-Method are generally added to the entity under the namespace of the component, but you can also extend the main object directly by adding in an `extend` property to the component. 
+Methods are generally added to the entity under the namespace of the component, but you can also extend the main object directly by adding in an `extend` property to the component. 
 
 For example, to create a `pistol` component that has its own method called `refillAmmo` and adds a method on the player called `fire` you could write:
 
@@ -291,7 +291,7 @@ The easiest way to load assets is to call `Q.load` with an array or hash of asse
 
 The callback won't be called until all the assets are loaded.
 
-To help organize your assets, Quintus defines some default paths for where you should put your assets. Image assets are loaded from "images/" (nested under the main directory where you HTML file is located). Audio is loaded under "audio/" and anything else is loaded via Ajax from "data/". You can control these by passing in an options hash to the initial Quintus constructor method if you want to use different paths, for example to load everything from "http://cdn.yourgame.com/assets/":
+To help organize your assets, Quintus defines some default paths for where you should put your assets. Image assets are loaded from "images/" (nested under the main directory where your HTML file is located). Audio is loaded under "audio/" and anything else is loaded via Ajax from "data/". You can control these by passing in an options hash to the initial Quintus constructor method if you want to use different paths, for example to load everything from "http://cdn.yourgame.com/assets/":
 
   var Q = Quintus({ imagePath: "http://cdn.yourgame.com/assets/",
                     audioPath: "http://cdn.yourgame.com/assets/",
