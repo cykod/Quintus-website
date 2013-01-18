@@ -56,7 +56,7 @@ The second parameter to stageScene can be used to stage a scene on a different s
    
 This will stage a scene on the second (index 1) stage, leaving anything on the first stage (index 0) alone.
 
-The third parameter to `stageScene` allows you to pass a hash of additional options into the stage, allowing some flexibility in creating scenes.
+The third parameter to `stageScene` allows you to pass a hash of additional options into the stage, offering some flexibility in creating scenes.
 
 For example if you had a scene that showed a message on a label that you wanted to be able to control when you stage the scene you could do the following (this snippet pulled from the platformer example):
 
