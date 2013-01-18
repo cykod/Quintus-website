@@ -103,7 +103,7 @@ Once you have the engine on the page, you'll want to start building some classes
 The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, {{ .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constuctor. Calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
 
     Q.Class.extend("MyClass", { 
-       init: function() { console.log("MyClass instance created"); }
+       init: function() { console.log("MyClass instance created"); },
        doIt: function() { alert("Doin it!"); }  
     });
     
@@ -112,8 +112,8 @@ The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(
     myInstance.doIt(); // Doin it!
     
     console.log(myInstance.className); // 'MyClass'
-    console.log(myInstance instanceOf Q.Class); // true
-    console.log(myInstance instanceoOf Q.MyClass); // true
+    console.log(myInstance instanceof Q.Class); // true
+    console.log(myInstance instanceof Q.MyClass); // true
     
 If you are overriding an existing method on a class, you can call the method you overloaded via `this._super(..)`.
     
@@ -146,7 +146,7 @@ For the `off` method, the more parameters you provide the more specific the even
 Some more examples of how `on` can be called are shown below:
 
     var spaceship = new Q.SpaceShip();
-    var spacestation = new Q.SpaceStation()
+    var spacestation = new Q.SpaceStation();
     
     // Provide callback inline
     spaceship.on("fire",function(gun) {
@@ -356,12 +356,12 @@ If you have a number of assets to load, it's probably a good idea to add in some
 
     Q.load([ "sprites.png", "sprites.json", "music.ogg" ], function() {
       // Start your game
-    }), {
+    }, {
       progressCallback: function(loaded,total) {
         var element = document.getElemenyById("loading_progress");
         element.style.width = Math.floor(loaded/total*100) + "%";
       }
-    );
+    });
     
     
 ## Chapter summary
