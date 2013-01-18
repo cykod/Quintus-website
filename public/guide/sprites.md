@@ -11,7 +11,7 @@ The base `Q.Sprite` class inherits from `Q.GameObject`, which means sprites come
 
 The first overloadable method is the base constructor, `init(p,defaults)`. It's primary duties are setting the sprite's properties, stored in the `p` object (whenver you see a varible named, `p`, think "properties").
 
-All a Sprites mutable properties are generally stored in the `p` object on the sprite. The reason for this is to first separate a sprite's state from its methods and secondly to make it easy to know what properties need to be serialized or sent over the wire for a multi-player game. For performance reasons, the properties on the `p` object can be get an set directly and don't need to be set with getters and setters. 
+All a sprite's mutable properties are generally stored in the `p` object on the sprite. The reason for this is to first separate a sprite's state from its methods and secondly to make it easy to know what properties need to be serialized or sent over the wire for a multi-player game. For performance reasons, the properties on the `p` object can be get and set directly without the need for getters and setters. 
 
 The default constructor takes two parameters, an initial set of properties `p` and a default set of properties `defaults` that are used if the corresponding property is unset on `p`. While this might seem a little surperfluous, the reason for the defaults hash is that it makes it easy to set default properties when creating a subclass of `Q.Sprite`.
 
@@ -31,15 +31,15 @@ Whenever you create a player now it will have those defaults pre-set:
 
      var player1 = new Q.Player();
      
-     console.log(player1.hitPoints); // 10
-     console.log(player1.damage); // 5
+     console.log(player1.p.hitPoints); // 10
+     console.log(player1.p.damage); // 5
    
 However, you can easily create instances that have different values as well:
 
      var player2 = new Q.Player({ hitPoints: 20 });
      
-     console.log(player1.hitPoints); // 20
-     console.log(player1.damage); // Still 5
+     console.log(player2.p.hitPoints); // 20
+     console.log(player2.p.damage); // Still 5
    
 ## Core sprite properties
 
@@ -70,28 +70,28 @@ Sprites recalculate their own translation matrices and bounding boxes each frame
 
 If you add an asset property before you call the predefined `init` method, the Sprite class will use that asset to calculate its width and height, stored in the `w` and `h` properties and the center, stored in the `cx` and `cy` properties (if you can tell, I'm not a huge fan of typing) 
 
-That asset will then be used to render the spite on the screen. For example, for a full example that draws the penguin.png asset:
+That asset will then be used to render the sprite on the screen. For example, for a full example that draws the penguin.png asset:
 
-   var Q = Quintus().include("Sprites").setup();
+    var Q = Quintus().include("Sprites").setup();
 
-   Q.Sprite.extend("Penguin", {
-     init: function(p) {
-       this._super({
-         asset: "penguin.png"
-       });
-     }
-   });
+    Q.Sprite.extend("Penguin", {
+      init: function(p) {
+        this._super({
+          asset: "penguin.png"
+        });
+      }
+    });
    
-   // Make sure penguin.pn is loaded
-   Q.load("penguin.png",function() {
+    // Make sure penguin.pn is loaded
+    Q.load("penguin.png",function() {
       var penguin = new Q.Penguin();
       
       Q.gameLoop(function(dt) {
-         Q.clear();
-         Q.step(dt);
-         Q.render(Q.ctx);
+        Q.clear();
+        penguin.step(dt);
+        penguin.render(Q.ctx);
       });
-   });
+    });
 
 ## Defining Spritesheets
 
@@ -112,7 +112,7 @@ For example, if you had an asset called player.png that had a 40 frames for the 
              
 (You could actually leave the sx and sy parameters out as they default to 0,0)
 
-## Compiling sprite sheets
+## Compiling Spritesheets
 
 Manually entering the data for sprite sheets is error prone, so a better option is to use a tool to generate the sheets an accompanying data for you. Quintus will eventually support a variety of different input formats, but right now it expects a JSON file with the following input format (it's the same as `Q.sheet` above):
 
@@ -141,7 +141,7 @@ If you have a single JSON data asset with a number of sprites defined as above, 
       Q.compileSheets("sprites.png","sprites.json");
     }
 
-As mentioned, Quintus doesn't currently have a method for generating sprite sheets in the main repository, but you can install github.com/cykod/Spriter to generate a sprites.png and sprites.json from a directory of image assets:
+As mentioned, Quintus doesn't currently have a method for generating sprite sheets in the main repository, but you can install http://github.com/cykod/Spriter to generate a sprites.png and sprites.json from a directory of image assets:
 
     # will generate a sprites.png and sprites.json
     $ spriter assets/
@@ -179,7 +179,7 @@ Oftentimes you'll let the frame be controlled by the `animation` component, desc
 
 Assigning a `sheet` property will set the width, height and center of the sprite in the same way that setting an asset does.
 
-If you want to render a sheet manually (i.e. let's say your are creating a sprite that layers a number of different images on top of itself), you can also grab the sheet and tell it to draw yourself:
+If you want to render a sheet manually (i.e. let's say you are creating a sprite that layers a number of different images on top of itself), you can also grab the sheet and tell it to draw yourself:
 
     Q.sheet("spriteOne").draw(ctx, x, y, frameNum);
 
@@ -199,8 +199,8 @@ To see this in action, imagine you wanted to create a "Square" sprite that rende
       init: function(p) {
         this._super(p,{
           color: "red",
-          width: 50,
-          height: 50
+          w: 50,
+          h: 50
         });
       },
       
@@ -277,7 +277,7 @@ With only the Sprites module and not the Scenes or Input module, the type of exa
  
  This example creates a simple Ball sprite that moves linearly left to right across the board. It flies up with an initial negative velocity but eventually falls back down to earth because of a positive vertical acceleration.
  
-To run the example, the ball.png sprite is loaded and then a scustom game loop that calls frame and render on the single ball sprite is run.
+To run the example, the ball.png sprite is loaded and then a custom game loop that calls frame and render on the single ball sprite is run.
 
 ## Chapter Summary
 
