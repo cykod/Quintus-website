@@ -10,11 +10,11 @@ The Scenes module introduces two important objects into the mix: the Scene class
 
 The Scene class is actually a quite simple class that doesn't provide a lot of functionality. It's however quite an important class for Quintus as it serves a single, important purpose: to let you build reusable scenes that can staged.
 
-Scene's hold only two properties: a callback method for adding items to a stage and a hash of options that control the behavior of the stage. Think of scenes as set instruction for how you might set up a stage.
+Scenes hold only two properties: a callback method for adding items to a stage and a hash of options that control the behavior of the stage. Think of scenes as instructions for how you might set up a stage.
 
-To create a Scene you call `Q.scene` with a name and a callback method that adds item to a stage. You can optionally pass in a third parameter that will be a set of options that control some behaviors of the created scene.
+To create a Scene you call `Q.scene` with a name and a callback method that adds items to a stage. You can optionally pass in a third parameter that will be a set of options that control some behaviors of the created scene.
 
-Here's any example of a simple scene (don't worry about the stage insert command, it'll be explained next):
+Here's an example of a simple scene (don't worry about the stage insert command, it'll be explained next):
 
     Q.scene("level1",function(stage) {
       stage.insert(new Q.Ball());
@@ -28,7 +28,7 @@ Once you have created a scene, your next task is to stage that scene, which clea
 
      Q.stageScene("level1");
     
-This will stage the scene on the default (0th) stage and remove anything else on that stage.
+This will stage the scene on the default (index 0) stage and remove anything else on that stage.
 
 ## Stages
 
@@ -56,21 +56,21 @@ The second parameter to stageScene can be used to stage a scene on a different s
    
 This will stage a scene on the second (index 1) stage, leaving anything on the first stage (index 0) alone.
 
-The third parameter to `stageScene` is an options hash of additional options to pass into the stage. Most of the time you'll use the options hash to pass additional options into the scene function to allow some flexibility in creating scenes.
+The third parameter to `stageScene` allows you to pass a hash of additional options into the stage, allowing some flexibility in creating scenes.
 
-For example if you had a scene that showed a message on a label that you wanted to be able to control when you stage the scene you could do the following (this example pulled from the platformer example):
+For example if you had a scene that showed a message on a label that you wanted to be able to control when you stage the scene you could do the following (this snippet pulled from the platformer example):
 
-     Q.scene("endGame",function(stage) {
-       var label = stage.insert(new Q.UI.Text({
-           x: Q.width/2, 
-           y: Q.height/2,
-           label: stage.options.label
-       }));
+    Q.scene("endGame",function(stage) {
+      var label = stage.insert(new Q.UI.Text({
+        x: Q.width/2, 
+        y: Q.height/2,
+        label: stage.options.label
+      }));
     });
    
     // Stage a scene on stage 1 and pass in a label
     Q.stageScene("endGame",1, { 
-     label: "This is the label"
+      label: "This is the label"
     }); 
 
 ## Getting a stage
@@ -83,7 +83,7 @@ You can also pass in the number of the stage you'd like to return if it's not th
     Q.stage(0); // always returns stage 0
     Q.stage(1); // always return stage 1
     
-`Q.stage()` might return a null object if that stage doesn't exist, so beware.
+`Q.stage()` might return an undefined object if that stage doesn't exist, so beware.
 
 ## Inserting objects into a stage
 
@@ -108,12 +108,12 @@ For example:
 
 Instances of the `Q.Stage` class have two methods for pausing and unpausing stages:
 
-  // Pause the stage, Sprite will no longer be stepped
-  // but will render each frame
-  Q.stage().pauseStage();  
-  
-  // Unpause the stage
-  Q.stage().unpauseStage();
+    // Pause the stage, Sprite will no longer be stepped
+    // but will render each frame
+    Q.stage().pause();  
+    
+    // Unpause the stage
+    Q.stage().unpause();
   
 These methods are useful when you want the game to continue to render but at the same time to pop up some screen of information (or a pause screen) to the player on a higher stage number.
 
@@ -124,7 +124,7 @@ To find objects at a specific location on the stage, you can call the `Stage.loc
 For example:
 
     // Find any object that collides with the point 50,50
-    var obj =Q.stage().locate(50,50);  
+    var obj = Q.stage().locate(50,50);  
     
     // Find any enemies that collide with the point 50,50
     var obj2 = Q.stage().locate(50,50,Q.ENEMY_TYPE);
@@ -153,7 +153,7 @@ The Sprite it triggers events on is expected to take the collision information a
         // Listen for hit event and call the collision method
         this.on("hit",this,"collision");
       
-      }.
+      },
       
       collision: function(col) {
         // .. do anything custom you need to do ..
@@ -173,15 +173,14 @@ As mentioned above, it isn't necessary to do this if you use the `2d` component.
 
 In addition to the `separate` property, the `hit` event will pass in a collision object that has a number of pieces of information about the collision:
 
-   sprite.on("hit",function(col) {
-       col.normalX; // normal of the collision, x direction
-       col.normalY; // normal of the collision, y direction
-       col.obj; // Object we collided with
-       col.distance; // Distance we had to move to resolve the collision
-       col.separate[0]; // normalX multiplied by distance
-       col.separate[1]; // normalY multiplied by distance
-   
-   });
+    sprite.on("hit",function(col) {
+      col.normalX; // normal of the collision, x direction
+      col.normalY; // normal of the collision, y direction
+      col.obj; // Object we collided with
+      col.distance; // Distance we had to move to resolve the collision
+      col.separate[0]; // normalX multiplied by distance
+      col.separate[1]; // normalY multiplied by distance
+    });
 
 ## Working with a Stages sprites
 
@@ -201,15 +200,15 @@ Like jQuery, when you have the Scenes module included the engine instance `Q` is
 
 The Quintus selector is currently fairly limited, but will eventually be expanded on. It supports two selection methods: class name and component. To select by class name, just use the name. To select by component, prefix the component name with a dot.
 
-    var balls = Q("Ball") // returns all instances of Q.Ball
+    var balls = Q("Ball"); // returns all instances of Q.Ball
     
-    var two_d = Q(".2d") // return all sprites with the 2d component
+    var two_d = Q(".2d"); // return all sprites with the 2d component
 
 The selector will default to the active stage, but if you want to be explicit about which stage number to use, you can pass a second parameter indicating the stage number: 
 
-    var balls = Q("Ball",0) // stage 0
+    var balls = Q("Ball",0); // stage 0
     
-    var two_d = Q(".2d", 1) // stage one.  
+    var two_d = Q(".2d", 1); // stage one.  
         
 The selector syntax also has convenience methods to return the first, last or a specific element from the set (these return the actual Sprite, not a selector instance):
 
