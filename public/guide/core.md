@@ -1,7 +1,7 @@
 
 # Core Quintus Basics
 
-The core engine, located in [quintus.js](../quintus/docs/quintus.html), does very little game-wise by itself and provides little more than a backbone for the other modules to build around. The main features of core engine are the module system, a set of utility methods (primarily taken from Underscore.js.), Game Loop support, support for classes, events and components, setup methods for getting a game container on screen, asset loading and math utility methods.
+The core engine, located in [quintus.js](../quintus/docs/quintus.html), does very little game-wise by itself and provides little more than a backbone for the other modules to build around. The main features of the core engine are the module system; a set of utility methods (primarily taken from Underscore.js.); Game Loop support; support for classes, events and components; setup methods for getting a game container on screen; asset loading and math utility methods.
 
 [quintus.js](../quintus/docs/quintus.html) is well commented and viewing the annotated source code is worth a quick read-through if you want to understand more about the engine. There are a couple pieces (Matrix functionality, all the Underscore.js carryovers) that aren't covered in this guide.
 
@@ -16,7 +16,7 @@ These guides will generally use the variable `Q` to refer to an instance of the 
 
 ## Including modules
 
-To make the engine do anything useful, you'll need to include at least a few modules. Quintus uses modules even for core behavior to reduce coupling between the various parts of the engine, make it clear what the responsibility of each subsystem is, and make it easier for someone to swap out a custom piece of functionality (want you own input library? Duplicate the external API in [quintus_input.js](../quintus/docs/quintus_input.html) and swap out your module for the provided one)
+To make the engine do anything useful, you'll need to include at least a few modules. Quintus uses modules even for core behavior to reduce coupling between the various parts of the engine, make it clear what the responsibility of each subsystem is, and make it easier for someone to swap out a custom piece of functionality (want your own input library? Duplicate the external API in [quintus_input.js](../quintus/docs/quintus_input.html) and swap out your module for the provided one)
 
 To include a module in Quintus, you use `Q.include(...)` and pass either a string of comma-separate modules names or an array of the modules themselves. The former syntax is more compact and more common, but both are allowed:
 
@@ -46,11 +46,11 @@ For example, if you wanted to create a `Quintus.Random` module that adds in a `Q
 
 Any method that takes in a single argument can work as a Quintus module, but if you add your module onto the base `Quintus` constructor method, you can use the shortened string syntax from the last section.
 
-Notice that module are added onto the `Quintus` constructor object, while they operate (and add functionality to) an instance of the engine (usually stored in `Q`).
+Notice that modules are added onto the `Quintus` constructor object, while they operate (and add functionality to) an instance of the engine (usually stored in `Q`).
 
 ## Getting your game on the page
 
-Before you can do anything with your game, you need to get the instance of the engine onto the page. The `Q.setup([id],[options={}])` method is responsible for binding the engine to a canvas element on the page and configuring the size of the canvas element. Both arguments are optional.
+Before you can do anything with your game, you need to get an instance of the engine onto the page. The `Q.setup([id],[options={}])` method is responsible for binding the engine to a canvas element on the page and configuring the size of the canvas element. Both arguments are optional.
 
 At its simplest invocation, you can call `Q.setup` with no arguments to create a canvas element 320 pixels wide by 420 pixels tall and add it to the page for you:
 
@@ -59,7 +59,7 @@ At its simplest invocation, you can call `Q.setup` with no arguments to create a
 All the initial Quintus setup methods return the `Q` object, so you can generally chain together your initial configuration calls:
 
     var Q = Quintus().include("Sprites, Scenes, Input")
-                     .setup()
+                     .setup();
     
 If you already have a canvas element on the page, you pass the `id` of that element and Quintus will bind to that existing element (note, since Quintus doesn't rely on jQuery don't prefix the id with a pound sign):
 
@@ -94,7 +94,7 @@ In addition to maximize, setup also takes a number of different options to contr
 
 For canvas games, the rendering context will be available in the Q.ctx variable. Unless you are creating your own rendering loop, you generally won't need to access `Q.ctx` directly as the context will be passed in to a Sprite's `draw` method.
 
-If you are using the Scenes module, drawing stuff on the context during other times (such as during the `step` method) isn't usually a good idea as the context is cleared directly preceding the calls to draw.
+If you are using the Scenes module, drawing directly to the context at other times (such as during the `step` method) usually isn't a good idea as the context is cleared preceding the calls to draw.
     
 ## Creating classes
 
@@ -103,7 +103,7 @@ Once you have the engine on the page, you'll want to start building some classes
 The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, {{ .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constuctor. Calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
 
     Q.Class.extend("MyClass", { 
-       init: function() { console.log("MyClass instance created"); }
+       init: function() { console.log("MyClass instance created"); },
        doIt: function() { alert("Doin it!"); }  
     });
     
@@ -112,8 +112,8 @@ The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(
     myInstance.doIt(); // Doin it!
     
     console.log(myInstance.className); // 'MyClass'
-    console.log(myInstance instanceOf Q.Class); // true
-    console.log(myInstance instanceoOf Q.MyClass); // true
+    console.log(myInstance instanceof Q.Class); // true
+    console.log(myInstance instanceof Q.MyClass); // true
     
 If you are overriding an existing method on a class, you can call the method you overloaded via `this._super(..)`.
     
@@ -124,7 +124,7 @@ Instead of building off of the base class, most of the time you'll inherit from 
 
 If you don't need the full functionality provided by `Q.Sprite`, you can start with a lighter class, either `Q.Evented` or `Q.GameObject`.
 
-The `Q.Evented` class adds in an event system into the base class. It provides a mechanism for listening for and triggering events. Quintus uses events extensively to reduce coupling between different components while still making it easy for various parts of your game to interact with each other. 
+The `Q.Evented` class adds an event system into the base class. It provides a mechanism for listening for and triggering events. Quintus uses events extensively to reduce coupling between different components while still making it easy for various parts of your game to interact with each other. 
 
 Components (described in the next section,) often use events to extend the functionality of the object they are added to without needing to override methods.
 
@@ -146,7 +146,7 @@ For the `off` method, the more parameters you provide the more specific the even
 Some more examples of how `on` can be called are shown below:
 
     var spaceship = new Q.SpaceShip();
-    var spacestation = new Q.SpaceStation()
+    var spacestation = new Q.SpaceStation();
     
     // Provide callback inline
     spaceship.on("fire",function(gun) {
@@ -189,7 +189,7 @@ For example, to continue with our spaceship example, you might have the followin
      // Every instance of Q.Player will have these two components
      Q.Sprite.extend("Player", {
        init: function() {
-         this.add("2d, playerControls");
+         this.add("2d, platformerControls");
        }
      });
      
@@ -356,17 +356,17 @@ If you have a number of assets to load, it's probably a good idea to add in some
 
     Q.load([ "sprites.png", "sprites.json", "music.ogg" ], function() {
       // Start your game
-    }), {
+    }, {
       progressCallback: function(loaded,total) {
         var element = document.getElemenyById("loading_progress");
         element.style.width = Math.floor(loaded/total*100) + "%";
       }
-    );
+    });
     
     
 ## Chapter summary
 
-This covered the basics of the core Quintus engine. It didn't cover the helper methods or the Math and Matrix manipulation methods as those are lower level and often you won't touch em when building a game, but if you'd like to know more please see the [annotated source code](../quintus/docs/quintus.html)
+This covers the basics of the core Quintus engine. It didn't cover the helper methods or the Math and Matrix manipulation methods as those are lower level and often you won't touch em when building a game, but if you'd like to know more please see the [annotated source code](../quintus/docs/quintus.html)
 
 Onto sprites! [Working with Sprites](sprites.md)
 
