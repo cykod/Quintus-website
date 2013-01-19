@@ -39,7 +39,7 @@ a{color:#00b7ff}
 h1{padding:0;margin:0;font:normal 4em Pico;padding-top:20px;-webkit-margin-before:0;-webkit-margin-after:0;line-height:1em;color:#93a5ab}
 .clear{clear:both}
 .CodeMirror{border:1px solid #ccc;background:ghostWhite}
-button{border-radius:5px;background-color:#ef6529;border:0;padding:10px;color:#fff;text-transform:uppercase;font-weight:bold}
+a.button{border-radius:5px;background-color:#ef6529;border:0;padding:10px;color:#fff;text-transform:uppercase;font-weight:bold;text-decoration:none}
 header#site-header{max-width:1024px;margin:0 auto;position:relative;}
 header#site-header .cannon{position:absolute;bottom:0;width:176px;height:62px}
 header#site-header .cannon-left{position:absolute;left:0;background:url("/images/cannons-left.png") no-repeat top left}
@@ -49,7 +49,8 @@ header#site-header #site-top h1{text-align:center;font-size:7em;}
 header#site-header #site-top h1 a{text-decoration:none;color:#93a5ab}
 header#site-header #site-top h1 span{display:inline-block;width:93px;height:102px;text-indent:-9999px;background:url("/images/logo.png") no-repeat top left}
 header#site-header #site-top nav#site-nav{bottom:0;}
-header#site-header #site-top nav#site-nav li{height:30px;text-align:center;list-style:none;float:left;padding-right:25px;}
+header#site-header #site-top nav#site-nav ul{padding:0;margin:0;text-align:center}
+header#site-header #site-top nav#site-nav li{height:30px;text-align:center;list-style:none;display:inline-block;padding-right:25px;}
 header#site-header #site-top nav#site-nav li:last-child{padding-right:0}
 header#site-header #site-top nav#site-nav li a{text-transform:uppercase;color:#93a5ab;text-decoration:none;font:bold 1.2em arial;}
 header#site-header #site-top nav#site-nav li a:hover{color:#727e86}
@@ -70,7 +71,7 @@ nav#sidebar ol a{color:#93a5ab;text-decoration:none}
 article#guide{margin-left:200px;font-size:1.2em}
 #example-game{position:relative;padding:10px 0;}
 #example-game .button-container{position:absolute;width:100%;text-align:center;}
-#example-game .button-container button{position:relative;top:20px;z-index:1000}
+#example-game .button-container #rungame{position:relative;top:20px;z-index:1000}
 #example-game .left{width:50%;float:left;height:420px;}
 #example-game .left textarea{width:100%;height:420px}
 #example-game .right{width:50%;float:right;height:420px;overflow:hidden;}
@@ -79,7 +80,13 @@ article#guide{margin-left:200px;font-size:1.2em}
 h2{margin-top:1em;margin-bottom:.5em;color:#727e86}
 #attribution{text-align:right;max-width:1100px;margin:0 auto;position:relative;padding-top:30px;color:#93a5ab;}
 #attribution a{text-decoration:none;color:#93a5ab}
-@media screen and (max-width: 700px){#example-game .left,#example-game .right{float:none;width:100%}
+@media screen and (max-width: 1024px){#example-game .left,#example-game .right{float:none;width:100%}
 .cannon{display:none}
-#example-game .button-container button{top:440px}
+#example-game .button-container{position:relative;width:100%;text-align:center}
+}@media screen and (max-width:400px){header#site-header #site-top h1{padding-top:70px;font-size:3em;}
+header#site-header #site-top h1 span{position:relative;top:-30px}
+section#leader h1{font-size:1.2em}
+header#site-header #site-top nav#site-nav li{padding-right:10px;}
+header#site-header #site-top nav#site-nav li:last-child{padding-right:0}
+header#site-header #site-top nav#site-nav li a{font:bold 1em arial}
 }
