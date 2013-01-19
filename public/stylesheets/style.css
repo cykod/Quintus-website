@@ -83,6 +83,8 @@ h2{margin-top:1em;margin-bottom:.5em;color:#727e86}
 @media screen and (max-width: 1024px){#example-game .left,#example-game .right{float:none;width:100%}
 .cannon{display:none}
 #example-game .button-container{position:relative;width:100%;text-align:center}
+}@media screen and (max-width:700px){nav#sidebar{display:none}
+article#guide{margin-left:0;font-size:1em}
 }@media screen and (max-width:400px){header#site-header #site-top h1{padding-top:70px;font-size:3em;}
 header#site-header #site-top h1 span{position:relative;top:-30px}
 section#leader h1{font-size:1.2em}
