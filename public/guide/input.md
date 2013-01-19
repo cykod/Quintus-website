@@ -1,10 +1,10 @@
 # Input in Quintus
 
-What fun is a game that you can't interact with? Not much. For this reason the two Quintus user input module make it easy to capture gather input from the user for your game.
+What fun is a game that you can't interact with? Not much. For this reason the two Quintus user input modules make it easy to capture and gather user input for your game.
 
-The two modules are `Quintus.Input`, for button input (pressing up, down left, right, space, fire, etc.) and `Quintus.Touch` for touch input, which consists of clicking on specific Sprites on the page and tracking drag and release events. (The Touch module also does work with mouse events).
+The two modules are `Quintus.Input`, for button input (pressing up, down left, right, space, fire, etc.) and `Quintus.Touch` for touch input, which consists of clicking on specific Sprites on the page and tracking drag and release events. (The Touch module also handles mouse events).
 
-Both of these modules abstract away from the details of input and make it easy to have your game work both at the desktop and mobile.
+Both of these modules abstract away from the details of input and provide an easy way to keep a consistent control scheme on both desktop and mobile devices.
 
 ## Capturing Default Button input
 
@@ -18,7 +18,7 @@ While it supports a fair amount of configuration, to help you get started quickl
                      
 This method will set up default input controls for the keyboard and add buttons for left, right and a and b for touch devices on screen if you are using the Scenes module.
 
-Note: the order here is important as you should call setup() before activating the controls so that the controls have a element to bind events to an a size to calculate from.
+Note: the order here is important - you must call `setup()` before `controls()` so that the controls have a element to bind events to and a size to calculate from.
 
 The `controls` method takes in a single parameter which, if set to true, will use a 4-way joypad on the left side of the screen instead of left and right buttons. Turn this on if you need 4-way controls on mobile.
 
@@ -30,7 +30,7 @@ The `controls` method takes in a single parameter which, if set to true, will us
 
 Quintus provides a translation from key and touch input into named inputs. This way multiple input mechanisms (such as keyboard and touch) both map to the same game input, making it easier to build your game without worrying about the specific input mechanism used.
 
-The defult controls map to 6 inputs:
+The default controls map to 6 inputs:
 
 * up - when the up arrow is pressed or the joy pad moved up
 * down - down arrow or joypad down
@@ -54,19 +54,19 @@ If you want to be notified the moment when a key is pressed, you can also bind t
 You can bind to both `action` and `actionUp` events. For example if you have a player character, you might bind to the `fire` event to tell the player to fire their weapon:
 
 
-    Q.Sprite.exted("Player",{
+    Q.Sprite.extend("Player",{
       init: function(p) {
         this._super(p);
         
         Q.input.on("fire",this,"fireWeapon");
-      }.
+      },
       
       fireWeapon: function() {
         // Do something
       }
     });
     
-To only caveat here is that because the `Q.input` is a global variable, you should make sure to call `player.destroy()` whenever you get rid of a player object to unbind unnecessary events. As Scenes do not automatically destroy all their sprites when they are destroyed, you could do th following:
+The only caveat here is that because the `Q.input` is a global variable, you should make sure to call `player.destroy()` whenever you get rid of a player object to unbind unnecessary events. As Scenes do not automatically destroy all their sprites when they are destroyed, you could do the following:
 
     Q.scene("testerScene",function(stage) {
         var player = new Q.Player();
@@ -81,18 +81,18 @@ To only caveat here is that because the `Q.input` is a global variable, you shou
 
 If you need more or different controls than just the defaults, you can manually set up the keyboard inputs by skipping the call to `Q.controls` and telling the input subsystem how to configure itself manually. You can do this with a call to `Q.input.keyboardControls({ .. key bindings .. })`
 
-For key bindings you can map either a key name from KEY_NAMES (see the top of quintus_input.js for these) or directly from a key code to an action name. For example if you just wanted left and right you could write:
+For key bindings you can map either a key name from KEY\_NAMES (see the top of quintus\_input.js for these) or directly from a key code to an action name. For example if you just wanted left and right you could write:
 
     var Q = Quintus().include("Input").setup();
     
     Q.input.keyboardControls({
-      LEFT: "goLeft".
+      LEFT: "goLeft",
       RIGHT: "goRight"
     });
     
-This would create two button names called "goLeft" and "goRight" instead of the standard "left" and "right"
+This would create two buttons called "goLeft" and "goRight" instead of the standard "left" and "right".
 
-## Customizing the on screen buttons
+## Customizing the on-screen buttons
 
 To control the on-screen butons, you can use the `Q.input.touchControls(options)` method. There are a number of configuration options, but the most important ones are what buttons should show up. This is controlled via the `controls` option. It takes an array of arrays where each array is an action and the text to display. The default controls would be set up as follows: 
 
@@ -144,9 +144,9 @@ To add touch controls to your game, call the `Q.touch()` after including the Spr
 
     var Q = Quintus().include("Sprites,Touch")
                      .setup()
-                     .touch()
+                     .touch();
                      
-The touch method takes two parameters: the types of Sprites to turn on touch events for and an array of stages to search for sprites. By default only Q.SPRITE_UI sprites (this are from the UI module) are enabled for touch, but if you want to enable others (or Q.SPRITE_ALL to have all sprites affected) you can do so.
+The touch method takes two parameters: the types of Sprites to turn on touch events for and an array of stages to search for sprites. By default only Q.SPRITE\_UI sprites (from the UI module) are enabled for touch, but if you want to enable others (or Q.SPRITE\_ALL to have all sprites affected) you can do so.
 
 Sprites that have touch enabled will receive three events when they are manipulated onscreen: `touch`, `drag` and `touchEnd`. Touch events will only trigger on a single Sprite per touch, so users can interact with only one element at a time per finger.
   
@@ -171,7 +171,7 @@ This makes it easy to drag objects by simply updating their position on drag to 
 
     Q.Sprite.extend("DraggableObject", {
       init: function() {
-        this.on("drag")
+        this.on("drag");
       },
       
       drag: function(touch) {
@@ -188,7 +188,7 @@ You'll learn more about these components in the chapter on the 2D module.
 
 ## Chapter Summary
 
-This chapter covered the basics of the two module in Quintus dedicated to input `Input` and `Touch`.
+This chapter covered the basics of the two modules in Quintus dedicated to input `Input` and `Touch`.
 
 
 Next up: [Adding in Animations](animation.md)
