@@ -16,7 +16,7 @@ The goal of this guide is to provide an overview of the major components of the 
 
 ## Errata
 
-Warning: this guide refers to two unreleased features (update instead of step, stage.locate) that will get sorted out in the next release - until then just use `this._super(dt)` inside of `step` and don't use `stage.locate`
+Currently no Errata
 
 
 ## History of Quintus
