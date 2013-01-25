@@ -51,6 +51,7 @@ $(function() {
       $("#rungame").on("click",runGame);
     } else {
       $(".right").remove();
+      $(".left").css({ width: "100%" });
       $("#rungame").on("click",windowGame);
     }
     

@@ -36,7 +36,7 @@ h1 {
 
 .CodeMirror { border:1px solid #CCC; background: ghostWhite; }
 
-button {
+a.button {
   border-radius:5px;
   background-color:highlightOrange
   border:0px;
@@ -44,6 +44,7 @@ button {
   color:white;
   text-transform:uppercase;
   font-weight:bold;
+  text-decoration:none;
 
 }
 
@@ -100,11 +101,12 @@ header#site-header {
       nav#site-nav {
         bottom:0px;
 
+        ul { padding:0px; margin:0px; text-align:center; }
         li { 
           height:30px;
           text-align:center;
           list-style:none;
-          float:left; 
+          display:inline-block;
           padding-right:25px;
 
           &:last-child { padding-right:0px; }
@@ -207,7 +209,7 @@ article#guide {
      width:100%;
      text-align:center;
 
-     button {
+     #rungame {
       position:relative;
        top: 20px;
        z-index:1000;
@@ -258,21 +260,80 @@ h2 {
 
 }
 
-@media screen and (max-width: 700px) {
+
+@media screen and (max-width: 1024px) {
 
   #example-game {
     .left, .right { float:none; width:100%; }
 
+
   }
   .cannon { display:none; }
 
+
   #example-game {
     .button-container {
-       button {
-         top: 440px;
-       }
+       position:relative;
+       width:100%;
+       text-align:center;
     }
   }
+
 }
+
+
+@media screen and (max-width:700px) {
+
+  nav#sidebar {
+    display:none;
+  }
+
+  article#guide {
+    margin-left:0px;
+    font-size:1.0em;
+  }
+}
+
+@media screen and (max-width:400px) {
+
+ header#site-header { 
+  #site-top {
+      h1 {
+        padding-top:70px;
+        font-size:3em;
+
+        span { position:relative; top:-30px; }
+
+      }
+    }
+  }
+
+  section#leader h1 {
+    font-size:1.2em;
+  }
+
+
+  header#site-header {
+    #site-top {
+      nav#site-nav {
+
+        li { 
+          padding-right:10px;
+
+          &:last-child { padding-right:0px; }
+
+          a { 
+             font: bold 1.0em arial;
+          }
+
+        }
+      }
+    }
+  }
+
+
+
+}
+
 
 

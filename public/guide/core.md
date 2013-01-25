@@ -44,7 +44,7 @@ For example, if you wanted to create a `Quintus.Random` module that adds in a `Q
       
     };
 
-Any method that takes in a single argument can work as a Quintus module, but if you add your module onto the base `Quintus` constructor method, you can use the shortened string syntax from the last section.
+While any method that takes in a single argument (the engine instance `Q`) can be used as a Quintus module, if you add your module onto the base `Quintus` constructor method, as is done above, you can use the shortened string syntax from the last section.
 
 Notice that modules are added onto the `Quintus` constructor object, while they operate (and add functionality to) an instance of the engine (usually stored in `Q`).
 
@@ -69,7 +69,7 @@ If you already have a canvas element on the page, you pass the `id` of that elem
       var Q = Quintus().setup("myGame");
     </script>
   
-If you want your game to take up the full page, you can pass a `maximize` option set to true and Quintus will resize the canvs element to the size of the page. If you want the game only to maximize on touch devices, but otherwise to stay in a fixed box, set the option to the string "touch":
+If you want your game to take up the full page, you can pass a `maximize` option set to true and Quintus will resize the canvas element to the size of the page. If you want the game only to maximize on touch devices, but otherwise to stay in a fixed box, set the option to the string "touch":
 
     // Always maximize
     var Q = Quintus().setup({ maximize: true });
@@ -100,7 +100,7 @@ If you are using the Scenes module, drawing directly to the context at other tim
 
 Once you have the engine on the page, you'll want to start building some classes for your game. Quintus provides a customized implementation of John Resig's [simple JavaScript inheritance](http://ejohn.org/blog/simple-javascript-inheritance/) to add a traditional inheritance model into Quintus.
 
-The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, { .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constuctor. Calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
+The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, { .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constuctor. For example, calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
 
     Q.Class.extend("MyClass", { 
        init: function() { console.log("MyClass instance created"); },
@@ -182,7 +182,7 @@ For example, to continue with our spaceship example, you might have the followin
  
  For example the 2D module defines a number of components to make working with 2D games easier and the Input module defines components for having sprites be controlled by player input.
  
- To have a sprite that acts like a player-controller 2D platformer, you could simply add those two components to the sprite on `init`:
+ To have a sprite that acts like a player-controlled 2D platformer, you could simply add those two components to the sprite on `init`:
  
      var Q = Quintus().include("Sprites, Scenes, 2D, Input");
  

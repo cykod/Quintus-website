@@ -26,10 +26,12 @@ block content
       p a platfomer in ~80 lines of code, you can edit the code on the left. Click to focus, arrow keys to move.
       #example-game
         .button-container 
-          button#rungame
+          a.button#rungame(href='#demo')
             | Run This Code
         .left
           textarea#example.
+            &nbsp;
+
             var Q = Quintus()
                     .include("Sprites, Scenes, Input, 2D, Touch, UI")
                     .setup({ maximize: true })
