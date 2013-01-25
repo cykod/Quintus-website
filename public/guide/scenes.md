@@ -195,7 +195,7 @@ Instances of the Q.Stage class also have a number of methods you can invoke to w
     
 ## Selecting objects from a stage
 
-Stages suppport a jQuery-like selector syntax to make it easier to find objects in your game.
+Stages support a jQuery-like selector syntax to make it easier to find objects in your game.
 
 Like jQuery, when you have the Scenes module included the engine instance `Q` is actually a function that returns a selector.
 

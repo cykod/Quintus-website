@@ -13,7 +13,7 @@ On mobile things are a little more tricky and audio files will **not** be loaded
 
 ## Loading audio assets
 
-As you saw in the first chapter, Quintus has built in support for loading audio files. It is recommended you provide at least two formats of audio for desktop browsers: .mp3 and .ogg, which covers all HTML5 compatible browsers. 
+As you saw in the first chapter, Quintus has built in support for loading audio files. It is recommended you provide at least two formats of audio for desktop browsers: .mp3 and .ogg, which covers all HTML5 compatible browsers. Mobile browsers require either using sound sprites (Android) or the Web Audio API (iOS 6+ - unfortunately not yet integrated into Quintus, but coming soon). Sound sprites are supported by the engine, but really, there such a horrible thing that I'm not even going to cover them in the documentation.
 
 When you set up the engine, however, you can control what formats of audio you want to provide by passing in an audioSupport option. For example:
 

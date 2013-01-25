@@ -100,7 +100,7 @@ If you are using the Scenes module, drawing directly to the context at other tim
 
 Once you have the engine on the page, you'll want to start building some classes for your game. Quintus provides a customized implementation of John Resig's [simple JavaScript inheritance](http://ejohn.org/blog/simple-javascript-inheritance/) to add a traditional inheritance model into Quintus.
 
-The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, {{ .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constuctor. Calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
+The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, { .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constuctor. Calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
 
     Q.Class.extend("MyClass", { 
        init: function() { console.log("MyClass instance created"); },

@@ -1,6 +1,6 @@
 # Adding in animation
 
-The Quintus `Anim` module adds in support for both frame based animation and tween based animation via two components: `animation` and `tween`. The first works by setting up sprites that work with sprite sheets to define animations (stuff like, walk left, walk right, jump, etc) the second by animating properties of sprites via keyframes.
+The Quintus `Anim` module adds in support for both frame based animation and tween based animation via two components: `animation` and `tween`. The first works by setting up sprites that work with sprite sheets to define animations (stuff like walk left, walk right, jump, etc) the second by animating properties of sprites via keyframes.
 
 ## Setting up animation sprites
 

@@ -9,7 +9,7 @@ The base `Q.Sprite` class inherits from `Q.GameObject`, which means sprites come
 
 ## Initializing sprites
 
-The first overloadable method is the base constructor, `init(p,defaults)`. It's primary duties are setting the sprite's properties, stored in the `p` object (whenver you see a varible named, `p`, think "properties").
+The first overloadable method is the base constructor, `init(p,defaults)`. It's primary duties are setting the sprite's properties, stored in the `p` object (whenever you see a varible named, `p`, think "properties").
 
 All a Sprites mutable properties are generally stored in the `p` object on the sprite. The reason for this is to first separate a sprite's state from its methods and secondly to make it easy to know what properties need to be serialized or sent over the wire for a multi-player game. For performance reasons, the properties on the `p` object can be get an set directly and don't need to be set with getters and setters. 
 
@@ -82,7 +82,7 @@ That asset will then be used to render the spite on the screen. For example, for
      }
    });
    
-   // Make sure penguin.pn is loaded
+   // Make sure penguin.png is loaded
    Q.load("penguin.png",function() {
       var penguin = new Q.Penguin();
       
@@ -132,6 +132,7 @@ Manually entering the data for sprite sheets is error prone, so a better option 
           w: 160,
           h: 80
       }
+    }
 
 If you have a single JSON data asset with a number of sprites defined as above, you can generate all the necessary sprite sheets by loading the image and data asset and then calling compile sheets:
 
@@ -221,7 +222,7 @@ You can now position, rotate and scale this sprite however you would like and it
 
 ## Step
 
-The last methhod that you'll often overload when working with sprites is the step method. This method is called each frame for each Sprite and it's job is to update the sprites properties based on any behaviors the sprite should take.
+The last method that you'll often overload when working with sprites is the step method. This method is called each frame for each Sprite and it's job is to update the sprites properties based on any behaviors the sprite should take.
 
 This means stuff like updating position for player characters based on user input or updating position of enemies based on their AI.
 
