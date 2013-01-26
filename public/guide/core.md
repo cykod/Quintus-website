@@ -277,6 +277,52 @@ If you want to pause or unpause Quintus completely, you can run:
     
 This will stop the game loop from running at all and then restart it afterwards. Please note, pausing the game will turn off both stepping and drawing.
 
+## Game State
+
+Quintus (v0.0.4 and up) provides a mechanism for tracking global game state - be it number of lives remaining, score or inventory. This comes in the form of the `Q.state` object (an instance of `Q.GameState`).
+
+`Q.state` is nothing more than a light wrapper on top of `Q.GameObject` to allow you to set properties and track changes to those properties. The most common use case might be something like a player's score. 
+
+When a player starts a new game, you can use `Q.state.reset({ ... props ... })` to set some initial properties, such as:
+
+    Q.reset({ score: 0, lives: 2 });
+
+`Q.reset` resets all the properties to the passed in hash (or nothing if no hash is passed in) and removes all event listeners to the game state. You can add listeners to the game state that are triggered on certain properties. For example, let's say you have a score sprite, you could do something like the following:
+
+    Q.UI.Text.extend("Score",{ 
+      init: function(p) {
+        this._super({
+          label: "score: 0",
+          x: 0,
+          y: 0
+        });
+
+        Q.state.on("change.score",this,"score");
+      },
+
+      score: function(score) {
+        this.p.label = "score: " + score;
+      }
+    });
+
+Now the above sprite will update itself whenever the score changes.
+
+To change the score in `Q.state`, it's important to use the `set`, `inc`, or `dec` methods, for example:
+
+    Q.state.set("score",50); // set the score to fifty
+    Q.state.set({ score: 50, lives: 1 }); // alternative object syntax
+
+    Q.state.inc("score",50); // add 50 to the score
+    Q.state.dec("score",50); // remove fifty from the score
+
+All of these calls will trigger both a "change.score" event and a more generic "change" event on `Q.state`
+
+If you need to return a property, use `Q.state.get(prop)`, for example:
+
+    Q.state.get("score"); // return the score
+
+If you need more objects that behave like this, you can instantiate new instances of `Q.GameState`.
+    
 ## Assets & Asset loading
 
 Assets are an important part of any game, and Quintus provides a couple of easy ways to get your Art, Audio and Data assets loaded into the system. Once an asset is loaded, it's available by calling `Q.asset` with the name of the asset.
