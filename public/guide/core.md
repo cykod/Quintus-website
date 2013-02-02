@@ -404,7 +404,7 @@ If you have a number of assets to load, it's probably a good idea to add in some
       // Start your game
     }, {
       progressCallback: function(loaded,total) {
-        var element = document.getElemenyById("loading_progress");
+        var element = document.getElementById("loading_progress");
         element.style.width = Math.floor(loaded/total*100) + "%";
       }
     });
