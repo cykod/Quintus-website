@@ -339,9 +339,9 @@ The callback won't be called until all the assets are loaded.
 
 To help organize your assets, Quintus defines some default paths for where you should put your assets. Image assets are loaded from "images/" (nested under the main directory where your HTML file is located). Audio is loaded under "audio/" and anything else is loaded via Ajax from "data/". You can control these by passing in an options hash to the initial Quintus constructor method if you want to use different paths, for example to load everything from "http://cdn.yourgame.com/assets/":
 
-  var Q = Quintus({ imagePath: "http://cdn.yourgame.com/assets/",
-                    audioPath: "http://cdn.yourgame.com/assets/",
-                    dataPath: "http://cdn.yourgame.com/assets/" });
+    var Q = Quintus({ imagePath: "http://cdn.yourgame.com/assets/",
+                      audioPath: "http://cdn.yourgame.com/assets/",
+                      dataPath: "http://cdn.yourgame.com/assets/" });
                     
 Quintus by default assumes you have both .mp3 and .ogg versions of any audio files and will load the appropriate one depending on what the browser supports. If you want to override this behavior you can adjust the supported formats by passing in a property called `audioSupported`. If the browser can't handle of any of the supported formats, no audio will be loaded.
 
