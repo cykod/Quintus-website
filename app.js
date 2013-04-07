@@ -48,7 +48,11 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/documentation', routes.documentation);
 
-console.log(routes.guide);
+app.get('/quintus/docs/:name',function(req,res) {
+  var name = req.params.name
+  res.redirect('/docs/' + name);
+});
+
 
 app.get('/guide', routes.guide);
 
