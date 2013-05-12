@@ -285,9 +285,9 @@ Quintus (v0.0.4 and up) provides a mechanism for tracking global game state - be
 
 When a player starts a new game, you can use `Q.state.reset({ ... props ... })` to set some initial properties, such as:
 
-    Q.reset({ score: 0, lives: 2 });
+    Q.state.reset({ score: 0, lives: 2 });
 
-`Q.reset` resets all the properties to the passed in hash (or nothing if no hash is passed in) and removes all event listeners to the game state. You can add listeners to the game state that are triggered on certain properties. For example, let's say you have a score sprite, you could do something like the following:
+`Q.state.reset` resets all the properties to the passed in hash (or nothing if no hash is passed in) and removes all event listeners to the game state. You can add listeners to the game state that are triggered on certain properties. For example, let's say you have a score sprite, you could do something like the following:
 
     Q.UI.Text.extend("Score",{ 
       init: function(p) {
