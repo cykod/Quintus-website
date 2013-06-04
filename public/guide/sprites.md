@@ -82,16 +82,16 @@ That asset will then be used to render the sprite on the screen. For example, fo
       }
     });
    
-   // Make sure penguin.png is loaded
-   Q.load("penguin.png",function() {
-      var penguin = new Q.Penguin();
+    // Make sure penguin.png is loaded
+    Q.load("penguin.png",function() {
+       var penguin = new Q.Penguin();
       
-      Q.gameLoop(function(dt) {
-        Q.clear();
-        penguin.step(dt);
-        penguin.render(Q.ctx);
-      });
-    });
+       Q.gameLoop(function(dt) {
+         Q.clear();
+         penguin.update(dt);
+         penguin.render(Q.ctx);
+       });
+     });
 
 ## Defining Spritesheets
 
@@ -192,7 +192,7 @@ By the time the canvas rendering context reaches draw, the canvas transformation
 
 Regardless of the position, rotation or scale of the object, if you render it centered at 0,0 with it's width and height, the object will render on the screen correctly. 
 
-One important note: Quintus assumes when you create a Sprite the center of the will be the x and y location specified and the sprite will rotate around this point. To this end it will calculate `cx` and `cy` properties based on the `w` and `h` properties in the `init` constructor. If you change an object's `w` or `h` after the fact, you'll also need to manually update the `cx` and `cy` properties if you want the sprite to continue to rotate around its center.
+One important note: Quintus assumes when you create a Sprite the center of the sprite will be the x and y location specified and the sprite will rotate around this point. To this end it will calculate `cx` and `cy` properties based on the `w` and `h` properties in the `init` constructor. If you change an object's `w` or `h` after the fact, you'll also need to manually update the `cx` and `cy` properties if you want the sprite to continue to rotate around its center.
 
 To see this in action, imagine you wanted to create a "Square" sprite that renders a filled square of a certain color. You could create the sprite as follows:
 
