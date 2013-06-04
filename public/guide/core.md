@@ -153,13 +153,13 @@ Some more examples of how `on` can be called are shown below:
       console.log("Just fired gun: " + gun);
     });
     
-    // The recharegeShield method will be called on spaceship
+    // The rechargeShield method will be called on spaceship
     // each step
     spaceship.on("step","rechargeShield"); 
     
     spaceship.on("dock",spacestation,"shipDocked");
 
-To trigger events, you call the `trigger` method with the name of the event you are triggering and up to 3 arguments. It's important to be consistant with what arguments you pass to events as these provide much of the external API to your objects.
+To trigger events, you call the `trigger` method with the name of the event you are triggering and up to 3 arguments. It's important to be consistent with what arguments you pass to events as these provide much of the external API to your objects.
 
 For example, to continue with our spaceship example, you might have the following:
 
@@ -195,7 +195,7 @@ For example, to continue with our spaceship example, you might have the followin
      
 (Note: this sprite doesn't define an asset or a sprite sheet and doesn't have a width or height, so it wouldn't look like anything yet. Take a look at the [Chapter on sprites](sprites.md) for more details)
 
-Since components are added and removed dynamically, you can add and remove them as you like on the fly. To remove a componnent, use the `GameObject.del` method. Let's say you were using components to control what gun a user was currently firing, you could remove the pistol component and add the rocket launcher component in:
+Since components are added and removed dynamically, you can add and remove them as you like on the fly. To remove a component, use the `GameObject.del` method. Let's say you were using components to control what gun a user was currently firing, you could remove the pistol component and add the rocket launcher component in:
 
     player.del("pistol");
     player.add("rocketLauncher");
@@ -258,7 +258,7 @@ For example, to create a `pistol` component that has its own method called `refi
 
 Any game you build with Quintus is going to need a game loop. The good news is most of the time the game loop is completely transparent as a special game loop gets started automatically by the `Scenes` modules when you stage your first scene in a game, but it's worth knowing how the game loop works as you can use it to pause and unpause your game.
 
-If you want to write a custom game loop callback, you can do that by calling `Q.gameLoop(callback)` with a custom callback function. The callback will be called upto 60 times per second with an argument of `dt` which represents the time in seconds (usually fractions of a second) since the method was last called.
+If you want to write a custom game loop callback, you can do that by calling `Q.gameLoop(callback)` with a custom callback function. The callback will be called up to 60 times per second with an argument of `dt` which represents the time in seconds (usually fractions of a second) since the method was last called.
 
 For example:
 
@@ -343,7 +343,7 @@ To help organize your assets, Quintus defines some default paths for where you s
                       audioPath: "http://cdn.yourgame.com/assets/",
                       dataPath: "http://cdn.yourgame.com/assets/" });
                     
-Quintus by default assumes you have both .mp3 and .ogg versions of any audio files and will load the appropriate one depending on what the browser supports. If you want to override this behavior you can adjust the supported formats by passing in a property called `audioSupported`. If the browser can't handle of any of the supported formats, no audio will be loaded.
+Quintus by default assumes you have both .mp3 and .ogg versions of any audio files and will load the appropriate one depending on what the browser supports. If you want to override this behavior you can adjust the supported formats by passing in a property called `audioSupported`. If the browser can't handle any of the supported formats, no audio will be loaded.
 
 If you want to accumulate a set of files to load before loading, you can use `Q.preload`. Call preload as many times as you like with object to be loaded and then one final time with a callback method to be called when all those files are ready. For example:
 
@@ -412,7 +412,7 @@ If you have a number of assets to load, it's probably a good idea to add in some
     
 ## Chapter summary
 
-This covers the basics of the core Quintus engine. It didn't cover the helper methods or the Math and Matrix manipulation methods as those are lower level and often you won't touch em when building a game, but if you'd like to know more please see the [annotated source code](../quintus/docs/quintus.html)
+This covers the basics of the core Quintus engine. It didn't cover the helper methods or the Math and Matrix manipulation methods as those are lower level and often you won't touch 'em when building a game, but if you'd like to know more please see the [annotated source code](../quintus/docs/quintus.html)
 
-Onto sprites! [Working with Sprites](sprites.md)
+On to sprites! [Working with Sprites](sprites.md)
 

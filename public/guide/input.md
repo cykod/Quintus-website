@@ -107,7 +107,7 @@ To control the on-screen butons, you can use the `Q.input.touchControls(options)
     });
     
   
-You can pass in an empty array `[]` to indicate and empty spot. The buttons are sized to go all the way across the screen, so if you wanted smaller buttons you should use more empty arrays.
+You can pass in an empty array `[]` to indicate an empty spot. The buttons are sized to go all the way across the screen, so if you wanted smaller buttons you should use more empty arrays.
 
 If you wanted to only have a left button on the left and a right button on the right (but leave the buttons 1/5th of the size of the page, you could write:
 

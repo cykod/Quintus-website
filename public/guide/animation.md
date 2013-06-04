@@ -23,7 +23,7 @@ Here's an example:
 
 This will define an animation sprite called "player" and 8 different named animations to go along with it.
 
-You'll notice there are a number of different options you can pass as details for each animation. The only required option is `frames` the rest have reasonable defaults unless you need to override them.
+You'll notice there are a number of different options you can pass as details for each animation. The only required option is `frames`. The rest have reasonable defaults unless you need to override them.
 
 * `frames`: an array of frame numbers that make up the animation   
 * `rate`: frames per second, best expressed as a fraction
