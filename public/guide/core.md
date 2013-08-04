@@ -14,6 +14,12 @@ To create a new instance of the engine, you use the `Quintus()` constructor meth
     
 These guides will generally use the variable `Q` to refer to an instance of the engine. You can create multiple instances of the engine on a single page, but note that each instance is completely separate from the other and they won't interact with each other in any way.
 
+## Turning on development mode
+
+Forcing your assets to reload can be a pain during development. To turn on development mode, which adds a timestamp to asset urls to force them to reload ever refresh, simply pass in `{ development: true }` to the Quintus instance as an option:
+
+    var Q = Quintus({ development: true });
+
 ## Including modules
 
 To make the engine do anything useful, you'll need to include at least a few modules. Quintus uses modules even for core behavior to reduce coupling between the various parts of the engine, make it clear what the responsibility of each subsystem is, and make it easier for someone to swap out a custom piece of functionality (want your own input library? Duplicate the external API in [quintus_input.js](../quintus/docs/quintus_input.html) and swap out your module for the provided one)
