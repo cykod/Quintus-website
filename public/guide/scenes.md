@@ -8,7 +8,7 @@ There are still a few important pieces left to discuss, such as input and sound,
 
 The Scenes module introduces two important objects into the mix: the Scene class and the Stage class. 
 
-The Scene class is actually a quite simple class that doesn't provide a lot of functionality. It's however quite an important class for Quintus as it serves a single, important purpose: to let you build reusable scenes that can staged.
+The Scene class is actually a quite simple class that doesn't provide a lot of functionality. It is however quite an important class for Quintus as it serves a single, important purpose: to let you build reusable scenes that can be staged.
 
 Scenes hold only two properties: a callback method for adding items to a stage and a hash of options that control the behavior of the stage. Think of scenes as instructions for how you might set up a stage.
 
@@ -34,7 +34,7 @@ This will stage the scene on the default (index 0) stage and remove anything els
 
 Stages have been mentioned a few times already, but what actually are they? Well, the easiest way to think of a stage is as a container for a bunch of sprites and methods for letting you the developer interact with those sprites and letting those sprites interact with each other.
 
-You can have multiple stages active at once (in fact it's pretty common), but the main thing to note is that sprites from one stage will not interact with sprites from another stage. Each stage is independant. Sprites from different stages can listen for and trigger events on different stages and sprites in different stages, but for things like collision detection sprites in different stages won't see each other.
+You can have multiple stages active at once (in fact it's pretty common), but the main thing to note is that sprites from one stage will not interact with sprites from another stage. Each stage is independent. Sprites from different stages can listen for and trigger events on different stages and sprites in different stages, but for things like collision detection sprites in different stages won't see each other.
 
 The default stage, stage 0, is most commonly used for the main gameplay. Higher level stages are most commonly used for things like HUD elements and UI screens. Higher numbered stages render on top of lower numbered stages, although by default all stages share the same rendering context (this is something that can be overriden however).
 
@@ -182,11 +182,11 @@ In addition to the `separate` property, the `hit` event will pass in a collision
       col.separate[1]; // normalY multiplied by distance
     });
 
-## Working with a Stages sprites
+## Working with a Stage's sprites
 
 Instances of the Q.Stage class also have a number of methods you can invoke to work with the set of Sprites in the stage:
 
-    // Call method name on every sprite in the stage
+    // Call methodName on every sprite in the stage
     Q.stage().invoke("methodName",arg1,arg2);
   
     // Return the first sprite for which method returns truthy

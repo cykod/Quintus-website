@@ -9,7 +9,7 @@ The base `Q.Sprite` class inherits from `Q.GameObject`, which means sprites come
 
 ## Initializing sprites
 
-The first overloadable method is the base constructor, `init(p,defaults)`. It's primary duties are setting the sprite's properties, stored in the `p` object (whenever you see a varible named, `p`, think "properties").
+The first overloadable method is the base constructor, `init(p,defaults)`. It's primary duties are setting the sprite's properties, stored in the `p` object (whenever you see a variable named `p`, think "properties").
 
 All a sprite's mutable properties are generally stored in the `p` object on the sprite. The reason for this is to first separate a sprite's state from its methods and secondly to make it easy to know what properties need to be serialized or sent over the wire for a multi-player game. For performance reasons, the properties on the `p` object can be get and set directly without the need for getters and setters. 
 
@@ -57,7 +57,7 @@ The core properties a sprite has are (some of these only make sense when Sprites
 * `p.scale` - the scaling multiplier to grow or shrink the sprite. If not set, it defaults to 1.
 * `p.angle` - the angle of rotation in degrees of the sprite. If not set it defaults to 0
 * `p.type` - the type of Sprite, a bit-mask used for collision detection, defaults to Q.SPRITE_DEFAULT | Q.SPRITE_ACTIVE
-* `p.points` - an array of points in the form [[x0,y1],[x1,y1]..] that define convex collision shape used for collision detection (more on this in the next chapter). If not set defaults to the square bounding box.
+* `p.points` - an array of points in the form [[x0,y0],[x1,y1]..] that define convex collision shape used for collision detection (more on this in the next chapter). If not set defaults to the square bounding box.
 * `p.asset` - the name of the asset used to render a static image for the sprite (see the next couple of sections)
 * `p.sheet` - use a sprite sheet instead of an asset to render (also, see the next couple of sections)
 * `p.frame` - if using a sprite sheet, this is the frame in the sheet to use.
@@ -114,7 +114,7 @@ For example, if you had an asset called player.png that had a 40 frames for the 
 
 ## Compiling Spritesheets
 
-Manually entering the data for sprite sheets is error prone, so a better option is to use a tool to generate the sheets an accompanying data for you. Quintus will eventually support a variety of different input formats, but right now it expects a JSON file with the following input format (it's the same as `Q.sheet` above):
+Manually entering the data for sprite sheets is error prone, so a better option is to use a tool to generate the sheets and accompanying data for you. Quintus will eventually support a variety of different input formats, but right now it expects a JSON file with the following input format (it's the same as `Q.sheet` above):
 
     { sprite1name: {
           tilew: 40,
@@ -142,7 +142,7 @@ If you have a single JSON data asset with a number of sprites defined as above, 
       Q.compileSheets("sprites.png","sprites.json");
     }
 
-As mentioned, Quintus doesn't currently have a method for generating sprite sheets in the main repository, but you can install http://github.com/cykod/Spriter to generate a sprites.png and sprites.json from a directory of image assets:
+As mentioned, Quintus doesn't currently have a method for generating sprite sheets in the main repository, but you can install [cykod/Spriter](http://github.com/cykod/Spriter) to generate a sprites.png and sprites.json from a directory of image assets:
 
     # will generate a sprites.png and sprites.json
     $ spriter assets/
@@ -192,7 +192,7 @@ By the time the canvas rendering context reaches draw, the canvas transformation
 
 Regardless of the position, rotation or scale of the object, if you render it centered at 0,0 with it's width and height, the object will render on the screen correctly. 
 
-One important note: Quintus assumes when you create a Sprite the center of the sprite will be the x and y location specified and the sprite will rotate around this point. To this end it will calculate `cx` and `cy` properties based on the `w` and `h` properties in the `init` constructor. If you change an object's `w` or `h` after the fact, you'll also need to manually update the `cx` and `cy` properties if you want the sprite to continue to rotate around its center.
+One important note: Quintus assumes when you create a Sprite the center of the Sprite will be the x and y location specified and the sprite will rotate around this point. To this end it will calculate `cx` and `cy` properties based on the `w` and `h` properties in the `init` constructor. If you change an object's `w` or `h` after the fact, you'll also need to manually update the `cx` and `cy` properties if you want the sprite to continue to rotate around its center.
 
 To see this in action, imagine you wanted to create a "Square" sprite that renders a filled square of a certain color. You could create the sprite as follows:
 
@@ -208,7 +208,7 @@ To see this in action, imagine you wanted to create a "Square" sprite that rende
       draw: function(ctx) {
         ctx.fillStyle = this.p.color;
         // Draw a filled rectangle centered at
-        // 0,0 (i.e. from -w/2,-h2 to w/2, h/2
+        // 0,0 (i.e. from -w/2,-h2 to w/2, h/2)
         ctx.fillRect(-this.p.cx,
                      -this.p.cy,
                      this.p.w,
@@ -238,7 +238,7 @@ The default implementation of update looks as follows:
       Q._invoke(this.children,"frame",dt);
     }
     
-All frame does by default is trigger two events `prestep` and `step`, refresh the Sprites transformation matrix (used for drawing and collision detection) and then call update on any children the sprite might have.
+All update does by default is trigger two events `prestep` and `step`, refresh the Sprites transformation matrix (used for drawing and collision detection) and then call update on any children the sprite might have.
 
 If you need to override your sprite's `update` method, you can do so, but make sure you trigger the `step` and `prestep` events as components rely on these to add in additional behaviors.
 
