@@ -18,7 +18,7 @@ While it supports a fair amount of configuration, to help you get started quickl
                      
 This method will set up default input controls for the keyboard and add buttons for left, right and a and b for touch devices on screen if you are using the Scenes module.
 
-Note: the order here is important - you must call `setup()` before `controls()` so that the controls have a element to bind events to and a size to calculate from.
+Note: the order here is important - you must call `setup()` before `controls()` so that the controls have an element to bind events to and a size to calculate from.
 
 The `controls` method takes in a single parameter which, if set to true, will use a 4-way joypad on the left side of the screen instead of left and right buttons. Turn this on if you need 4-way controls on mobile.
 
@@ -94,7 +94,7 @@ This would create two buttons called "goLeft" and "goRight" instead of the stand
 
 ## Customizing the on-screen buttons
 
-To control the on-screen butons, you can use the `Q.input.touchControls(options)` method. There are a number of configuration options, but the most important ones are what buttons should show up. This is controlled via the `controls` option. It takes an array of arrays where each array is an action and the text to display. The default controls would be set up as follows: 
+To control the on-screen buttons, you can use the `Q.input.touchControls(options)` method. There are a number of configuration options, but the most important ones are what buttons should show up. This is controlled via the `controls` option. It takes an array of arrays where each array is an action and the text to display. The default controls would be set up as follows: 
 
     var Q = Quintus().include("Input").setup();
   

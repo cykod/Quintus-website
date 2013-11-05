@@ -16,7 +16,7 @@ These guides will generally use the variable `Q` to refer to an instance of the 
 
 ## Turning on development mode
 
-Forcing your assets to reload can be a pain during development. To turn on development mode, which adds a timestamp to asset urls to force them to reload ever refresh, simply pass in `{ development: true }` to the Quintus instance as an option:
+Forcing your assets to reload can be a pain during development. To turn on development mode, which adds a timestamp to asset urls to force them to reload every refresh, simply pass in `{ development: true }` to the Quintus instance as an option:
 
     var Q = Quintus({ development: true });
 
@@ -24,7 +24,7 @@ Forcing your assets to reload can be a pain during development. To turn on devel
 
 To make the engine do anything useful, you'll need to include at least a few modules. Quintus uses modules even for core behavior to reduce coupling between the various parts of the engine, make it clear what the responsibility of each subsystem is, and make it easier for someone to swap out a custom piece of functionality (want your own input library? Duplicate the external API in [quintus_input.js](../quintus/docs/quintus_input.html) and swap out your module for the provided one)
 
-To include a module in Quintus, you use `Q.include(...)` and pass either a string of comma-separate modules names or an array of the modules themselves. The former syntax is more compact and more common, but both are allowed:
+To include a module in Quintus, you use `Q.include(...)` and pass either a string of comma-separated module names or an array of the modules themselves. The former syntax is more compact and more common, but both are allowed:
 
     // Include the Sprites, Scenes and Input modules
     var Q = Quintus().include("Sprites, Scenes, Input");
@@ -106,7 +106,7 @@ If you are using the Scenes module, drawing directly to the context at other tim
 
 Once you have the engine on the page, you'll want to start building some classes for your game. Quintus provides a customized implementation of John Resig's [simple JavaScript inheritance](http://ejohn.org/blog/simple-javascript-inheritance/) to add a traditional inheritance model into Quintus.
 
-The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, { .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constuctor. For example, calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
+The base class is `Q.Class`. To extend from this class you call `Q.Class.extend(ClassName, { .. methods .. }, { .. class methods .. })`. The class name is included as an argument to allow the class some introspection properties. A special `init` method acts as the constructor. For example, calling extend with a name of "MyClass" will automatically add MyClass to Q, as shown below:
 
     Q.Class.extend("MyClass", { 
        init: function() { console.log("MyClass instance created"); },

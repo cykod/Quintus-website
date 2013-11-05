@@ -19,7 +19,7 @@ When you set up the engine, however, you can control what formats of audio you w
     
 This would support only .wav and .mp3 and prefer to load the .wav file.
 
-**Important note: You must call `Q.enabledSound()` before loading your first audio asset, as it needs to determine the appropriate loading mechansim (Ajax for Web Audio, Audio tag for HTML5 Audio).**
+**Important note: You must call `Q.enableSound()` before loading your first audio asset, as it needs to determine the appropriate loading mechansim (Ajax for Web Audio, Audio tag for HTML5 Audio).**
 
 When you call `load` or `preload` you only need to provide a single format and Quintus will load the first playable format. For example:
 

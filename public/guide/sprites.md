@@ -9,7 +9,7 @@ The base `Q.Sprite` class inherits from `Q.GameObject`, which means sprites come
 
 ## Initializing sprites
 
-The first overloadable method is the base constructor, `init(p,defaults)`. It's primary duties are setting the sprite's properties, stored in the `p` object (whenever you see a variable named `p`, think "properties").
+The first overloadable method is the base constructor, `init(p,defaults)`. Its primary duties are setting the sprite's properties, stored in the `p` object (whenever you see a variable named `p`, think "properties").
 
 All a sprite's mutable properties are generally stored in the `p` object on the sprite. The reason for this is to first separate a sprite's state from its methods and secondly to make it easy to know what properties need to be serialized or sent over the wire for a multi-player game. For performance reasons, the properties on the `p` object can be get and set directly without the need for getters and setters. 
 
@@ -163,7 +163,7 @@ It will generate sprite sheets with names `spriteOne` and `spriteTwo` in a sprit
 
 ## Using Spritesheets
 
-The most common way to use sprite sheets is to define a `sheet` property on a Sprite instead of a `asset` property. If you also set the `frame` property to a number the sprite will use that frame number to render itself.
+The most common way to use sprite sheets is to define a `sheet` property on a Sprite instead of an `asset` property. If you also set the `frame` property to a number the sprite will use that frame number to render itself.
 
 To go back to the penguin, you could set up a sprite that uses the Sprite sheet "player" and have it use the 8th frame (index 7) that was just defined by:
 
@@ -244,7 +244,7 @@ If you need to override your sprite's `update` method, you can do so, but make s
 
 ## A complete example with sprites
 
-With only the Sprites module and not the Scenes or Input module, the type of examples you can make are limited, but let's show a simple, complete example of a ball that follows a parabolic arc (a similar example is in examples/ball for your perusal as well) This example will run it's own mini game loop with a single sprite (you'll normally let the Scenes module control the game loop):
+With only the Sprites module and not the Scenes or Input module, the type of examples you can make are limited, but let's show a simple, complete example of a ball that follows a parabolic arc (a similar example is in examples/ball for your perusal as well) This example will run its own mini game loop with a single sprite (you'll normally let the Scenes module control the game loop):
 
     var Q = Quintus().include("Sprites").setup();
     

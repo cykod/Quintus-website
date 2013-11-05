@@ -26,7 +26,7 @@ This will define an animation sprite called "player" and 8 different named anima
 You'll notice there are a number of different options you can pass as details for each animation. The only required option is `frames`. The rest have reasonable defaults unless you need to override them.
 
 * `frames`: an array of frame numbers that make up the animation   
-* `rate`: frames per second, best expressed as a fraction
+* `rate`: second per frame, best expressed as a fraction
 * `loop`: defaults to true, which plays the animation over and over. Set to false to have it play once
 * `next`: the animation to play directly after this one (automatically sets loop to false)
 * `trigger`: event to trigger when the animation is done - useful for doing something (like adding a bullet sprite) when the animation is done playing.
