@@ -222,7 +222,7 @@ You can now position, rotate and scale this sprite however you would like and it
 
 ## Step
 
-The last method that you'll often overload when working with sprites is the step method. This method is called each frame for each Sprite and it's job is to update the sprites properties based on any behaviors the sprite should take.
+The last method that you'll often overload when working with sprites is the step method. This method is called each frame for each Sprite and its job is to update the sprite's properties based on any behaviors the sprite should take.
 
 This means stuff like updating position for player characters based on user input or updating position of enemies based on their AI.
 

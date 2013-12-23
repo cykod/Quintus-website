@@ -249,9 +249,9 @@ This class provides a number of helpful methods for working with multiple object
     balls.invoke("doSomething"); 
     
     // If you need more complicated functionality, use each
-    balls.each(function(ball) {
-      if(ball.testSomething()) {
-        ball.doSomething();
+    balls.each(function() {
+      if(this.testSomething()) {
+        this.doSomething();
       }
     }); 
     
