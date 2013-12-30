@@ -1,137 +1,495 @@
-<!DOCTYPE html>  <html> <head>   <title>touch.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="audio.html">                 audio.js               </a>                                           <a class="source" href="ball.html">                 ball.js               </a>                                           <a class="source" href="breakout-levels.html">                 breakout-levels.js               </a>                                           <a class="source" href="breakout-scenes.html">                 breakout-scenes.js               </a>                                           <a class="source" href="breakout-sprites.html">                 breakout-sprites.js               </a>                                           <a class="source" href="breakout-ui.html">                 breakout-ui.js               </a>                                           <a class="source" href="breakout.html">                 breakout.js               </a>                                           <a class="source" href="collision.html">                 collision.js               </a>                                           <a class="source" href="platformer.html">                 platformer.js               </a>                                           <a class="source" href="platforms.html">                 platforms.js               </a>                                           <a class="source" href="sprite.html">                 sprite.js               </a>                                           <a class="source" href="touch.html">                 touch.js               </a>                                           <a class="source" href="tween.html">                 tween.js               </a>                                           <a class="source" href="ui.html">                 ui.js               </a>                                           <a class="source" href="quintus.html">                 quintus.js               </a>                                           <a class="source" href="quintus_2d.html">                 quintus_2d.js               </a>                                           <a class="source" href="quintus_anim.html">                 quintus_anim.js               </a>                                           <a class="source" href="quintus_audio.html">                 quintus_audio.js               </a>                                           <a class="source" href="quintus_input.html">                 quintus_input.js               </a>                                           <a class="source" href="quintus_scenes.html">                 quintus_scenes.js               </a>                                           <a class="source" href="quintus_sprites.html">                 quintus_sprites.js               </a>                                           <a class="source" href="quintus_touch.html">                 quintus_touch.js               </a>                                           <a class="source" href="quintus_ui.html">                 quintus_ui.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               touch.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>Quintus Touch and Drag Example</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+  <title>Quintus Touch and Drag Example</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="audio.html">
+                audio.js
+              </a>
+            
+              
+              <a class="source" href="ball.html">
+                ball.js
+              </a>
+            
+              
+              <a class="source" href="breakout-levels.html">
+                breakout-levels.js
+              </a>
+            
+              
+              <a class="source" href="breakout-scenes.html">
+                breakout-scenes.js
+              </a>
+            
+              
+              <a class="source" href="breakout-sprites.html">
+                breakout-sprites.js
+              </a>
+            
+              
+              <a class="source" href="breakout-ui.html">
+                breakout-ui.js
+              </a>
+            
+              
+              <a class="source" href="breakout.html">
+                breakout.js
+              </a>
+            
+              
+              <a class="source" href="cannon.html">
+                cannon.js
+              </a>
+            
+              
+              <a class="source" href="collision.html">
+                collision.js
+              </a>
+            
+              
+              <a class="source" href="disasteroids.html">
+                disasteroids.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platforms.html">
+                platforms.js
+              </a>
+            
+              
+              <a class="source" href="sprite.html">
+                sprite.js
+              </a>
+            
+              
+              <a class="source" href="touch.html">
+                touch.js
+              </a>
+            
+              
+              <a class="source" href="tower_man.html">
+                tower_man.js
+              </a>
+            
+              
+              <a class="source" href="tween.html">
+                tween.js
+              </a>
+            
+              
+              <a class="source" href="ui.html">
+                ui.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="quintus-touch-and-drag-example">Quintus Touch and Drag Example</h1>
 <p><a href="../examples/touch/index.html">Run the example</a></p>
-
 <p>This example creates a number of random convex shapes 
-and then adds touch and drag support to them.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Set up a standard Quintus instance with only the 
-Sprites and Scene module (for the stage support) loaded.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="kd">var</span> <span class="nx">Q</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Q</span> <span class="o">=</span> <span class="nx">Quintus</span><span class="p">().</span><span class="nx">include</span><span class="p">(</span><span class="s2">&quot;Sprites, Scenes, Touch&quot;</span><span class="p">);</span>
+and then adds touch and drag support to them.</p>
 
-  <span class="nx">Q</span><span class="p">.</span><span class="nx">setup</span><span class="p">({</span> <span class="nx">maximize</span><span class="o">:</span> <span class="kc">true</span> <span class="p">})</span>
-   <span class="p">.</span><span class="nx">touch</span><span class="p">(</span><span class="nx">Q</span><span class="p">.</span><span class="nx">SPRITE_ALL</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Sprite class for the randomly shapes</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">Q</span><span class="p">.</span><span class="nx">Sprite</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="s2">&quot;RandomShape&quot;</span><span class="p">,</span> <span class="p">{</span>
-     <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Create a random shape (defined below)</p>             </td>             <td class="code">               <div class="highlight"><pre>       <span class="nx">p</span> <span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">createShape</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Initialize the p hash</p>             </td>             <td class="code">               <div class="highlight"><pre>       <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>Listen for a drag events, sent by the
-touch module</p>             </td>             <td class="code">               <div class="highlight"><pre>       <span class="k">this</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;drag&quot;</span><span class="p">);</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;touchEnd&quot;</span><span class="p">);</span>
-     <span class="p">},</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Set up a standard Quintus instance with only the 
+Sprites and Scene module (for the stage support) loaded.</p>
 
-     <span class="nx">drag</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">touch</span><span class="p">)</span> <span class="p">{</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">dragging</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">touch</span><span class="p">.</span><span class="nx">origX</span> <span class="o">+</span> <span class="nx">touch</span><span class="p">.</span><span class="nx">dx</span><span class="p">;</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">touch</span><span class="p">.</span><span class="nx">origY</span> <span class="o">+</span> <span class="nx">touch</span><span class="p">.</span><span class="nx">dy</span><span class="p">;</span>
-     <span class="p">},</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="keyword">var</span> Q = window.Q = Quintus().include(<span class="string">"Sprites, Scenes, Input, Touch"</span>);
 
-     <span class="nx">touchEnd</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">touch</span><span class="p">)</span> <span class="p">{</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">dragging</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  Q.setup({ maximize: <span class="literal">true</span> })
+   .touch(Q.SPRITE_ALL);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Sprite class for the randomly shapes</p>
 
-     <span class="p">},</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Q.Sprite.extend(<span class="string">"RandomShape"</span>, {
+     init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Create a random shape (defined below)</p>
 
-     <span class="nx">createShape</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">angle</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">,</span>
-            <span class="nx">numPoints</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">5</span><span class="p">),</span>
-            <span class="nx">minX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nx">minY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nx">curX</span><span class="p">,</span> <span class="nx">curY</span><span class="p">;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>       p =<span class="keyword">this</span>.createShape(p);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Initialize the p hash</p>
 
-        <span class="nx">p</span> <span class="o">=</span> <span class="nx">p</span> <span class="o">||</span> <span class="p">{};</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>       <span class="keyword">this</span>._super(p);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Listen for a drag events, sent by the
+touch module</p>
 
-        <span class="nx">p</span><span class="p">.</span><span class="nx">points</span> <span class="o">=</span> <span class="p">[];</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>       <span class="keyword">this</span>.on(<span class="string">"drag"</span>);
+       <span class="keyword">this</span>.on(<span class="string">"touchEnd"</span>);
+     },
 
-        <span class="kd">var</span> <span class="nx">startAmount</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+     drag: <span class="function"><span class="keyword">function</span><span class="params">(touch)</span> {</span>
+       <span class="keyword">this</span>.p.dragging = <span class="literal">true</span>;
+       <span class="keyword">this</span>.p.x = touch.origX + touch.dx;
+       <span class="keyword">this</span>.p.y = touch.origY + touch.dy;
+     },
 
-        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numPoints</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">curX</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span><span class="o">*</span><span class="nx">startAmount</span><span class="p">);</span>
-          <span class="nx">curY</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span><span class="o">*</span><span class="nx">startAmount</span><span class="p">);</span>
+     touchEnd: <span class="function"><span class="keyword">function</span><span class="params">(touch)</span> {</span>
+       <span class="keyword">this</span>.p.dragging = <span class="literal">false</span>;
 
-          <span class="k">if</span><span class="p">(</span><span class="nx">curX</span> <span class="o">&lt;</span> <span class="nx">minX</span><span class="p">)</span> <span class="nx">minX</span> <span class="o">=</span> <span class="nx">curX</span><span class="p">;</span>
-          <span class="k">if</span><span class="p">(</span><span class="nx">curX</span> <span class="o">&gt;</span> <span class="nx">maxX</span><span class="p">)</span> <span class="nx">maxX</span> <span class="o">=</span> <span class="nx">curX</span><span class="p">;</span>
+     },
 
-          <span class="k">if</span><span class="p">(</span><span class="nx">curY</span> <span class="o">&lt;</span> <span class="nx">minY</span><span class="p">)</span> <span class="nx">minY</span> <span class="o">=</span> <span class="nx">curY</span><span class="p">;</span>
-          <span class="k">if</span><span class="p">(</span><span class="nx">curY</span> <span class="o">&gt;</span> <span class="nx">maxY</span><span class="p">)</span> <span class="nx">maxY</span> <span class="o">=</span> <span class="nx">curY</span><span class="p">;</span>
+     createShape: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        <span class="keyword">var</span> angle = Math.random()*<span class="number">2</span>*Math.PI,
+            numPoints = <span class="number">3</span> + Math.floor(Math.random()*<span class="number">5</span>),
+            minX = <span class="number">0</span>, maxX = <span class="number">0</span>,
+            minY = <span class="number">0</span>, maxY = <span class="number">0</span>,
+            curX, curY;
 
-          <span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="nx">curX</span><span class="p">,</span><span class="nx">curY</span><span class="p">]);</span>
+        p = p || {};
 
-          <span class="nx">startAmount</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>
-          <span class="nx">angle</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nx">numPoints</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-        <span class="p">};</span>
+        p.points = [];
 
-        <span class="nx">maxX</span> <span class="o">+=</span> <span class="mi">30</span><span class="p">;</span>
-        <span class="nx">minX</span> <span class="o">-=</span> <span class="mi">30</span><span class="p">;</span>
-        <span class="nx">maxY</span> <span class="o">+=</span> <span class="mi">30</span><span class="p">;</span>
-        <span class="nx">minY</span> <span class="o">-=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="keyword">var</span> startAmount = <span class="number">40</span>;
 
-        <span class="nx">p</span><span class="p">.</span><span class="nx">w</span> <span class="o">=</span> <span class="nx">maxX</span> <span class="o">-</span> <span class="nx">minX</span><span class="p">;</span>
-        <span class="nx">p</span><span class="p">.</span><span class="nx">h</span> <span class="o">=</span> <span class="nx">maxY</span> <span class="o">-</span> <span class="nx">minY</span><span class="p">;</span>
+        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; numPoints;i++) {
+          curX = Math.floor(Math.cos(angle)*startAmount);
+          curY = Math.floor(Math.sin(angle)*startAmount);
 
-        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numPoints</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">minX</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">w</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-          <span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="nx">minY</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">h</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-        <span class="p">}</span>
+          <span class="keyword">if</span>(curX &lt; minX) minX = curX;
+          <span class="keyword">if</span>(curX &gt; maxX) maxX = curX;
+
+          <span class="keyword">if</span>(curY &lt; minY) minY = curY;
+          <span class="keyword">if</span>(curY &gt; maxY) maxY = curY;
+
+          p.points.push([curX,curY]);
+
+          startAmount += Math.floor(Math.random()*<span class="number">10</span>);
+          angle += (Math.PI * <span class="number">2</span>) / (numPoints+<span class="number">1</span>);
+        };
+
+        maxX += <span class="number">30</span>;
+        minX -= <span class="number">30</span>;
+        maxY += <span class="number">30</span>;
+        minY -= <span class="number">30</span>;
+
+        p.w = maxX - minX;
+        p.h = maxY - minY;
+
+        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; numPoints;i++) {
+          p.points[i][<span class="number">0</span>] -= minX + p.w/<span class="number">2</span>;
+          p.points[i][<span class="number">1</span>] -= minY + p.h/<span class="number">2</span>;
+        }
 
 
-        <span class="nx">p</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
-        <span class="nx">p</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="nx">Q</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
-        <span class="nx">p</span><span class="p">.</span><span class="nx">cx</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">w</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-        <span class="nx">p</span><span class="p">.</span><span class="nx">cy</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">h</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-        <span class="nx">p</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="nx">angle</span><span class="p">;</span>
-        <span class="nx">p</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-       <span class="k">return</span> <span class="nx">p</span><span class="p">;</span>
-     <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>If the mousemove event below sets the
+        p.x = Math.random()*Q.width;
+        p.y = Math.random()*Q.height;
+        p.cx = p.w/<span class="number">2</span>;
+        p.cy = p.h/<span class="number">2</span>;
+        p.angle = angle;
+        p.type = <span class="number">1</span>;
+       <span class="keyword">return</span> p;
+     },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>If the mousemove event below sets the
 hit variable, scale this sucker up a bit.</p>
+<p>Also move to avoid collisions with any other sprites</p>
 
-<p>Also move to avoid collisions with any other sprites</p>             </td>             <td class="code">               <div class="highlight"><pre>     <span class="nx">step</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dt</span><span class="p">)</span> <span class="p">{</span>
-       <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">over</span><span class="p">)</span> <span class="p">{</span>
-         <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">scale</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">;</span>
-       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-         <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">scale</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.;</span>
-       <span class="p">}</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>     step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+       <span class="keyword">if</span>(<span class="keyword">this</span>.p.over) {
+         <span class="keyword">this</span>.p.scale = <span class="number">1.2</span>;
+       } <span class="keyword">else</span> {
+         <span class="keyword">this</span>.p.scale = <span class="number">1.</span>;
+       }
 
-      <span class="kd">var</span> <span class="nx">maxCol</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">collided</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">;</span>
-      <span class="nx">p</span><span class="p">.</span><span class="nx">hit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-      <span class="k">while</span><span class="p">((</span><span class="nx">collided</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">stage</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="k">this</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="nx">maxCol</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">collided</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>If we're dragging, move other objects
-otherwise, move us</p>             </td>             <td class="code">               <div class="highlight"><pre>          <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">dragging</span><span class="p">)</span> <span class="p">{</span> 
-            <span class="nx">collided</span><span class="p">.</span><span class="nx">obj</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">x</span> <span class="o">+=</span> <span class="nx">collided</span><span class="p">.</span><span class="nx">separate</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-            <span class="nx">collided</span><span class="p">.</span><span class="nx">obj</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">y</span> <span class="o">+=</span> <span class="nx">collided</span><span class="p">.</span><span class="nx">separate</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">x</span> <span class="o">-=</span> <span class="nx">collided</span><span class="p">.</span><span class="nx">separate</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">y</span> <span class="o">-=</span> <span class="nx">collided</span><span class="p">.</span><span class="nx">separate</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="nx">maxCol</span><span class="o">--</span><span class="p">;</span>
-      <span class="p">}</span>
+      <span class="keyword">var</span> maxCol = <span class="number">3</span>, collided = <span class="literal">false</span>, p = <span class="keyword">this</span>.p;
+      p.hit = <span class="literal">false</span>;
+      <span class="keyword">while</span>((collided = <span class="keyword">this</span>.stage.search(<span class="keyword">this</span>)) &amp;&amp; maxCol &gt; <span class="number">0</span>) {
+        <span class="keyword">if</span>(collided) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>If we&#39;re dragging, move other objects
+otherwise, move us</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          <span class="keyword">if</span>(<span class="keyword">this</span>.p.dragging) { 
+            collided.obj.p.x += collided.separate[<span class="number">0</span>];
+            collided.obj.p.y += collided.separate[<span class="number">1</span>];
+          } <span class="keyword">else</span> {
+            <span class="keyword">this</span>.p.x -= collided.separate[<span class="number">0</span>];
+            <span class="keyword">this</span>.p.y -= collided.separate[<span class="number">1</span>];
+          }
+        }
+        maxCol--;
+      }
 
 
-     <span class="p">}</span>
+     }
 
 
-  <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>Number of shapes to add to the page</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="kd">var</span> <span class="nx">numShapes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span></pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <p>Scene that actually adds shapes onto the stage</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">Q</span><span class="p">.</span><span class="nx">scene</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">,</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Scene</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">shapesLeft</span> <span class="o">=</span> <span class="nx">numShapes</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="nx">shapesLeft</span><span class="o">--</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">RandomShape</span><span class="p">());</span>
-    <span class="p">}</span>
-  <span class="p">}));</span></pre></div>             </td>           </tr>                               <tr id="section-11">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-11">&#182;</a>               </div>               <p>Finally call <code>stageScene</code> to start the show</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-12">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-12">&#182;</a>               </div>               <p>Render the elements
+  });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Number of shapes to add to the page</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="keyword">var</span> numShapes = <span class="number">5</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Scene that actually adds shapes onto the stage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"start"</span>,<span class="keyword">new</span> Q.Scene(<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+    <span class="keyword">var</span> shapesLeft = numShapes;
+    <span class="keyword">while</span>(shapesLeft-- &gt; <span class="number">0</span>) {
+      stage.insert(<span class="keyword">new</span> Q.RandomShape());
+    }
+  }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Finally call <code>stageScene</code> to start the show</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Q.stageScene(<span class="string">"start"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Render the elements
 Turning Q.debug and Q.debugFill on will render
-the sprites' collision meshes, which is all we want
-in this situation, otherwise nothing would get rendered</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">Q</span><span class="p">.</span><span class="nx">debug</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="nx">Q</span><span class="p">.</span><span class="nx">debugFill</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+the sprites&#39; collision meshes, which is all we want
+in this situation, otherwise nothing would get rendered</p>
 
-  <span class="kd">var</span> <span class="nx">currentObj</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span></pre></div>             </td>           </tr>                               <tr id="section-13">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-13">&#182;</a>               </div>               <p>Touch events do most of the work for us, but the
-touch system doesn't handle mousemouse events, so lets add
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Q.debug = <span class="literal">true</span>;
+  Q.debugFill = <span class="literal">true</span>;
+
+  <span class="keyword">var</span> currentObj = <span class="literal">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Touch events do most of the work for us, but the
+touch system doesn&#39;t handle mousemouse events, so lets add
 in an event listener and use <code>Stage.locate</code> to highlight
-sprites on desktop.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">Q</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;mousemove&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetX</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerX</span><span class="p">,</span>
-        <span class="nx">y</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">offsetY</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">layerY</span><span class="p">,</span>
-        <span class="nx">stage</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">stage</span><span class="p">();</span></pre></div>             </td>           </tr>                               <tr id="section-14">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-14">&#182;</a>               </div>               <p>Use the helper methods in Q.touchInput to translate
-from canvas to stage</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">stageX</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">touchInput</span><span class="p">.</span><span class="nx">canvasToStageX</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">stage</span><span class="p">),</span>
-        <span class="nx">stageY</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">touchInput</span><span class="p">.</span><span class="nx">canvasToStageY</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="nx">stage</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <p>Find the first object at that position on the stage</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">locate</span><span class="p">(</span><span class="nx">stageX</span><span class="p">,</span><span class="nx">stageY</span><span class="p">);</span>
+sprites on desktop.</p>
 
-    </pre></div>             </td>           </tr>                               <tr id="section-16">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-16">&#182;</a>               </div>               <p>Set a <code>hit</code> property so the step method for the 
-sprite can handle scale appropriately</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="k">if</span><span class="p">(</span><span class="nx">currentObj</span><span class="p">)</span> <span class="p">{</span> <span class="nx">currentObj</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">over</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">currentObj</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
-      <span class="nx">obj</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">over</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Q.el.addEventListener(<span class="string">'mousemove'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    <span class="keyword">var</span> x = e.offsetX || e.layerX,
+        y = e.offsetY || e.layerY,
+        stage = Q.stage();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Use the helper methods from the Input Module on Q to
+translate from canvas to stage</p>
 
-<span class="p">});</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> stageX = Q.canvasToStageX(x, stage),
+        stageY = Q.canvasToStageY(y, stage);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Find the first object at that position on the stage</p>
 
-</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> obj = stage.locate(stageX,stageY);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Set a <code>hit</code> property so the step method for the 
+sprite can handle scale appropriately</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span>(currentObj) { currentObj.p.over = <span class="literal">false</span>; }
+    <span class="keyword">if</span>(obj) {
+      currentObj = obj;
+      obj.p.over = <span class="literal">true</span>;
+    }
+  });
+
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

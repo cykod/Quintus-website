@@ -1,0 +1,2802 @@
+{
+    "project": {
+        "name": "Quintus",
+        "description": "",
+        "version": "0.2.0",
+        "url": "http://html5quintus.com"
+    },
+    "files": {
+        "lib/quintus.js": {
+            "name": "lib/quintus.js",
+            "modules": {
+                "Quintus": 1
+            },
+            "classes": {
+                "Quintus": 1,
+                "Q.Class": 1,
+                "Q.Evented": 1,
+                "Q.Component": 1,
+                "Q.GameObject": 1,
+                "Q.GameState": 1,
+                "Q.Matrix2D": 1
+            },
+            "fors": {
+                "Quintus": 1,
+                "Q.Class": 1,
+                "Q.Evented": 1,
+                "Q.Component": 1,
+                "Q.GameObject": 1,
+                "Q.Matrix2D": 1
+            },
+            "namespaces": {}
+        },
+        "lib/quintus_input.js": {
+            "name": "lib/quintus_input.js",
+            "modules": {},
+            "classes": {
+                "Quintus.Input": 1,
+                "Q.InputSystem": 1,
+                "platformerControls": 1,
+                "stepControls": 1
+            },
+            "fors": {
+                "Quintus.Input": 1,
+                "Q.InputSystem": 1
+            },
+            "namespaces": {}
+        },
+        "lib/quintus_scenes.js": {
+            "name": "lib/quintus_scenes.js",
+            "modules": {
+                "Quintus.Scenes": 1
+            },
+            "classes": {
+                "Quintus.Scenes": 1,
+                "Q.Scene": 1,
+                "Q.Stage": 1
+            },
+            "fors": {
+                "Quintus.Scenes": 1
+            },
+            "namespaces": {}
+        },
+        "lib/quintus_sprites.js": {
+            "name": "lib/quintus_sprites.js",
+            "modules": {
+                "Quintus.Sprites": 1
+            },
+            "classes": {
+                "Quintus.Sprites": 1,
+                "Q.SpriteSheet": 1,
+                "Q.Sprite": 1,
+                "Q.MovingSprite": 1
+            },
+            "fors": {
+                "Quintus.Sprites": 1,
+                "Q.SpriteSheet": 1,
+                "Q.Sprite": 1
+            },
+            "namespaces": {}
+        },
+        "lib/quintus_tmx.js": {
+            "name": "lib/quintus_tmx.js",
+            "modules": {
+                "Quintus.Input": 1
+            },
+            "classes": {
+                "Quintus.TMX": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Quintus": {
+            "name": "Quintus",
+            "submodules": {},
+            "classes": {
+                "Quintus": 1,
+                "Q.Class": 1,
+                "Q.Evented": 1,
+                "Q.Component": 1,
+                "Q.GameObject": 1,
+                "Q.GameState": 1,
+                "Q.Matrix2D": 1
+            },
+            "fors": {
+                "Quintus": 1,
+                "Q.Class": 1,
+                "Q.Evented": 1,
+                "Q.Component": 1,
+                "Q.GameObject": 1,
+                "Q.Matrix2D": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/quintus.js",
+            "line": 1906,
+            "description": "Quintus HTML5 Game Engine \n\nThe code in `quintus.js` defines the base `Quintus()` method\nwhich create an instance of the engine. The basic engine doesn't\ndo a whole lot - it provides an architecture for extension, a\ngame loop, and a method for creating or binding to an exsiting\ncanvas context. The engine has dependencies on Underscore.js and jQuery,\nalthough the jQuery dependency will be removed in the future.\n\nMost of the game-specific functionality is in the \nvarious other modules:\n\n* `quintus_input.js` - `Input` module, which allows for user input via keyboard and touchscreen\n* `quintus_sprites.js` - `Sprites` module, which defines a basic `Q.Sprite` class along with spritesheet support in `Q.SpriteSheet`.\n* `quintus_scenes.js` - `Scenes` module. It defines the `Q.Scene` class, which allows creation of reusable scenes, and the `Q.Stage` class, which handles managing a number of sprites at once.\n* `quintus_anim.js` - `Anim` module, which adds in support for animations on sprites along with a `viewport` component to follow the player around and a `Q.Repeater` class that can create a repeating, scrolling background."
+        },
+        "Quintus.Input": {
+            "name": "Quintus.Input",
+            "submodules": {},
+            "classes": {
+                "Quintus.Input": 1,
+                "Q.InputSystem": 1,
+                "platformerControls": 1,
+                "stepControls": 1,
+                "Quintus.TMX": 1
+            },
+            "fors": {
+                "Quintus.Input": 1,
+                "Q.InputSystem": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/quintus_tmx.js",
+            "line": 12,
+            "description": "Quintus HTML5 Game Engine - TMX Loader module\n\nModule responsible for loading Tiled TMX files"
+        },
+        "Quintus.Scenes": {
+            "name": "Quintus.Scenes",
+            "submodules": {},
+            "classes": {
+                "Quintus.Scenes": 1,
+                "Q.Scene": 1,
+                "Q.Stage": 1
+            },
+            "fors": {
+                "Quintus.Scenes": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/quintus_scenes.js",
+            "line": 254,
+            "description": "Quintus HTML5 Game Engine - Scenes Module\n\nThe code in `quintus_scenes.js` defines the `Quintus.Scenes` module, which\nadds in support for Scenes and Stages into Quintus. \n\nDepends on the `Quintus.Sprite` module.\n\nScenes let you create reusable definitions for setting up levels and screens.\n\nStages are the primary container object in Quintus, handling Sprite management,\nstepping, rendering and collision detection."
+        },
+        "Quintus.Sprites": {
+            "name": "Quintus.Sprites",
+            "submodules": {},
+            "classes": {
+                "Quintus.Sprites": 1,
+                "Q.SpriteSheet": 1,
+                "Q.Sprite": 1,
+                "Q.MovingSprite": 1
+            },
+            "fors": {
+                "Quintus.Sprites": 1,
+                "Q.SpriteSheet": 1,
+                "Q.Sprite": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/quintus_sprites.js",
+            "line": 702,
+            "description": "Quintus HTML5 Game Engine - Sprites Module\n\nThe code in `quintus_sprites.js` defines the `Quintus.Sprites` module, which\nadd support for sprite sheets and the base sprite class.\n\nMost games will include at a minimum `Quintus.Sprites` and `Quintus.Scenes`"
+        }
+    },
+    "classes": {
+        "Quintus": {
+            "name": "Quintus",
+            "shortname": "Quintus",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus",
+            "namespace": "",
+            "file": "lib/quintus.js",
+            "line": 28,
+            "description": "Top-level Quintus engine factory wrapper, \ncreates new instances of the engine by calling:\n\n     var Q = Quintus({  ...  });\n\nAny initial setup methods also all return the `Q` object, allowing any initial \nsetup calls to be chained together.\n\n     var Q = Quintus()\n             .include(\"Input, Sprites, Scenes\")\n             .setup('quintus', { maximize: true })\n             .controls();\n                      \n`Q` is used internally as the object name, and is used in most of the examples, \nbut multiple instances of the engine on the same page can have different names.\n\n    var Game1 = Quintus(), Game2 = Quintus();"
+        },
+        "Q.Class": {
+            "name": "Q.Class",
+            "shortname": "Q.Class",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus",
+            "namespace": "",
+            "file": "lib/quintus.js",
+            "line": 609,
+            "description": "The base Class object\n  \nQuintus uses the Simple JavaScript inheritance Class object, created by\nJohn Resig and described on his blog: \n  \n[http://ejohn.org/blog/simple-javascript-inheritance/](http://ejohn.org/blog/simple-javascript-inheritance/)\n  \nThe class is used wholesale, with the only differences being that instead\nof appearing in a top-level namespace, the `Class` object is available as \n`Q.Class` and a second argument on the `extend` method allows for adding\nclass level methods and the class name is passed in a parameter for introspection\npurposes.\n  \nClasses can be created by calling `Q.Class.extend(name,{ .. })`, although most of the time\nyou'll want to use one of the derivitive classes, `Q.Evented` or `Q.GameObject` which\nhave a little bit of functionality built-in. `Q.Evented` adds event binding and \ntriggering support and `Q.GameObject` adds support for components and a destroy method.\n  \nThe main things Q.Class get you are easy inheritance, a constructor method called `init()`,\ndynamic addition of a this._super method when a method is overloaded (be careful with \nthis as it adds some overhead to method calls.) Calls to `instanceof` also all \nwork as you'd hope.\n  \nBy convention, classes should be added onto to the `Q` object and capitalized, so if \nyou wanted to create a new class for your game, you'd write:\n  \n    Q.Class.extend(\"MyClass\",{ ... });\n  \nExamples:\n  \n    Q.Class.extend(\"Bird\",{ \n      init: function(name) { this.name = name; },\n      speak: function() { console.log(this.name); },\n      fly: function()   { console.log(\"Flying\"); }\n    });\n  \n    Q.Bird.extend(\"Penguin\",{\n      speak: function() { console.log(this.name + \" the penguin\"); },\n      fly: function()   { console.log(\"Can't fly, sorry...\"); }\n    });\n  \n    var randomBird = new Q.Bird(\"Frank\"),\n        pengy      = new Q.Penguin(\"Pengy\");\n  \n    randomBird.fly(); // Logs \"Flying\"\n    pengy.fly();      // Logs \"Can't fly,sorry...\"\n  \n    randomBird.speak(); // Logs \"Frank\"\n    pengy.speak();      // Logs \"Pengy the penguin\"\n  \n    console.log(randomBird instanceof Q.Bird);    // true \n    console.log(randomBird instanceof Q.Penguin); // false\n    console.log(pengy instanceof Q.Bird);         // true \n    console.log(pengy instanceof Q.Penguin);      // true \n\n  Simple JavaScript Inheritance\n  By John Resig http://ejohn.org/\n  MIT Licensed.\n  \n  Inspired by base2 and Prototype"
+        },
+        "Q.Evented": {
+            "name": "Q.Evented",
+            "shortname": "Q.Evented",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus",
+            "namespace": "",
+            "file": "lib/quintus.js",
+            "line": 782,
+            "description": "The `Q.Evented` class adds event handling onto the base `Q.Class` \nclass. Q.Evented objects can trigger events and other objects can\nbind to those events.",
+            "extends": "Q.Class"
+        },
+        "Q.Component": {
+            "name": "Q.Component",
+            "shortname": "Q.Component",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus",
+            "namespace": "",
+            "file": "lib/quintus.js",
+            "line": 942,
+            "description": "Components\n==============\n  \nComponents are self-contained pieces of functionality that can be added onto and removed\nfrom objects. The allow for a more dynamic functionality tree than using inheritance (i.e.\nby favoring composition over inheritance) and are added and removed on the fly at runtime.\n(yes, I know everything in JS is at runtime, but you know what I mean, geez)\n  \nCombining components with events makes it easy to create reusable pieces of\nfunctionality that can be decoupled from each other.\n\nThe base class for components. These are usually not derived directly but are instead\ncreated by calling `Q.register` to register a new component given a set of methods the \ncomponent supports. Components are created automatically when they are added to a \n`Q.GameObject` with the `add` method.\n  \nMany components also define an `added` method, which is called automatically by the\n`init` constructor after a component has been added to an object. This is a good time\nto add event listeners on the object.",
+            "events": "Q.Evented"
+        },
+        "Q.GameObject": {
+            "name": "Q.GameObject",
+            "shortname": "Q.GameObject",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus",
+            "namespace": "",
+            "file": "lib/quintus.js",
+            "line": 1017,
+            "description": "Game Objects\n    ============\n\n   This is the base class most Quintus objects are derived from, it extends \n   `Q.Evented` and adds component support to an object, allowing components to\n   be added and removed from an object. It also defines a destroyed method\n   which will debind the object, remove it from it's parent (usually a scene)\n   if it has one, and trigger a destroyed event.",
+            "extends": "Q.Evented"
+        },
+        "Q.GameState": {
+            "name": "Q.GameState",
+            "shortname": "Q.GameState",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus",
+            "namespace": "",
+            "file": "lib/quintus.js",
+            "line": 1144,
+            "description": "Generic Game State object that can be used to\ntrack of the current state of the Game, for example when the player starts\na new game you might want to keep track of their score and remaining lives:\n  \n    Q.reset({ score: 0, lives: 2 });\n  \nThen in your game might want to add to the score:\n    \n     Q.state.inc(\"score\",50);\n  \nIn your hud, you can listen for change events on the state to update your \ndisplay:\n  \n     Q.state.on(\"change.score\",function() { .. update the score display .. });",
+            "extends": "Q.GameObject"
+        },
+        "Q.Matrix2D": {
+            "name": "Q.Matrix2D",
+            "shortname": "Q.Matrix2D",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus",
+            "namespace": "",
+            "file": "lib/quintus.js",
+            "line": 1906,
+            "description": "A 2D matrix class, optimized for 2D points,\nwhere the last row of the matrix will always be 0,0,1 \n\nDo not call `new Q.Matrix2D` - use the provided Q.matrix2D factory function for GC happiness\n\n     var matrix = Q.matrix2d();\n\nGood Docs here: https://github.com/heygrady/transform/wiki/calculating-2d-matrices\n\nUsed internally by Quintus for all transforms / collision detection. Most of the methods modify the matrix they are called upon and are chainable.",
+            "extends": "Q.Class"
+        },
+        "Quintus.Input": {
+            "name": "Quintus.Input",
+            "shortname": "Quintus.Input",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Input",
+            "namespace": "",
+            "file": "lib/quintus_input.js",
+            "line": 11,
+            "description": "Quintus Input Module"
+        },
+        "Q.InputSystem": {
+            "name": "Q.InputSystem",
+            "shortname": "Q.InputSystem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Input",
+            "namespace": "",
+            "file": "lib/quintus_input.js",
+            "line": 99,
+            "description": "Button and mouse input subsystem for Quintus.\n An instance of this class is auto-created as {{#crossLink \"Q.input\"}}{{/crossLink}}",
+            "extends": "Q.Evented"
+        },
+        "platformerControls": {
+            "name": "platformerControls",
+            "shortname": "platformerControls",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Input",
+            "namespace": "",
+            "file": "lib/quintus_input.js",
+            "line": 705,
+            "description": "Platformer Control Component\n\nAdds 2D platformer controls onto a Sprite\n\nPlatformer controls bind to left, and right and allow the player to jump. \n\nAdds the following properties to the entity to control speed and jumping:\n\n     { \n       speed: 200,\n       jumpSpeed: -300\n     }"
+        },
+        "stepControls": {
+            "name": "stepControls",
+            "shortname": "stepControls",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Input",
+            "namespace": "",
+            "file": "lib/quintus_input.js",
+            "line": 817,
+            "description": "Step Controls component\n\nAdds Step (square grid based) 4-ways controls onto a Sprite\n\nAdds the following properties to the entity:\n\n     { \n       stepDistance: 32, // should be tile size\n       stepDelay: 0.2  // seconds to delay before next step\n     }"
+        },
+        "Quintus.Scenes": {
+            "name": "Quintus.Scenes",
+            "shortname": "Quintus.Scenes",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Scenes",
+            "namespace": "",
+            "file": "lib/quintus_scenes.js",
+            "line": 19,
+            "description": "Quintus Scenes Module Class"
+        },
+        "Q.Scene": {
+            "name": "Q.Scene",
+            "shortname": "Q.Scene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Scenes",
+            "namespace": "",
+            "file": "lib/quintus_scenes.js",
+            "line": 30,
+            "description": "Basic scene class, consisting primarily of a scene function \nand some options that are passed to the stage.\n\nShould be instantiated by calling `Q.scene` not new"
+        },
+        "Q.Stage": {
+            "name": "Q.Stage",
+            "shortname": "Q.Stage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Scenes",
+            "namespace": "",
+            "file": "lib/quintus_scenes.js",
+            "line": 254,
+            "description": "Base stage class, responsible for managing sets of sprites.\n\n`Q.Stage`'s aren't generally instantiated directly, but rather are created\nautomatically when you call `Q.stageScene('sceneName')`",
+            "extends": "Q.GameObject"
+        },
+        "Quintus.Sprites": {
+            "name": "Quintus.Sprites",
+            "shortname": "Quintus.Sprites",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Sprites",
+            "namespace": "",
+            "file": "lib/quintus_sprites.js",
+            "line": 14,
+            "description": "Quintus Sprites Module Class"
+        },
+        "Q.SpriteSheet": {
+            "name": "Q.SpriteSheet",
+            "shortname": "Q.SpriteSheet",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Sprites",
+            "namespace": "",
+            "file": "lib/quintus_sprites.js",
+            "line": 21,
+            "description": "Sprite sheet class - generally instantiated with `Q.sheet` new `new`",
+            "extends": "Q.Class"
+        },
+        "Q.Sprite": {
+            "name": "Q.Sprite",
+            "shortname": "Q.Sprite",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Sprites",
+            "namespace": "",
+            "file": "lib/quintus_sprites.js",
+            "line": 361,
+            "description": "Basic sprite class - will render either and asset or a frame from a sprite sheet.\n\n   Auto sets the width and height (`p.w` and `p.h`) from the provided image asset and\n   centers the sprite so 0,0 is the center of the provide image.\n\n   Most of the times you'll sub-class `Q.Sprite`",
+            "extends": "Q.GameObject"
+        },
+        "Q.MovingSprite": {
+            "name": "Q.MovingSprite",
+            "shortname": "Q.MovingSprite",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Sprites",
+            "namespace": "",
+            "file": "lib/quintus_sprites.js",
+            "line": 702,
+            "description": "Simple sprite that adds in basic newtonian physics on each step:\n\n    p.vx += p.ax * dt;\n    p.vy += p.ay * dt;\n\n    p.x += p.vx * dt;\n    p.y += p.vy * dt;",
+            "extends": "Q.Sprite"
+        },
+        "Quintus.TMX": {
+            "name": "Quintus.TMX",
+            "shortname": "Quintus.TMX",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Quintus.Input",
+            "namespace": "",
+            "file": "lib/quintus_tmx.js",
+            "line": 12,
+            "description": "Quintus TMX Loading module"
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/quintus.js",
+            "line": 51,
+            "description": "A la jQuery - the returned `Q` object is actually\na method that calls `Q.select`. `Q.select` doesn't do anything\ninitially, but can be overridden by a module to allow\nselection of game objects. The `Scenes` module adds in \nthe select method which selects from the default stage.\n  \n    var Q = Quintus().include(\"Sprites, Scenes\");\n    ... Game Code ...\n    // Set the angry property on all Enemy1 class objects to true\n    Q(\"Enemy1\").p({ angry: true });",
+            "itemtype": "method",
+            "name": "Q",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 70,
+            "description": "Default no-op select method. Replaced with the Quintus.Scene class",
+            "itemtype": "method",
+            "name": "Q.select",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 78,
+            "description": "Default no-op select method. Replaced with the Quintus.Scene class\n\n\nSyntax for including other modules into quintus, can accept a comma-separated\nlist of strings, an array of strings, or an array of actual objects. Example:\n  \n    Q.include(\"Input, Sprites, Scenes\")",
+            "itemtype": "method",
+            "name": "Q.include",
+            "params": [
+                {
+                    "name": "mod",
+                    "description": "- A comma separated list of module names",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "returns Quintus instance for chaining.",
+                "type": "Quintus"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 101,
+            "description": "An internal utility method (utility methods are prefixed with underscores)\nIt's used to take a string of comma separated names and turn it into an `Array`\nof names. If an array of names is passed in, it's left as is. Example usage:\n  \n    Q._normalizeArg(\"Sprites, Scenes, Physics   \");\n    // returns [ \"Sprites\", \"Scenes\", \"Physics\" ]\n  \nUsed by `Q.include` and `Q.Sprite.add` to add modules and components, respectively.\n\nMost of these utility methods are a subset of Underscore.js,\nMost are pulled directly from underscore and some are\noccasionally optimized for speed and memory usage in lieu of flexibility.\n\nUnderscore.js is (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.\n\nUnderscore is freely distributable under the MIT license.\n\nhttp://underscorejs.org",
+            "itemtype": "method",
+            "name": "Q._normalizeArg",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "- Either a comma separated string or an array",
+                    "type": "String or Array"
+                }
+            ],
+            "return": {
+                "description": "array of normalized names",
+                "type": "Array"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 137,
+            "description": "Extends a destination object with a source object (modifies destination object)",
+            "itemtype": "method",
+            "name": "Q._extend",
+            "params": [
+                {
+                    "name": "dest",
+                    "description": "- destination object",
+                    "type": "Object"
+                },
+                {
+                    "name": "source",
+                    "description": "- source object",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "returns the dest object",
+                "type": "Object"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 154,
+            "description": "Return a shallow copy of an object. Sub-objects (and sub-arrays) are not cloned. (uses extend internally)",
+            "itemtype": "method",
+            "name": "Q._clone",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to clone",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "cloned object",
+                "type": "Object"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 166,
+            "description": "Method that adds default properties onto an object only if the key on dest is undefined",
+            "itemtype": "method",
+            "name": "Q._defaults",
+            "params": [
+                {
+                    "name": "dest",
+                    "description": "- destination object",
+                    "type": "Object"
+                },
+                {
+                    "name": "source",
+                    "description": "- source object",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "returns the dest object",
+                "type": "Object"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 185,
+            "description": "Shortcut for hasOwnProperty",
+            "itemtype": "method",
+            "name": "Q._defaults",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "- destination object",
+                    "type": "Object"
+                },
+                {
+                    "name": "key",
+                    "description": "- key to check for",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 198,
+            "description": "Check if something is a string\n\nNOTE: this fails for non-primitives",
+            "itemtype": "method",
+            "name": "Q._isString",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to check",
+                    "type": "Var"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 212,
+            "description": "Check if something is a number",
+            "itemtype": "method",
+            "name": "Q._isNumber",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to check",
+                    "type": "Var"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 224,
+            "description": "Check if something is a function",
+            "itemtype": "method",
+            "name": "Q._isFunction",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to check",
+                    "type": "Var"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 236,
+            "description": "Check if something is an Object",
+            "itemtype": "method",
+            "name": "Q._isObject",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to check",
+                    "type": "Var"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 248,
+            "description": "Check if something is an Array",
+            "itemtype": "method",
+            "name": "Q._isArray",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to check",
+                    "type": "Var"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 260,
+            "description": "Check if something is undefined",
+            "itemtype": "method",
+            "name": "Q._isUndefined",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to check",
+                    "type": "Var"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 272,
+            "description": "Removes a property from an object and returns it if it exists",
+            "itemtype": "method",
+            "name": "Q._popProperty",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "property",
+                    "description": "- property to pop off the object",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "popped property",
+                "type": "Var"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 287,
+            "description": "Basic iteration method. This can often be a performance\nhandicap when the callback iterator is created inline,\nas this leads to lots of functions that need to be GC'd.\nBetter is to define the iterator as a private method so.\nUses the built in `forEach` method",
+            "itemtype": "method",
+            "name": "Q._each",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Array or Object"
+                },
+                {
+                    "name": "{Function",
+                    "description": "iterator function, `this` is used for each object"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 314,
+            "description": "Invoke the named property on each element of the array",
+            "itemtype": "method",
+            "name": "Q._invoke",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "property",
+                    "description": "- property to invoke",
+                    "type": "String"
+                },
+                {
+                    "name": "arg1",
+                    "description": "",
+                    "type": "Var",
+                    "optional": true
+                },
+                {
+                    "name": "arg2",
+                    "description": "",
+                    "type": "Var",
+                    "optional": true
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 333,
+            "description": "Basic detection method, returns the first instance where the\niterator returns truthy.",
+            "itemtype": "method",
+            "name": "Q._detect",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Array or Object"
+                },
+                {
+                    "name": "iterator",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "context",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "arg1",
+                    "description": "",
+                    "type": "Var",
+                    "optional": true
+                },
+                {
+                    "name": "arg2",
+                    "description": "",
+                    "type": "Var",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "first truthy value",
+                "type": "Var"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 364,
+            "description": "Returns a new Array with entries set to the return value of the iterator.",
+            "itemtype": "method",
+            "name": "Q._detect",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Array or Object"
+                },
+                {
+                    "name": "iterator",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "context",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 385,
+            "description": "Returns a sorted copy of unique array elements with null removed",
+            "itemtype": "method",
+            "name": "Q._uniq",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "uniq'd sorted copy of array",
+                "type": "Array"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 408,
+            "description": "Returns a new array with the same entries as the source but in a random order.",
+            "itemtype": "method",
+            "name": "Q._shuffle",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "copy or arr in shuffled order",
+                "type": "Array"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 427,
+            "description": "Return an object's keys as a new Array",
+            "itemtype": "method",
+            "name": "Q._keys",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 443,
+            "description": "Return an array in the range from start to stop",
+            "itemtype": "method",
+            "name": "Q._range",
+            "params": [
+                {
+                    "name": "start",
+                    "description": "",
+                    "type": "Integer"
+                },
+                {
+                    "name": "stop",
+                    "description": "",
+                    "type": "Integer"
+                },
+                {
+                    "name": "step",
+                    "description": "",
+                    "type": "Integer",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 470,
+            "description": "Return a new unique identifier",
+            "itemtype": "method",
+            "name": "Q._uniqueId",
+            "return": {
+                "description": "",
+                "type": "Integer"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 483,
+            "description": "Options\n  \nDefault engine options defining the paths \nwhere images, audio and other data files should be found\nrelative to the base HTML file. As well as a couple of other\noptions.\n  \nThese can be overriden by passing in options to the `Quintus()` \nfactory method, for example:\n  \n    // Override the imagePath to default to /assets/images/\n    var Q = Quintus({ imagePath: \"/assets/images/\" });\n  \nIf you follow the default convention from the examples, however,\nyou should be able to call `Quintus()` without any options.\n\nDefault Options\n\n    {\n     imagePath: \"images/\",\n     audioPath: \"audio/\",\n     dataPath:  \"data/\",\n     audioSupported: [ 'mp3','ogg' ],\n     sound: true,\n     frameTimeLimit: 100\n    }",
+            "itemtype": "property",
+            "name": "Q.options",
+            "type": "Object",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 526,
+            "description": "Game Loop support\n\nBy default the engine doesn't start a game loop until you actually tell it to.\nUsually the loop is started the first time you call `Q.stageScene`, but if you \naren't using the `Scenes` module you can explicitly start the game loop yourself\nand control **exactly** what the engine does each cycle. For example:\n  \n    var Q = Quintus().setup();\n  \n    var ball = new Q.Sprite({ .. });\n  \n    Q.gameLoop(function(dt) {\n      Q.clear(); \n      ball.step(dt);\n      ball.draw(Q.ctx);\n    });\n  \nThe callback will be called with fraction of a second that has elapsed since \nthe last call to the loop method.",
+            "itemtype": "method",
+            "name": "Q.gameLoop",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 579,
+            "description": "Pause the entire game by canceling the requestAnimationFrame call. If you use setTimeout or\nsetInterval in your game, those will, of course, keep on rolling...",
+            "itemtype": "method",
+            "name": "Q.pauseGame",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 593,
+            "description": "Unpause the game by restarting the requestAnimationFrame-based loop.\nPause the entire game by canceling the requestAnimationFrame call. If you use setTimeout or\nsetInterval in your game, those will, of course, keep on rolling...",
+            "itemtype": "method",
+            "name": "Q.pauseGame",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 676,
+            "is_constructor": 1,
+            "class": "Q.Class",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 683,
+            "description": "See if a object is a specific class",
+            "itemtype": "method",
+            "name": "isA",
+            "params": [
+                {
+                    "name": "className",
+                    "description": "- class to check against",
+                    "type": "String"
+                }
+            ],
+            "class": "Q.Class",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 693,
+            "description": "Create a new Class that inherits from this class",
+            "itemtype": "method",
+            "name": "extend",
+            "params": [
+                {
+                    "name": "className",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "properties",
+                    "description": "- hash of properties (init will be the constructor)",
+                    "type": "Object"
+                },
+                {
+                    "name": "classMethods",
+                    "description": "- optional class methods to add to the class",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Q.Class",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 793,
+            "description": "Binds a callback to an event on this object. If you provide a\n`target` object, that object will add this event to it's list of\nbinds, allowing it to automatically remove it when it is destroyed.",
+            "itemtype": "method",
+            "name": "on",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "- name or comma separated list of events",
+                    "type": "String"
+                },
+                {
+                    "name": "target",
+                    "description": "- optional context for callback, defaults to the Evented",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "callback",
+                    "description": "- callback (optional - defaults to name of event on context",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "Q.Evented",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 848,
+            "description": "Triggers an event, passing in some optional additional data about\nthe event.",
+            "itemtype": "method",
+            "name": "trigger",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "- name of event",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "- optional data to pass to the callback",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Q.Evented",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 870,
+            "description": "Unbinds an event. Can be called with 1, 2, or 3 parameters, each \n of which unbinds a more specific listener.",
+            "itemtype": "method",
+            "name": "off",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "- name of event",
+                    "type": "String"
+                },
+                {
+                    "name": "target",
+                    "description": "- optionally limit to a specific target",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "callback",
+                    "description": "- optionally limit to one specific callback",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "Q.Evented",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 907,
+            "description": "`debind` is called to remove any listeners an object had\non other objects. The most common case is when an object is\ndestroyed you'll want all the event listeners to be removed\nfor you.",
+            "itemtype": "method",
+            "name": "debind",
+            "class": "Q.Evented",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 933,
+            "description": "The master list of registered components, indexed in an object by name.",
+            "itemtype": "property",
+            "name": "Q.components",
+            "type": "Object",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 985,
+            "description": "`destroy` is called automatically when a component is removed from an entity. It is \nnot called, however, when an entity is destroyed (for performance reasons).\n\nIt's job is to remove any methods that were added with `extend` and then remove and\ndebind itself from the entity. It will also call `destroyed` if the component has\na method by that name.",
+            "itemtype": "method",
+            "name": "destroy",
+            "class": "Q.Component",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1034,
+            "description": "Simple check to see if a component already exists\non an object by searching for a property of the same name.",
+            "itemtype": "method",
+            "name": "has",
+            "params": [
+                {
+                    "name": "component",
+                    "description": "- name of component to test against",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Q.GameObject",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1047,
+            "description": "Adds one or more components to an object. Accepts either \na comma separated string or an array of strings that map\nto component names.\n    \nInstantiates a new component object of the correct type\n(if the component exists) and then triggers an addComponent\nevent.\n\nFor example:\n\n    this.add(\"2d, aiBounce\")\n    \nReturns the object to allow chaining.",
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "components",
+                    "description": "- comma separated list of components to add",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "returns this for chaining purposes",
+                "type": "Object"
+            },
+            "class": "Q.GameObject",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1081,
+            "description": "Removes one or more components from an object. Accepts the\nsame style of parameters as `add`. Triggers a delComponent event\nand and calls destroy on the component.\n    \nReturns the element to allow chaining.",
+            "itemtype": "method",
+            "name": "del",
+            "params": [
+                {
+                    "name": "components",
+                    "description": "- comma separated list of components to remove",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "returns this for chaining purposes",
+                "type": "Object"
+            },
+            "class": "Q.GameObject",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1105,
+            "description": "Destroys the object by calling debind and removing the\nobject from it's parent. Will trigger a destroyed event\ncallback.",
+            "itemtype": "method",
+            "name": "del",
+            "params": [
+                {
+                    "name": "components",
+                    "description": "- comma separated list of components to remove",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "returns this for chaining purposes",
+                "type": "Object"
+            },
+            "class": "Q.GameObject",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1127,
+            "description": "Registers a component with the engine, making it available to `Q.GameObject`'s \nThis creates a new descendent class of `Q.Component` with new methods added in.",
+            "itemtype": "method",
+            "name": "Q.component",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "- component name",
+                    "type": "String"
+                },
+                {
+                    "name": "metehods",
+                    "description": "- hash of methods for the component",
+                    "type": "Object"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1170,
+            "description": "Resets the state to value p, triggers a reset event.",
+            "itemtype": "method",
+            "name": "reset",
+            "params": [
+                {
+                    "name": "p",
+                    "description": "- properties to reinitialize to",
+                    "type": "Object"
+                }
+            ],
+            "class": "Q.GameState",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1186,
+            "description": "Set one or more properties, trigger events on those\nproperties changing.",
+            "example": [
+                "\n   Q.state.set({ lives: 5, hitPoints: 4 });\n   // Triggers 3 events: change.lives, change.hitPoints, change\n\n\n   Q.state.set(\"lives\",5);\n   // Triggers 2 events: change.lives, change"
+            ],
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "properties",
+                    "description": "- hash of properties to set, or property name",
+                    "type": "Object or String"
+                },
+                {
+                    "name": "value",
+                    "description": "- if setting 1 property, the value of that property",
+                    "type": "Var",
+                    "optional": true
+                }
+            ],
+            "class": "Q.GameState",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1211,
+            "description": "Increment an individual property by amount, uses set internally",
+            "itemtype": "method",
+            "name": "inc",
+            "params": [
+                {
+                    "name": "property",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "amount",
+                    "description": "- amount to increment by",
+                    "type": "Integer"
+                }
+            ],
+            "class": "Q.GameState",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1222,
+            "description": "Increment an individual property by amount, uses set internally",
+            "itemtype": "method",
+            "name": "dec",
+            "params": [
+                {
+                    "name": "property",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "amount",
+                    "description": "- amount to decrement by",
+                    "type": "Integer"
+                }
+            ],
+            "class": "Q.GameState",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1234,
+            "description": "Return an individual property",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "property",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "value of the property",
+                "type": "Var"
+            },
+            "class": "Q.GameState",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1247,
+            "description": "Top-level `Q.GameState` instance, generally used for global state in the game",
+            "itemtype": "property",
+            "name": "Q.state",
+            "type": "Q.GameState",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1256,
+            "description": "Reset the global game state",
+            "itemtype": "method",
+            "name": "Q.reset",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1269,
+            "description": "Canvas Methods\n   \n   The `setup` and `clear` method are the only two canvas-specific methods in \n   the core of Quintus. `imageData`  also uses canvas but it can be used in\n   any type of game.\n\n   Setup will either create a new canvas element and append it\n   to the body of the document or use an existing one. It will then\n   pull out the width and height of the canvas for engine use.\nIt also adds a wrapper container around the element.\nIf the `maximize` is set to true, the canvas element is maximized\n   on the page and the scroll trick is used to try to get the address bar away.\nThe engine will also resample the game to CSS dimensions at twice pixel\n   dimensions if the `resampleWidth` or `resampleHeight` options are set.\nTODO: add support for auto-resize w/ engine event notifications\n\n   Available options:\n\n       {\n        width: 320,  // width of created canvas\n        height: 420, // height of created canvas\n        maximize: false // set to true to maximize to screen, \"touch\" to maximize on touch devices\n       }",
+            "itemtype": "method",
+            "name": "Q.setup",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "- id of the canvas element to trigger quintus on",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "\"quintus\""
+                },
+                {
+                    "name": "options",
+                    "description": "- options hash",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1410,
+            "description": "Clear the canvas completely.\n\nIf you want it cleared to a specific color - set `Q.clearColor` to that color",
+            "itemtype": "method",
+            "name": "Q.clear",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1435,
+            "description": "Return canvas image data given an Image object.",
+            "itemtype": "method",
+            "name": "Q.imageData",
+            "params": [
+                {
+                    "name": "img",
+                    "description": "- image to get image datda for",
+                    "type": "Image"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1455,
+            "description": "Asset Loading Support\n  \nThe engine supports loading assets of different types using\n`load` or `preload`. Assets are stored by their name so the \nsame asset won't be loaded twice if it already exists.\n\nAugmentable list of asset types, loads a specific asset \ntype if the file type matches, otherwise defaults to a Ajax\nload of the data.\n  \nYou can new types of assets based on file extension by\nadding to `assetTypes` and adding a method called\nloadAssetTYPENAME where TYPENAME is the name of the\ntype you added in.\n\nDefault bindings are:\n\n  * png, jpg, gif, jpeg -> Image\n  * ogg, wav, m4a, mp3 -> Audio\n  * Everything else -> Data\n \nTo add a new file extension in to an existing type you can just add it to asset types:\n\n    Q.assetTypes['bmp'] = \"Image\";\n\nTo add in a new loader, you'll need to define a method for that type and add to the `Q.assetTypes` object, e.g.:\n\n    Q.loadAssetVideo = function(key,src,callback,errorCallback) {\n       var vid = new Video();\n       vid.addEventListener(\"canplaythrough\",function() {  callback(key,vid); });\n       vid.onerror = errorCallback;\n       vid.src = Q.assetUrl(Q.options.imagePath,src);\n    };\n\n    Q.assetTypes['mp4'] = 'Video'",
+            "itemtype": "property",
+            "name": "Q.assetTypes",
+            "type": "Object",
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1503,
+            "description": "Return the file extension of a filename",
+            "itemtype": "method",
+            "name": "Q._fileExtension",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "lowercased extension",
+                "type": "String"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1517,
+            "description": "Determine the type of asset based on the `Q.assetTypes` lookup table",
+            "itemtype": "method",
+            "name": "Q.assetType",
+            "params": [
+                {
+                    "name": "asset",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1539,
+            "description": "Either return an absolute URL, or add a base to a relative URL",
+            "itemtype": "method",
+            "name": "Q.assetUrl",
+            "params": [
+                {
+                    "name": "base",
+                    "description": "- base for relative paths",
+                    "type": "String"
+                },
+                {
+                    "name": "url",
+                    "description": "- url to resolve to asset url",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "resolved url",
+                "type": "String"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1560,
+            "description": "Loader for Images, creates a new `Image` object and uses the \nload callback to determine the image has been loaded",
+            "itemtype": "method",
+            "name": "Q.loadAssetImage",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "src",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "errorCallback",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1603,
+            "description": "Loader for Audio assets. By default chops off the extension and \nwill automatically determine which of the supported types is \nplayable by the browser and load that type.\n  \nWhich types are available are determined by the file extensions\nlisted in the Quintus `options.audioSupported`",
+            "itemtype": "method",
+            "name": "Q.loadAssetAudio",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "src",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "errorCallback",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1652,
+            "description": "Asset loader for Audio files if using the WebAudio API engine",
+            "itemtype": "method",
+            "name": "Q.loadAssetWebAudio",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "src",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "errorCallback",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1682,
+            "description": "Loader for other file types, just stores the data returned from an Ajax call.\n\nJust makes a Ajax request for all other file types",
+            "itemtype": "method",
+            "name": "Q.loadAssetOther",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "src",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "errorCallback",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1718,
+            "description": "Helper method to return a name without an extension",
+            "itemtype": "method",
+            "name": "_removeExtension",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "filename without an extension",
+                "type": "String"
+            },
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1733,
+            "description": "Getter method to return an asset by its name.\n  \nAsset names default to their filenames, but can be overridden\nby passing a hash to `load` to set different names.",
+            "itemtype": "method",
+            "name": "asset",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "- name of asset to lookup",
+                    "type": "String"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1747,
+            "description": "Load assets, and call our callback when done.\n  \nAlso optionally takes a `progressCallback` which will be called \nwith the number of assets loaded and the total number of assets\nto allow showing of a progress. \n  \nAssets can be passed in as an array of file names, and Quintus\nwill use the file names as the name for reference, or as a hash of \n`{ name: filename }`. \n  \nExample usage:\n    Q.load(['sprites.png','sprites.,json'],function() {\n       Q.stageScene(\"level1\"); // or something to start the game.\n    });",
+            "itemtype": "method",
+            "name": "Q.load",
+            "params": [
+                {
+                    "name": "assets",
+                    "description": "- comma separated string, array or Object hash of assets to load",
+                    "type": "String, Array or Array"
+                },
+                {
+                    "name": "callback",
+                    "description": "- called when done loading",
+                    "type": "Function"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1864,
+            "description": "Let us gather assets to load at a later time,\nand then preload them all at the same time with\na single callback. Options are passed through to the\nQ.load method if used.\n  \nExample usage:\n     Q.preload(\"sprites.png\");\n     ...\n     Q.preload(\"sprites.json\");\n     ...\n  \n     Q.preload(function() {\n        Q.stageScene(\"level1\"); // or something to start the game\n     });",
+            "itemtype": "method",
+            "name": "Q.preload",
+            "params": [
+                {
+                    "name": "arg",
+                    "description": "- comma separated string of assets to load, or callback",
+                    "type": "String or Function"
+                },
+                {
+                    "name": "options",
+                    "description": "- options to pass to load",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Quintus",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1923,
+            "description": "Initialize a matrix from a source or with the identify matrix",
+            "is_constructor": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1938,
+            "description": "Turn this matrix into the identity",
+            "itemtype": "method",
+            "name": "identity",
+            "chainable": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1952,
+            "description": "Clone another matrix into this one",
+            "itemtype": "method",
+            "name": "clone",
+            "params": [
+                {
+                    "name": "matrix",
+                    "description": "- matrix to clone",
+                    "type": "Q.Matrix2D"
+                }
+            ],
+            "chainable": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1968,
+            "description": "multiply two matrices (leaving the result in this)\n\n   a * b = \n      [ [ a11*b11 + a12*b21 ], [ a11*b12 + a12*b22 ], [ a11*b31 + a12*b32 + a13 ] ,\n      [ a21*b11 + a22*b21 ], [ a21*b12 + a22*b22 ], [ a21*b31 + a22*b32 + a23 ] ]",
+            "itemtype": "method",
+            "name": "clone",
+            "params": [
+                {
+                    "name": "matrix",
+                    "description": "- matrix to multiply by",
+                    "type": "Q.Matrix2D"
+                }
+            ],
+            "chainable": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 1996,
+            "description": "Multiply this matrix by a rotation matrix rotated radians radians",
+            "itemtype": "method",
+            "name": "rotate",
+            "params": [
+                {
+                    "name": "radians",
+                    "description": "- angle to rotate by",
+                    "type": "Float"
+                }
+            ],
+            "chainable": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2022,
+            "description": "Helper method to rotate by a set number of degrees (calls rotate internally)",
+            "itemtype": "method",
+            "name": "rotateDeg",
+            "params": [
+                {
+                    "name": "degrees",
+                    "description": "",
+                    "type": "Float"
+                }
+            ],
+            "chainable": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2036,
+            "description": "Multiply this matrix by a scaling matrix scaling sx and sy",
+            "itemtype": "method",
+            "name": "scale",
+            "params": [
+                {
+                    "name": "sx",
+                    "description": "- scale in x dimension (scaling is uniform unless `sy` is provided)",
+                    "type": "Float"
+                },
+                {
+                    "name": "sy",
+                    "description": "- scale in the y dimension",
+                    "type": "Float",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2057,
+            "description": "Multiply this matrix by a translation matrix translate by tx and ty",
+            "itemtype": "method",
+            "name": "translate",
+            "params": [
+                {
+                    "name": "tx",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "ty",
+                    "description": "",
+                    "type": "Float"
+                }
+            ],
+            "chainable": 1,
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2075,
+            "description": "Transform x and y coordinates by this matrix\nMemory Hoggy version, returns a new Array",
+            "itemtype": "method",
+            "name": "transform",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Float"
+                }
+            ],
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2090,
+            "description": "Transform an object with an x and y property by this Matrix",
+            "itemtype": "method",
+            "name": "transformPt",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "obj",
+                "type": "Object"
+            },
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2106,
+            "description": "Transform an array with an x and y elements by this Matrix and put the result in \nthe outArr",
+            "itemtype": "method",
+            "name": "transformArr",
+            "params": [
+                {
+                    "name": "inArr",
+                    "description": "- input array",
+                    "type": "Array"
+                },
+                {
+                    "name": "outArr",
+                    "description": "- output array",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "obj",
+                "type": "Object"
+            },
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2126,
+            "description": "Return just the x coordinate transformed by this Matrix",
+            "itemtype": "method",
+            "name": "transformX",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Float"
+                }
+            ],
+            "return": {
+                "description": "x transformed",
+                "type": "Float"
+            },
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2139,
+            "description": "Return just the y coordinate transformed by this Matrix",
+            "itemtype": "method",
+            "name": "transformY",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Float"
+                }
+            ],
+            "return": {
+                "description": "y transformed",
+                "type": "Float"
+            },
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2152,
+            "description": "Release this Matrix to be reused",
+            "itemtype": "method",
+            "name": "release",
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus.js",
+            "line": 2163,
+            "description": "Set the complete transform on a Canvas 2D context",
+            "itemtype": "method",
+            "name": "setContextTransform",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "- 2D canvs context",
+                    "type": "Context2D"
+                }
+            ],
+            "class": "Q.Matrix2D",
+            "module": "Quintus"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 17,
+            "description": "Provided key names mapped to key codes - add more names and key codes as necessary",
+            "itemtype": "property",
+            "name": "KEY_NAMES",
+            "type": "Object",
+            "static": 1,
+            "class": "Quintus.Input",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 45,
+            "description": "Current state of bound inputs",
+            "itemtype": "property",
+            "name": "Q.inputs",
+            "type": "Object",
+            "class": "Quintus.Input",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 58,
+            "description": "Convert a canvas point to a stage point, x dimension",
+            "itemtype": "method",
+            "name": "Q.canvasToStageX",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "stage",
+                    "description": "",
+                    "type": "Q.Stage"
+                }
+            ],
+            "return": {
+                "description": "x",
+                "type": "Integer"
+            },
+            "class": "Quintus.Input",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 78,
+            "description": "Convert a canvas point to a stage point, y dimension",
+            "itemtype": "method",
+            "name": "Q.canvasToStageY",
+            "params": [
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "stage",
+                    "description": "",
+                    "type": "Q.Stage"
+                }
+            ],
+            "return": {
+                "description": "y",
+                "type": "Integer"
+            },
+            "class": "Quintus.Input",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 115,
+            "description": "Bind a key name or keycode to an action name (used by `keyboardControls`)",
+            "itemtype": "method",
+            "name": "bindKey",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "- name or integer keycode for to bind",
+                    "type": "String or Integer"
+                },
+                {
+                    "name": "name",
+                    "description": "- name of action to bind to",
+                    "type": "String"
+                }
+            ],
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 127,
+            "description": "Enable keyboard controls by binding to events",
+            "itemtype": "method",
+            "name": "enableKeyboard",
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 165,
+            "description": "Convenience method to activate keyboard controls (call `bindKey` and `enableKeyboard` internally)",
+            "itemtype": "method",
+            "name": "keyboardControls",
+            "params": [
+                {
+                    "name": "keys",
+                    "description": "- hash of key names or codes to actions",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 214,
+            "description": "Activate touch button controls - pass in an options hash to override\n\nDefault Options:\n\n    {\n       left: 0,\n       gutter:10,\n       controls: DEFAULT_TOUCH_CONTROLS,\n       width: Q.width,\n       bottom: Q.height\n     }\n\nDefault controls are left and right buttons, a space, and 'a' and 'b' buttons, as defined as an Array of Arrays below:\n\n     [ ['left','<' ],\n       ['right','>' ],\n       [],  // use an empty array as a spacer\n       ['action','b'],\n       ['fire', 'a' ]]",
+            "itemtype": "method",
+            "name": "touchControls",
+            "params": [
+                {
+                    "name": "opts",
+                    "description": "- Options hash",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 317,
+            "description": "Turn off touch (buytton and joypad) controls and remove event listeners",
+            "itemtype": "method",
+            "name": "disableTouchControls",
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 335,
+            "description": "Activate joypad controls (i.e. 4-way touch controls)\n\nLots of options, defaults are:\n\n    {\n     size: 50,\n     trigger: 20,\n     center: 25,\n     color: \"#CCC\",\n     background: \"#000\",\n     alpha: 0.5,\n     zone: Q.width / 2,\n     inputs: DEFAULT_JOYPAD_INPUTS\n   }\n\n Default joypad controls is an array that defines the inputs to bind to:\n\n      // Clockwise from midnight (a la CSS)\n      var DEFAULT_JOYPAD_INPUTS =  [ 'up','right','down','left'];",
+            "itemtype": "method",
+            "name": "joypadControls",
+            "params": [
+                {
+                    "name": "opts",
+                    "description": "-  joypad options",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 483,
+            "description": "Activate mouse controls - mouse controls don't trigger events, but just set `Q.inputs[mouseX]` & `Q.inputs['mouseY']` on each frame.\n\nDefault options:\n\n    {\n      stageNum: 0,\n      mouseX: \"mouseX\",\n      mouseY: \"mouseY\",\n      cursor: \"off\"\n    }",
+            "itemtype": "method",
+            "name": "mouseControls",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "- override default options",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 557,
+            "description": "Turn off mouse controls",
+            "itemtype": "method",
+            "name": "disableMouseControls",
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 571,
+            "description": "Draw the touch buttons on the screen\n\noverload this to change how buttons are drawn",
+            "itemtype": "method",
+            "name": "drawButtons",
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 626,
+            "description": "Draw the joypad on the screen\n\noverload this to change how joypad is drawn",
+            "itemtype": "method",
+            "name": "drawJoypad",
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 652,
+            "description": "Called each frame by the stage game loop to render any onscreen UI\n\ncalls `drawJoypad` and `drawButtons` if enabled",
+            "itemtype": "method",
+            "name": "drawCanvas",
+            "class": "Q.InputSystem",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 673,
+            "description": "Instance of the input subsytem that is actually used during gameplay",
+            "itemtype": "property",
+            "name": "Q.input",
+            "type": "Q.InputSystem",
+            "class": "Quintus.Input",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_input.js",
+            "line": 682,
+            "description": "Helper method to activate controls with default options",
+            "itemtype": "method",
+            "name": "Q.controls",
+            "params": [
+                {
+                    "name": "joypad",
+                    "description": "- enable 4-way joypad (true) or just left, right controls (false, undefined)",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "Quintus.Input",
+            "module": "Quintus.Input"
+        },
+        {
+            "file": "lib/quintus_scenes.js",
+            "line": 46,
+            "description": "Set up a new scene or return an existing scene. If you don't pass in `sceneFunc`, \nit'll return a scene otherwise it'll create a new one.",
+            "itemtype": "method",
+            "name": "Q.scene",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "- name of scene to create or return",
+                    "type": "String"
+                },
+                {
+                    "name": "sceneFunc",
+                    "description": "- scene function: `function(stage) { .. }` that sets up the stage",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "Quintus.Scenes",
+            "module": "Quintus.Scenes"
+        },
+        {
+            "file": "lib/quintus_scenes.js",
+            "line": 79,
+            "description": "SAT collision detection between two objects\nThanks to doc's at: http://www.sevenson.com.au/actionscript/sat/\n\nThis is sort of a black box - use the methods on stage like `search` and `collide` to\nrun the collision system.",
+            "itemtype": "property",
+            "name": "Q.collision",
+            "class": "Quintus.Scenes",
+            "module": "Quintus.Scenes"
+        },
+        {
+            "file": "lib/quintus_scenes.js",
+            "line": 232,
+            "description": "Check for the overlap of the boudning boxes of two Sprites",
+            "itemtype": "method",
+            "name": "Q.overlap",
+            "params": [
+                {
+                    "name": "o1",
+                    "description": "",
+                    "type": "Q.Sprite"
+                },
+                {
+                    "name": "o2",
+                    "description": "",
+                    "type": "Q.Sprite"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Quintus.Scenes",
+            "module": "Quintus.Scenes"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 32,
+            "description": "constructor\n\nOptions:\n\n  * tileW - tile width\n  * tileH - tile height\n  * w     - width of the sprite block\n  * h     - height of the sprite block\n  * sx    - start x\n  * sy    - start y\n  * spacingX - spacing between each tile x (after 1st)\n  * spacingY - spacing between each tile y\n  * marginX - margin around each tile x \n  * marginY - margin around each tile y\n  * cols  - number of columns per row",
+            "is_constructor": 1,
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "asset",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Q.SpriteSheet",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 88,
+            "description": "Returns the starting x position of a single frame",
+            "itemtype": "method",
+            "name": "fx",
+            "params": [
+                {
+                    "name": "frame",
+                    "description": "",
+                    "type": "Integer"
+                }
+            ],
+            "class": "Q.SpriteSheet",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 99,
+            "description": "Returns the starting y position of a single frame",
+            "itemtype": "method",
+            "name": "fy",
+            "params": [
+                {
+                    "name": "frame",
+                    "description": "",
+                    "type": "Integer"
+                }
+            ],
+            "class": "Q.SpriteSheet",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 110,
+            "description": "Draw a single frame at x,y on the provided context",
+            "itemtype": "method",
+            "name": "draw",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "",
+                    "type": "Context2D"
+                },
+                {
+                    "name": "x",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "y",
+                    "description": "",
+                    "type": "Float"
+                },
+                {
+                    "name": "frame",
+                    "description": "",
+                    "type": "Integer"
+                }
+            ],
+            "class": "Q.SpriteSheet",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 135,
+            "description": "Return a `Q.SpriteSheet` or  create a new sprite sheet",
+            "itemtype": "method",
+            "name": "Q.sheet",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "- name of sheet to return or create",
+                    "type": "String"
+                },
+                {
+                    "name": "asset",
+                    "description": "- if provided, will create a sprite sheet using this asset",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "- if provided, will be passed as options to `Q.SpriteSheet`",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 152,
+            "description": "Create a number of `Q.SpriteSheet` objects from an image asset and a sprite data JSON asset",
+            "itemtype": "method",
+            "name": "Q.compileSheets",
+            "params": [
+                {
+                    "name": "imageAsset",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "{String",
+                    "description": "spriteDataAsset"
+                }
+            ],
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 168,
+            "description": "Bitmask 0 to indicate no sprites",
+            "itemtype": "property",
+            "name": "Q.SPRITE_NONE",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 177,
+            "description": "default sprite type 1",
+            "itemtype": "property",
+            "name": "Q.SPRITE_DEFAULT",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 186,
+            "description": "particle sprite type 2",
+            "itemtype": "property",
+            "name": "Q.SPRITE_PARTICLE",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 195,
+            "description": "active sprite type 4",
+            "itemtype": "property",
+            "name": "Q.SPRITE_ACTIVE",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 204,
+            "description": "friendly sprite type 8",
+            "itemtype": "property",
+            "name": "Q.SPRITE_FRIENDLY",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 213,
+            "description": "enemy sprite type 16",
+            "itemtype": "property",
+            "name": "Q.SPRITE_ENEMY",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 223,
+            "description": "powerup sprite type 32",
+            "itemtype": "property",
+            "name": "Q.SPRITE_POWERUP",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 233,
+            "description": "UI sprite type 64",
+            "itemtype": "property",
+            "name": "Q.SPRITE_UI",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 242,
+            "description": "all sprite type - 0xFFFF",
+            "itemtype": "property",
+            "name": "Q.SPRITE_ALL",
+            "final": 1,
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 252,
+            "description": "generate a square set of  `p.points` on an object from `p.w` and `p.h`\n\n`p.points` represent the collision points for an object in object coordinates.",
+            "itemtype": "method",
+            "name": "q._generatePoints",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to add points to",
+                    "type": "Q.Sprite"
+                },
+                {
+                    "name": "force",
+                    "description": "- if set to true, will regenerate `p.points` even if it already exists, otherwise  if p.points exist it'll be left alone",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 278,
+            "description": "Generate a square set of  `c.points` on an object from the object transform matrix and `p.points`\n\n`c.points` represents the collision points of an sprite in world coordinates, scaled, rotate and taking into account any parent transforms.",
+            "itemtype": "method",
+            "name": "Q._generateCollisionPoints",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "- object to add collision points to",
+                    "type": "q.sprite"
+                }
+            ],
+            "class": "Quintus.Sprites",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 376,
+            "description": "Default sprite constructor, takes in a set of properties and a set of default properties (useful when you create a subclass of sprite)\nDefault properties:\n\n           {\n            asset: null,  // asset to use\n            sheet: null,  // sprite sheet to use (overrides asset)\n            x: 0,\n            y: 0,\n            z: 0,\n            w: 0,         // width, set from p.asset or p.sheet\n            h: 0,         // height, set from p.asset or p.sheet\n            cx: w/2,      // center x, defaults to center of the asset or sheet\n            cy: h/2,      // center y, default same as cx\n            // points defines the collision shape, override to customer the collision shape,\n            // must be a convex polygon in clockwise order\n            points: [  [ -w/2, -h/2 ], [  w/2, -h/2 ], [  w/2,  h/2 ], [ -w/2,  h/2 ] ],\n            opacity: 1,\n            angle: 0,\n            frame: 0\n            type:  Q.SPRITE_DEFAULT | Q.SPRITE_ACTIVE,\n            name: '',\n            sort: false,   // set to true to force children to be sorted by theier p.z,\n            hidden: false,  // set to true to hide the sprite\n            flip: \"\"       // set to \"x\", \"y\", or \"xy\" to flip sprite over that dimension\n           }",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- property has that will be turned into `p`",
+                    "type": "Object"
+                },
+                {
+                    "name": "defaultProps",
+                    "description": "- default properties that are assigned only if there's not a corresponding value in `props`",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 434,
+            "description": "Resets the width, height and center based on the\n asset or sprite sheet",
+            "itemtype": "method",
+            "name": "size",
+            "params": [
+                {
+                    "name": "force",
+                    "description": "- force a reset (call if w or h changes)",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 457,
+            "description": "Get or set the asset associate with this sprite",
+            "itemtype": "method",
+            "name": "asset",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "- leave empty to return the asset, add to set the asset",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "resize",
+                    "description": "- force a call to `size()` and `_generatePoints`",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 475,
+            "description": "Get or set the sheet associate with this sprite",
+            "itemtype": "method",
+            "name": "sheet",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "- leave empty to return the sprite sheet, add to resize",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "resize",
+                    "description": "- force a resize",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 494,
+            "description": "Hide the sprite (render returns without rendering)",
+            "itemtype": "method",
+            "name": "hide",
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 504,
+            "description": "Show the sprite",
+            "itemtype": "method",
+            "name": "show",
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 514,
+            "description": "Set a set of `p` properties on a Sprite",
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "properties",
+                    "description": "- hash of properties to set",
+                    "type": "Object"
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 536,
+            "description": "Default render method for the sprite. Don't overload this unless you want to\nhandle all the transform and scale stuff yourself. Rather overload the `draw` method.",
+            "itemtype": "method",
+            "name": "render",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "- context to render to",
+                    "type": "Context2D"
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 579,
+            "description": "Center sprite inside of it's container (or the stage)",
+            "itemtype": "method",
+            "name": "center",
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 596,
+            "description": "Draw the asset on the stage. the context passed in is alreay transformed.\n\nAll you need to do is a draw the sprite centered at 0,0",
+            "itemtype": "method",
+            "name": "draw",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "",
+                    "type": "Context2D"
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        },
+        {
+            "file": "lib/quintus_sprites.js",
+            "line": 655,
+            "description": "Update method is called each step with the time elapsed since the last step.\n\nDoesn't do anything other than trigger events, call a `step` method if defined\nand run update on all its children.\n\nGenerally leave this method alone and define a `step` method that will be called",
+            "itemtype": "method",
+            "name": "update",
+            "params": [
+                {
+                    "name": "dt",
+                    "description": "- time elapsed since last call",
+                    "type": "Float"
+                }
+            ],
+            "class": "Q.Sprite",
+            "module": "Quintus.Sprites"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:333"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:364"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:385"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:408"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:427"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:443"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:470"
+        },
+        {
+            "message": "unknown tag: events",
+            "line": " lib/quintus.js:942"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus.js:1034"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus_input.js:58"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus_input.js:78"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/quintus_scenes.js:232"
+        },
+        {
+            "message": "Missing item type",
+            "line": " lib/quintus.js:676"
+        },
+        {
+            "message": "Missing item type\nInitialize a matrix from a source or with the identify matrix",
+            "line": " lib/quintus.js:1923"
+        }
+    ]
+}

@@ -1,138 +1,304 @@
-<!DOCTYPE html>  <html> <head>   <title>audio.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="audio.html">                 audio.js               </a>                                           <a class="source" href="ball.html">                 ball.js               </a>                                           <a class="source" href="breakout-levels.html">                 breakout-levels.js               </a>                                           <a class="source" href="breakout-scenes.html">                 breakout-scenes.js               </a>                                           <a class="source" href="breakout-sprites.html">                 breakout-sprites.js               </a>                                           <a class="source" href="breakout-ui.html">                 breakout-ui.js               </a>                                           <a class="source" href="breakout.html">                 breakout.js               </a>                                           <a class="source" href="collision.html">                 collision.js               </a>                                           <a class="source" href="platformer.html">                 platformer.js               </a>                                           <a class="source" href="platforms.html">                 platforms.js               </a>                                           <a class="source" href="sprite.html">                 sprite.js               </a>                                           <a class="source" href="touch.html">                 touch.js               </a>                                           <a class="source" href="tween.html">                 tween.js               </a>                                           <a class="source" href="ui.html">                 ui.js               </a>                                           <a class="source" href="quintus.html">                 quintus.js               </a>                                           <a class="source" href="quintus_2d.html">                 quintus_2d.js               </a>                                           <a class="source" href="quintus_anim.html">                 quintus_anim.js               </a>                                           <a class="source" href="quintus_audio.html">                 quintus_audio.js               </a>                                           <a class="source" href="quintus_input.html">                 quintus_input.js               </a>                                           <a class="source" href="quintus_scenes.html">                 quintus_scenes.js               </a>                                           <a class="source" href="quintus_sprites.html">                 quintus_sprites.js               </a>                                           <a class="source" href="quintus_touch.html">                 quintus_touch.js               </a>                                           <a class="source" href="quintus_ui.html">                 quintus_ui.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               audio.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>Quintus Audio Example</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+  <title>Quintus Audio Example</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="audio.html">
+                audio.js
+              </a>
+            
+              
+              <a class="source" href="ball.html">
+                ball.js
+              </a>
+            
+              
+              <a class="source" href="breakout-levels.html">
+                breakout-levels.js
+              </a>
+            
+              
+              <a class="source" href="breakout-scenes.html">
+                breakout-scenes.js
+              </a>
+            
+              
+              <a class="source" href="breakout-sprites.html">
+                breakout-sprites.js
+              </a>
+            
+              
+              <a class="source" href="breakout-ui.html">
+                breakout-ui.js
+              </a>
+            
+              
+              <a class="source" href="breakout.html">
+                breakout.js
+              </a>
+            
+              
+              <a class="source" href="cannon.html">
+                cannon.js
+              </a>
+            
+              
+              <a class="source" href="collision.html">
+                collision.js
+              </a>
+            
+              
+              <a class="source" href="disasteroids.html">
+                disasteroids.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platforms.html">
+                platforms.js
+              </a>
+            
+              
+              <a class="source" href="sprite.html">
+                sprite.js
+              </a>
+            
+              
+              <a class="source" href="touch.html">
+                touch.js
+              </a>
+            
+              
+              <a class="source" href="tower_man.html">
+                tower_man.js
+              </a>
+            
+              
+              <a class="source" href="tween.html">
+                tween.js
+              </a>
+            
+              
+              <a class="source" href="ui.html">
+                ui.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="quintus-audio-example">Quintus Audio Example</h1>
 <p><a href="../examples/audio/index.html">Run the example</a></p>
+<p>This example demonstrates the Quintus audio library</p>
 
-<p>This example demonstrates the Quintus audio library</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Set up a Quintus Instance</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="kd">var</span> <span class="nx">Q</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Q</span> <span class="o">=</span> <span class="nx">Quintus</span><span class="p">()</span>
-                     <span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="s2">&quot;Audio, Sprites, Scenes, Touch, UI&quot;</span><span class="p">)</span>
-                     <span class="p">.</span><span class="nx">setup</span><span class="p">()</span>
-                     <span class="p">.</span><span class="nx">touch</span><span class="p">();</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Set up a Quintus Instance</p>
 
-  <span class="kd">function</span> <span class="nx">goHTML5Audio</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">assets</span> <span class="o">=</span> <span class="p">{};</span>
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">enableHTML5Sound</span><span class="p">();</span>
-    <span class="nx">loadAssetsAndGo</span><span class="p">();</span>
-  <span class="p">}</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="keyword">var</span> Q = window.Q = Quintus()
+                     .include(<span class="string">"Audio, Sprites, Scenes, Touch, UI"</span>)
+                     .setup()
+                     .touch();
 
-  <span class="kd">function</span> <span class="nx">goWebAudio</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">assets</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">enableWebAudioSound</span><span class="p">();</span>
-    <span class="nx">loadAssetsAndGo</span><span class="p">();</span>
-  <span class="p">}</span>
+  <span class="function"><span class="keyword">function</span> <span class="title">goHTML5Audio</span><span class="params">()</span> {</span>
+    Q.assets = {};
+    Q.audio.enableHTML5Sound();
+    loadAssetsAndGo();
+  }
 
-  <span class="nx">Q</span><span class="p">.</span><span class="nx">scene</span><span class="p">(</span><span class="s2">&quot;selector&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Container</span><span class="p">({</span>
-      <span class="nx">w</span><span class="o">:</span> <span class="s2">&quot;0%&quot;</span><span class="p">,</span>
-      <span class="nx">y</span><span class="o">:</span> <span class="mi">50</span>
-    <span class="p">}));</span>
+  <span class="function"><span class="keyword">function</span> <span class="title">goWebAudio</span><span class="params">()</span> {</span>
+    Q.assets = [];
+    Q.audio.enableWebAudioSound();
+    loadAssetsAndGo();
+  }
 
-
-    <span class="k">if</span><span class="p">(</span><span class="nx">Q</span><span class="p">.</span><span class="nx">hasWebAudio</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="kd">var</span> <span class="nx">web</span> <span class="o">=</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Button</span><span class="p">({</span>
-        <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Web Audio&quot;</span><span class="p">,</span>
-        <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-        <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#CCC&quot;</span><span class="p">,</span>
-        <span class="nx">highlight</span><span class="o">:</span> <span class="s2">&quot;#999&quot;</span>
-      <span class="p">},</span><span class="nx">goWebAudio</span><span class="p">),</span><span class="nx">container</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Text</span><span class="p">({</span>
-        <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Web Audio\nnot supported&quot;</span><span class="p">,</span>
-        <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-      <span class="p">}),</span> <span class="nx">container</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="kd">var</span> <span class="nx">html5</span> <span class="o">=</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Button</span><span class="p">({</span>
-      <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;HTML5 Audio&quot;</span><span class="p">,</span>
-      <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-      <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#CCC&quot;</span><span class="p">,</span>
-      <span class="nx">highlight</span><span class="o">:</span> <span class="s2">&quot;#999&quot;</span><span class="p">,</span>
-      <span class="nx">y</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
-    <span class="p">},</span> <span class="nx">goHTML5Audio</span><span class="p">),</span><span class="nx">container</span><span class="p">);</span>
+  Q.scene(<span class="string">"selector"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+    <span class="keyword">var</span> container = stage.insert(<span class="keyword">new</span> Q.UI.Container({
+      w: <span class="string">"0%"</span>,
+      y: <span class="number">50</span>
+    }));
 
 
-    <span class="k">if</span><span class="p">(</span><span class="nx">Q</span><span class="p">.</span><span class="nx">touchDevice</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Text</span><span class="p">({</span>
-        <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;HTML5 Audio\nnot well\nsupported\non Mobile&quot;</span><span class="p">,</span>
-        <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-        <span class="nx">y</span><span class="o">:</span> <span class="mi">200</span>
-      <span class="p">}),</span> <span class="nx">container</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="keyword">if</span>(Q.hasWebAudio) { 
+      <span class="keyword">var</span> web = stage.insert(<span class="keyword">new</span> Q.UI.Button({
+        label: <span class="string">"Web Audio"</span>,
+        align: <span class="string">"center"</span>,
+        fill: <span class="string">"#CCC"</span>,
+        highlight: <span class="string">"#999"</span>
+      },goWebAudio),container);
+    } <span class="keyword">else</span> {
+      stage.insert(<span class="keyword">new</span> Q.UI.Text({
+        label: <span class="string">"Web Audio\nnot supported"</span>,
+        align: <span class="string">"center"</span>,
+      }), container);
+    }
 
-    <span class="nx">container</span><span class="p">.</span><span class="nx">fit</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-  <span class="p">});</span>
-
-  <span class="nx">Q</span><span class="p">.</span><span class="nx">scene</span><span class="p">(</span><span class="s2">&quot;loading&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Text</span><span class="p">({</span>
-      <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Loading...&quot;</span><span class="p">,</span>
-      <span class="nx">x</span><span class="o">:</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
-      <span class="nx">y</span><span class="o">:</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span>
-    <span class="p">}));</span>
-  <span class="p">});</span>
-
-  <span class="nx">Q</span><span class="p">.</span><span class="nx">scene</span><span class="p">(</span><span class="s2">&quot;play&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">sounds</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Guitar 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Guitar 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Guitar 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Kick&quot;</span><span class="p">,</span> <span class="s2">&quot;Snare&quot;</span><span class="p">,</span> <span class="s2">&quot;TomTom&quot;</span><span class="p">];</span>
-
-    <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Text</span><span class="p">({</span>
-      <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;No Loop&quot;</span><span class="p">,</span>
-      <span class="nx">x</span><span class="o">:</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>
-      <span class="nx">y</span><span class="o">:</span> <span class="mi">20</span>
-    <span class="p">}));</span>
-
-    <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Text</span><span class="p">({</span>
-      <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Loop&quot;</span><span class="p">,</span>
-      <span class="nx">x</span><span class="o">:</span> <span class="mi">3</span><span class="o">*</span><span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>
-      <span class="nx">y</span><span class="o">:</span> <span class="mi">20</span>
-    <span class="p">}));</span>
+    <span class="keyword">var</span> html5 = stage.insert(<span class="keyword">new</span> Q.UI.Button({
+      label: <span class="string">"HTML5 Audio"</span>,
+      align: <span class="string">"center"</span>,
+      fill: <span class="string">"#CCC"</span>,
+      highlight: <span class="string">"#999"</span>,
+      y: <span class="number">80</span>,
+    }, goHTML5Audio),container);
 
 
-    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">x</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">;</span><span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">sounds</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">sound</span><span class="p">,</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Button</span><span class="p">({</span>
-            <span class="nx">label</span><span class="o">:</span> <span class="nx">sound</span><span class="p">,</span>
-            <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-            <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#999&quot;</span><span class="p">,</span>
-            <span class="nx">highlight</span><span class="o">:</span> <span class="s2">&quot;#CCC&quot;</span><span class="p">,</span>
-            <span class="nx">w</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-            <span class="nx">h</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
-            <span class="nx">x</span><span class="o">:</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span>
-            <span class="nx">y</span><span class="o">:</span> <span class="nx">i</span><span class="o">*</span><span class="mi">40</span> <span class="o">+</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nx">font</span><span class="o">:</span> <span class="s2">&quot;400 18px arial&quot;</span>
-          <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">Q</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span><span class="nx">sound</span><span class="p">,</span> <span class="p">{</span> <span class="nx">loop</span><span class="o">:</span> <span class="nx">x</span> <span class="o">==</span> <span class="mi">1</span>  <span class="p">});</span>
-          <span class="p">}));</span>
-        <span class="p">}(</span><span class="nx">sounds</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="nx">x</span><span class="p">));</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="keyword">if</span>(Q.touchDevice) {
+      stage.insert(<span class="keyword">new</span> Q.UI.Text({
+        label: <span class="string">"HTML5 Audio\nnot well\nsupported\non Mobile"</span>,
+        align: <span class="string">"center"</span>,
+        y: <span class="number">200</span>
+      }), container);
+    }
+
+    container.fit(<span class="number">20</span>);
+  });
+
+  Q.scene(<span class="string">"loading"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+    stage.insert(<span class="keyword">new</span> Q.UI.Text({
+      label: <span class="string">"Loading..."</span>,
+      x: Q.width/<span class="number">2</span>,
+      y: Q.height/<span class="number">2</span>
+    }));
+  });
+
+  Q.scene(<span class="string">"play"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+    sounds = [<span class="string">"Guitar 1"</span>, <span class="string">"Guitar 2"</span>, <span class="string">"Guitar 3"</span>, <span class="string">"Kick"</span>, <span class="string">"Snare"</span>, <span class="string">"TomTom"</span>];
+
+    stage.insert(<span class="keyword">new</span> Q.UI.Text({
+      label: <span class="string">"No Loop"</span>,
+      x: Q.width/<span class="number">4</span>,
+      y: <span class="number">20</span>
+    }));
+
+    stage.insert(<span class="keyword">new</span> Q.UI.Text({
+      label: <span class="string">"Loop"</span>,
+      x: <span class="number">3</span>*Q.width/<span class="number">4</span>,
+      y: <span class="number">20</span>
+    }));
 
 
-    <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Button</span><span class="p">({</span>
-      <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Stop All&quot;</span><span class="p">,</span>
-      <span class="nx">align</span><span class="o">:</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span>
-      <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#999&quot;</span><span class="p">,</span>
-      <span class="nx">highlight</span><span class="o">:</span> <span class="s2">&quot;#CCC&quot;</span><span class="p">,</span>
-      <span class="nx">w</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-      <span class="nx">x</span><span class="o">:</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
-      <span class="nx">y</span><span class="o">:</span> <span class="nx">i</span><span class="o">*</span><span class="mi">60</span> <span class="o">+</span> <span class="mi">20</span>
-    <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">Q</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
-    <span class="p">}));</span>
+    <span class="keyword">for</span>(<span class="keyword">var</span> x=<span class="number">0</span>;x&lt;<span class="number">2</span>;x++) { 
+      <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;sounds.length;i++) {
+        (<span class="function"><span class="keyword">function</span><span class="params">(sound,x)</span> {</span>
+          stage.insert(<span class="keyword">new</span> Q.UI.Button({
+            label: sound,
+            align: <span class="string">"center"</span>,
+            fill: <span class="string">"#999"</span>,
+            highlight: <span class="string">"#CCC"</span>,
+            w: <span class="number">100</span>,
+            h: <span class="number">30</span>,
+            x: x * Q.width/<span class="number">2</span> + Q.width/<span class="number">4</span>,
+            y: i*<span class="number">40</span> + <span class="number">60</span>,
+            font: <span class="string">"400 18px arial"</span>
+          }, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            Q.audio.play(sound, { loop: x == <span class="number">1</span>  });
+          }));
+        }(sounds[i],x));
+      }
+    }
 
-  <span class="p">});</span>
+
+    stage.insert(<span class="keyword">new</span> Q.UI.Button({
+      label: <span class="string">"Stop All"</span>,
+      align: <span class="string">"center"</span>,
+      fill: <span class="string">"#999"</span>,
+      highlight: <span class="string">"#CCC"</span>,
+      w: <span class="number">200</span>,
+      x: Q.width/<span class="number">2</span>,
+      y: i*<span class="number">60</span> + <span class="number">20</span>
+    }, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+      Q.audio.stop();
+    }));
+
+  });
 
 
-  <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s2">&quot;selector&quot;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Note: we only have mp3's to keep the repo size down
-normally you'll want mp3 + ogg </p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="kd">function</span> <span class="nx">loadAssetsAndGo</span><span class="p">()</span> <span class="p">{</span> 
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s2">&quot;loading&quot;</span><span class="p">);</span>
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">load</span><span class="p">({</span>
-          <span class="s2">&quot;Guitar 1&quot;</span><span class="o">:</span> <span class="s2">&quot;14564__noisecollector__yamaha-a6.mp3&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Guitar 2&quot;</span><span class="o">:</span> <span class="s2">&quot;14565__noisecollector__yamaha-a7.mp3&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Guitar 3&quot;</span><span class="o">:</span> <span class="s2">&quot;14567__noisecollector__yamaha-am.mp3&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Kick&quot;</span><span class="o">:</span> <span class="s2">&quot;16287__ltibbits__kick-high-vol.mp3&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;Snare&quot;</span><span class="o">:</span> <span class="s2">&quot;16292__ltibbits__rim1-snare.mp3&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;TomTom&quot;</span><span class="o">:</span> <span class="s2">&quot;16295__ltibbits__rim4-tom-16.mp3&quot;</span>
-        <span class="p">},</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s2">&quot;play&quot;</span><span class="p">);</span> <span class="p">});</span>
-  <span class="p">}</span>
+  Q.stageScene(<span class="string">"selector"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Note: we only have mp3&#39;s to keep the repo size down
+normally you&#39;ll want mp3 + ogg </p>
 
-<span class="p">});</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="function"><span class="keyword">function</span> <span class="title">loadAssetsAndGo</span><span class="params">()</span> {</span> 
+    Q.stageScene(<span class="string">"loading"</span>);
+    Q.load({
+          <span class="string">"Guitar 1"</span>: <span class="string">"14564__noisecollector__yamaha-a6.mp3"</span>,
+          <span class="string">"Guitar 2"</span>: <span class="string">"14565__noisecollector__yamaha-a7.mp3"</span>,
+          <span class="string">"Guitar 3"</span>: <span class="string">"14567__noisecollector__yamaha-am.mp3"</span>,
+          <span class="string">"Kick"</span>: <span class="string">"16287__ltibbits__kick-high-vol.mp3"</span>,
+          <span class="string">"Snare"</span>: <span class="string">"16292__ltibbits__rim1-snare.mp3"</span>,
+          <span class="string">"TomTom"</span>: <span class="string">"16295__ltibbits__rim4-tom-16.mp3"</span>
+        },<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> Q.stageScene(<span class="string">"play"</span>); });
+  }
 
-</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

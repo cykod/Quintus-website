@@ -1,113 +1,564 @@
-<!DOCTYPE html>  <html> <head>   <title>platforms.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="audio.html">                 audio.js               </a>                                           <a class="source" href="ball.html">                 ball.js               </a>                                           <a class="source" href="breakout-levels.html">                 breakout-levels.js               </a>                                           <a class="source" href="breakout-scenes.html">                 breakout-scenes.js               </a>                                           <a class="source" href="breakout-sprites.html">                 breakout-sprites.js               </a>                                           <a class="source" href="breakout-ui.html">                 breakout-ui.js               </a>                                           <a class="source" href="breakout.html">                 breakout.js               </a>                                           <a class="source" href="collision.html">                 collision.js               </a>                                           <a class="source" href="platformer.html">                 platformer.js               </a>                                           <a class="source" href="platforms.html">                 platforms.js               </a>                                           <a class="source" href="sprite.html">                 sprite.js               </a>                                           <a class="source" href="touch.html">                 touch.js               </a>                                           <a class="source" href="tween.html">                 tween.js               </a>                                           <a class="source" href="ui.html">                 ui.js               </a>                                           <a class="source" href="quintus.html">                 quintus.js               </a>                                           <a class="source" href="quintus_2d.html">                 quintus_2d.js               </a>                                           <a class="source" href="quintus_anim.html">                 quintus_anim.js               </a>                                           <a class="source" href="quintus_audio.html">                 quintus_audio.js               </a>                                           <a class="source" href="quintus_input.html">                 quintus_input.js               </a>                                           <a class="source" href="quintus_scenes.html">                 quintus_scenes.js               </a>                                           <a class="source" href="quintus_sprites.html">                 quintus_sprites.js               </a>                                           <a class="source" href="quintus_touch.html">                 quintus_touch.js               </a>                                           <a class="source" href="quintus_ui.html">                 quintus_ui.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               platforms.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>Quintus platforms example</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+  <title>Quintus platforms example</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="audio.html">
+                audio.js
+              </a>
+            
+              
+              <a class="source" href="ball.html">
+                ball.js
+              </a>
+            
+              
+              <a class="source" href="breakout-levels.html">
+                breakout-levels.js
+              </a>
+            
+              
+              <a class="source" href="breakout-scenes.html">
+                breakout-scenes.js
+              </a>
+            
+              
+              <a class="source" href="breakout-sprites.html">
+                breakout-sprites.js
+              </a>
+            
+              
+              <a class="source" href="breakout-ui.html">
+                breakout-ui.js
+              </a>
+            
+              
+              <a class="source" href="breakout.html">
+                breakout.js
+              </a>
+            
+              
+              <a class="source" href="cannon.html">
+                cannon.js
+              </a>
+            
+              
+              <a class="source" href="collision.html">
+                collision.js
+              </a>
+            
+              
+              <a class="source" href="disasteroids.html">
+                disasteroids.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platforms.html">
+                platforms.js
+              </a>
+            
+              
+              <a class="source" href="sprite.html">
+                sprite.js
+              </a>
+            
+              
+              <a class="source" href="touch.html">
+                touch.js
+              </a>
+            
+              
+              <a class="source" href="tower_man.html">
+                tower_man.js
+              </a>
+            
+              
+              <a class="source" href="tween.html">
+                tween.js
+              </a>
+            
+              
+              <a class="source" href="ui.html">
+                ui.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="quintus-platforms-example">Quintus platforms example</h1>
 <p><a href="../examples/platforms/index.html">Run the example</a>
 WARNING: this game must be run from a non-file:// url
 as it loads a level json file.</p>
-
 <p>This example uses convex polygons as structures for the 
-player to jump across</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>Set up an instance of the Quintus engine  and include
+player to jump across</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Set up an instance of the Quintus engine  and include
 the Sprites, Scenes, Input and 2D module. The 2D module
-includes the <code>TileLayer</code> class as well as the <code>2d</code> componet.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">Q</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Q</span> <span class="o">=</span> <span class="nx">Quintus</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="s2">&quot;Sprites, Scenes, Input, 2D, Anim, Touch, UI&quot;</span><span class="p">)</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Maximize this game to whatever the size of the browser is</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="p">.</span><span class="nx">setup</span><span class="p">({</span> <span class="nx">maximize</span><span class="o">:</span> <span class="kc">true</span> <span class="p">})</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>And turn on default input controls and touch input (for UI)</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="p">.</span><span class="nx">controls</span><span class="p">().</span><span class="nx">touch</span><span class="p">()</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <h2>Player Sprite</h2>
+includes the <code>TileLayer</code> class as well as the <code>2d</code> componet.</p>
 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> Q = window.Q = Quintus()
+        .include(<span class="string">"Sprites, Scenes, Input, 2D, Anim, Touch, UI"</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Maximize this game to whatever the size of the browser is</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .setup({ maximize: <span class="literal">true</span> })</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>And turn on default input controls and touch input (for UI)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        .controls().touch()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h2 id="player-sprite">Player Sprite</h2>
 <p>The very basic player sprite, this is just a normal sprite
-using the player sprite sheet with default controls added to it.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">Q</span><span class="p">.</span><span class="nx">Sprite</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="s2">&quot;Player&quot;</span><span class="p">,{</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>the init constructor is called on creation</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>You can call the parent's constructor with this._super(..)</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="p">{</span>
-      <span class="nx">sheet</span><span class="o">:</span> <span class="s2">&quot;player&quot;</span><span class="p">,</span>  <span class="c1">// Setting a sprite sheet sets sprite width and height</span>
-      <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>           <span class="c1">// You can also set additional properties that can</span>
-      <span class="nx">y</span><span class="o">:</span> <span class="o">-</span><span class="mi">100</span>             <span class="c1">// be overridden on object creation</span>
-    <span class="p">});</span>
+using the player sprite sheet with default controls added to it.</p>
 
-    <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;2d, platformerControls&#39;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p>Write event handlers to respond hook into behaviors.
-hit.sprite is called everytime the player collides with a sprite</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="k">this</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;hit.sprite&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">collision</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>Check the collision, if it's the Tower, you win!</p>             </td>             <td class="code">               <div class="highlight"><pre>      <span class="k">if</span><span class="p">(</span><span class="nx">collision</span><span class="p">.</span><span class="nx">obj</span><span class="p">.</span><span class="nx">isA</span><span class="p">(</span><span class="s2">&quot;Tower&quot;</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s2">&quot;endGame&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;You Won!&quot;</span> <span class="p">});</span> 
-        <span class="k">this</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
-      <span class="p">}</span>
-    <span class="p">});</span>
-  <span class="p">},</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Q.Sprite.extend(<span class="string">"Player"</span>,{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>the init constructor is called on creation</p>
 
-  <span class="nx">step</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">dt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">y</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s2">&quot;endGame&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;You Fell!&quot;</span> <span class="p">});</span>
-    <span class="p">}</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>You can call the parent&#39;s constructor with this._super(..)</p>
 
-    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">vy</span> <span class="o">&gt;</span> <span class="mi">600</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">vy</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span> <span class="p">}</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">this</span>._super(p, {
+      sheet: <span class="string">"player"</span>,  <span class="comment">// Setting a sprite sheet sets sprite width and height</span>
+      x: <span class="number">0</span>,           <span class="comment">// You can also set additional properties that can</span>
+      y: -<span class="number">100</span>             <span class="comment">// be overridden on object creation</span>
+    });
+
+    <span class="keyword">this</span>.add(<span class="string">'2d, platformerControls'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Write event handlers to respond hook into behaviors.
+hit.sprite is called everytime the player collides with a sprite</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="function"><span class="keyword">function</span><span class="params">(collision)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Check the collision, if it&#39;s the Tower, you win!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="keyword">if</span>(collision.obj.isA(<span class="string">"Tower"</span>)) {
+        Q.stageScene(<span class="string">"endGame"</span>,<span class="number">1</span>, { label: <span class="string">"You Won!"</span> }); 
+        <span class="keyword">this</span>.destroy();
+      }
+    });
+  },
+
+  step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    <span class="keyword">if</span>(<span class="keyword">this</span>.p.y &gt; <span class="number">200</span>) {
+      Q.stageScene(<span class="string">"endGame"</span>,<span class="number">1</span>, { label: <span class="string">"You Fell!"</span> });
+    }
+
+    <span class="keyword">if</span>(<span class="keyword">this</span>.p.vy &gt; <span class="number">600</span>) { <span class="keyword">this</span>.p.vy = <span class="number">600</span>; }
     
-  <span class="p">}</span>
+  }
 
-<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <h2>Tower Sprite</h2>
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <h2 id="tower-sprite">Tower Sprite</h2>
+<p>Sprites can be simple, the Tower sprite just sets a custom sprite sheet</p>
 
-<p>Sprites can be simple, the Tower sprite just sets a custom sprite sheet</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">Q</span><span class="p">.</span><span class="nx">Sprite</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="s2">&quot;Tower&quot;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="p">{</span> <span class="nx">sheet</span><span class="o">:</span> <span class="s1">&#39;tower&#39;</span> <span class="p">});</span>
-  <span class="p">}</span>
-<span class="p">});</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Q.Sprite.extend(<span class="string">"Tower"</span>, {
+  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    <span class="keyword">this</span>._super(p, { sheet: <span class="string">'tower'</span> });
+  }
+});
 
 
-<span class="nx">Q</span><span class="p">.</span><span class="nx">Sprite</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="s2">&quot;Block&quot;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
-  <span class="p">},</span>
+Q.Sprite.extend(<span class="string">"Block"</span>, {
+  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    <span class="keyword">this</span>._super(p);
+  },
 
-  <span class="nx">draw</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">Q</span><span class="p">.</span><span class="nx">_generatePoints</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-    <span class="p">}</span>
+  draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+    <span class="keyword">if</span>(!<span class="keyword">this</span>.p.points) {
+      Q._generatePoints(<span class="keyword">this</span>);
+    }
 
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">hit</span> <span class="o">?</span> <span class="s2">&quot;blue&quot;</span> <span class="o">:</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="s2">&quot;#000000&quot;</span><span class="p">;</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">&quot;rgba(0,0,0,0.5)&quot;</span><span class="p">;</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="p">}</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="k">this</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
-  <span class="p">}</span>
-<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-11">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-11">&#182;</a>               </div>               <h2>Level1 scene</h2>
+    ctx.beginPath();
+    ctx.fillStyle = <span class="keyword">this</span>.p.hit ? <span class="string">"blue"</span> : <span class="string">"red"</span>;
+    ctx.strokeStyle = <span class="string">"#000000"</span>;
+    ctx.fillStyle = <span class="string">"rgba(0,0,0,0.5)"</span>;
+    ctx.moveTo(<span class="keyword">this</span>.p.points[<span class="number">0</span>][<span class="number">0</span>],<span class="keyword">this</span>.p.points[<span class="number">0</span>][<span class="number">1</span>]);
+    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.p.points.length;i++) {
+      ctx.lineTo(<span class="keyword">this</span>.p.points[i][<span class="number">0</span>],<span class="keyword">this</span>.p.points[i][<span class="number">1</span>]);
+    }
+    ctx.lineTo(<span class="keyword">this</span>.p.points[<span class="number">0</span>][<span class="number">0</span>],<span class="keyword">this</span>.p.points[<span class="number">0</span>][<span class="number">1</span>]);
+    ctx.stroke();
+  }
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <h2 id="level1-scene">Level1 scene</h2>
+<p>Create a new scene called level 1</p>
 
-<p>Create a new scene called level 1</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">Q</span><span class="p">.</span><span class="nx">scene</span><span class="p">(</span><span class="s2">&quot;level1&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-12">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-12">&#182;</a>               </div>               <p>Add in a repeater for a little parallax action</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Repeater</span><span class="p">({</span> <span class="nx">asset</span><span class="o">:</span> <span class="s2">&quot;background-wall.png&quot;</span><span class="p">,</span> <span class="nx">speedX</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nx">speedY</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mi">0</span> <span class="p">}));</span></pre></div>             </td>           </tr>                               <tr id="section-13">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-13">&#182;</a>               </div>               <p>Create the player and add them to the stage</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Player</span><span class="p">());</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">"level1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Add in a repeater for a little parallax action</p>
 
-  <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Block</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="nx">h</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nx">w</span><span class="o">:</span> <span class="mi">50</span> <span class="p">}));</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  stage.insert(<span class="keyword">new</span> Q.Repeater({ asset: <span class="string">"background-wall.png"</span>, speedX: <span class="number">0.5</span>, speedY: <span class="number">0.5</span>, type: <span class="number">0</span> }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Create the player and add them to the stage</p>
 
-  <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Block</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">h</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nx">w</span><span class="o">:</span> <span class="mi">150</span> <span class="p">}));</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="keyword">var</span> player = stage.insert(<span class="keyword">new</span> Q.Player());
 
-  <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Block</span><span class="p">({</span> 
-    <span class="nx">x</span><span class="o">:</span> <span class="mi">140</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">h</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nx">w</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="nx">points</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">],</span> <span class="p">[</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">15</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">]</span>
-  <span class="p">}));</span>
+  stage.insert(<span class="keyword">new</span> Q.Block({ x: <span class="number">50</span>, y: -<span class="number">30</span>, h: <span class="number">30</span>, w: <span class="number">50</span> }));
 
-  <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Block</span><span class="p">({</span> 
-    <span class="nx">x</span><span class="o">:</span> <span class="mi">340</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">h</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">w</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="nx">points</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">]</span> <span class="p">,[</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span> <span class="p">],</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span> <span class="p">],</span> <span class="p">[</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">]</span>
-  <span class="p">}));</span>
+  stage.insert(<span class="keyword">new</span> Q.Block({ x: <span class="number">0</span>, y: <span class="number">0</span>, h: <span class="number">50</span>, w: <span class="number">150</span> }));
 
-  <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Block</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">500</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span> <span class="nx">h</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span> <span class="nx">w</span><span class="o">:</span> <span class="mi">50</span> <span class="p">}));</span></pre></div>             </td>           </tr>                               <tr id="section-14">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-14">&#182;</a>               </div>               <p>Give the stage a moveable viewport and tell it
-to follow the player.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">stage</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;viewport&quot;</span><span class="p">).</span><span class="nx">follow</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <p>Finally add in the tower goal</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">Tower</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">500</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">}));</span>
-<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-16">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-16">&#182;</a>               </div>               <p>To display a game over / game won popup box, 
+  stage.insert(<span class="keyword">new</span> Q.Block({ 
+    x: <span class="number">140</span>, y: <span class="number">0</span>, h: <span class="number">50</span>, w: <span class="number">100</span>,
+    points: [ [ <span class="number">0</span>, -<span class="number">15</span>], [ <span class="number">50</span>, <span class="number">0</span> ], [ <span class="number">0</span>, <span class="number">15</span> ], [ -<span class="number">50</span>, <span class="number">0</span> ] ]
+  }));
+
+  stage.insert(<span class="keyword">new</span> Q.Block({ 
+    x: <span class="number">340</span>, y: <span class="number">0</span>, h: <span class="number">100</span>, w: <span class="number">100</span>,
+    points: [ [ <span class="number">0</span>, -<span class="number">50</span>], [<span class="number">25</span>, -<span class="number">40</span>] ,[ <span class="number">50</span>, <span class="number">0</span> ], [ <span class="number">0</span>, <span class="number">50</span> ], [ -<span class="number">100</span>, <span class="number">0</span> ] ]
+  }));
+
+  stage.insert(<span class="keyword">new</span> Q.Block({ x: <span class="number">500</span>, y: <span class="number">40</span>, h: <span class="number">50</span>, w: <span class="number">50</span> }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Give the stage a moveable viewport and tell it
+to follow the player.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  stage.add(<span class="string">"viewport"</span>).follow(player);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Finally add in the tower goal</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  stage.insert(<span class="keyword">new</span> Q.Tower({ x: <span class="number">500</span>, y: <span class="number">0</span> }));
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>To display a game over / game won popup box, 
 create a endGame scene that takes in a <code>label</code> option
-to control the displayed message.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">Q</span><span class="p">.</span><span class="nx">scene</span><span class="p">(</span><span class="s1">&#39;endGame&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">stage</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Container</span><span class="p">({</span>
-    <span class="nx">x</span><span class="o">:</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;rgba(0,0,0,0.5)&quot;</span>
-  <span class="p">}));</span>
+to control the displayed message.</p>
 
-  <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Button</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#CCCCCC&quot;</span><span class="p">,</span>
-                                                  <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Play Again&quot;</span> <span class="p">}))</span>         
-  <span class="kd">var</span> <span class="nx">label</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="k">new</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Text</span><span class="p">({</span><span class="nx">x</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="o">-</span><span class="mi">10</span> <span class="o">-</span> <span class="nx">button</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">h</span><span class="p">,</span> 
-                                                   <span class="nx">label</span><span class="o">:</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">label</span> <span class="p">}));</span></pre></div>             </td>           </tr>                               <tr id="section-17">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-17">&#182;</a>               </div>               <p>When the button is clicked, clear all the stages
-and restart the game.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">button</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">clearStages</span><span class="p">();</span>
-    <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s1">&#39;level1&#39;</span><span class="p">);</span>
-  <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-18">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-18">&#182;</a>               </div>               <p>Expand the container to visibily fit it's contents
-(with a padding of 20 pixels)</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">container</span><span class="p">.</span><span class="nx">fit</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-19">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-19">&#182;</a>               </div>               <h2>Asset Loading and Game Launch</h2>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">'endGame'</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  <span class="keyword">var</span> container = stage.insert(<span class="keyword">new</span> Q.UI.Container({
+    x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>, fill: <span class="string">"rgba(0,0,0,0.5)"</span>
+  }));
 
+  <span class="keyword">var</span> button = container.insert(<span class="keyword">new</span> Q.UI.Button({ x: <span class="number">0</span>, y: <span class="number">0</span>, fill: <span class="string">"#CCCCCC"</span>,
+                                                  label: <span class="string">"Play Again"</span> }))         
+  <span class="keyword">var</span> label = container.insert(<span class="keyword">new</span> Q.UI.Text({x:<span class="number">10</span>, y: -<span class="number">10</span> - button.p.h, 
+                                                   label: stage.options.label }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>When the button is clicked, clear all the stages
+and restart the game.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  button.on(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    Q.clearStages();
+    Q.stageScene(<span class="string">'level1'</span>);
+  });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Expand the container to visibily fit it&#39;s contents
+(with a padding of 20 pixels)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  container.fit(<span class="number">20</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <h2 id="asset-loading-and-game-launch">Asset Loading and Game Launch</h2>
 <p>Q.load can be called at any time to load additional assets
 assets that are already loaded will be skipped
-The callback will be triggered when everything is loaded</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">Q</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s2">&quot;sprites.png, sprites.json,  background-wall.png&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-20">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-20">&#182;</a>               </div>               <p>Or from a .json asset that defines sprite locations</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">Q</span><span class="p">.</span><span class="nx">compileSheets</span><span class="p">(</span><span class="s2">&quot;sprites.png&quot;</span><span class="p">,</span><span class="s2">&quot;sprites.json&quot;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-21">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-21">&#182;</a>               </div>               <p>Finally, call stageScene to run the game</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">Q</span><span class="p">.</span><span class="nx">stageScene</span><span class="p">(</span><span class="s2">&quot;level1&quot;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-22">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-22">&#182;</a>               </div>               <p>Q.debug = true;</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-23">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-23">&#182;</a>               </div>               <h2>Possible Experimentations:</h2>
+The callback will be triggered when everything is loaded</p>
 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Q.load(<span class="string">"sprites.png, sprites.json,  background-wall.png"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Or from a .json asset that defines sprite locations</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Q.compileSheets(<span class="string">"sprites.png"</span>,<span class="string">"sprites.json"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Finally, call stageScene to run the game</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Q.stageScene(<span class="string">"level1"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Q.debug = true;</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <h2 id="possible-experimentations-">Possible Experimentations:</h2>
 <p>The are lots of things to try out here.</p>
-
 <ol>
 <li>Modify level.json to change the level around and add in some more enemies.</li>
 <li>Add in a second level by creating a level2.json and a level2 scene that gets
@@ -115,6 +566,15 @@ loaded after level 1 is complete.</li>
 <li>Add in a title screen</li>
 <li>Add in a hud and points for jumping on enemies.</li>
 <li>Add in a <code>Repeater</code> behind the TileLayer to create a paralax scrolling effect.</li>
-</ol>             </td>             <td class="code">               <div class="highlight"><pre><span class="p">});</span>
+</ol>
 
-</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

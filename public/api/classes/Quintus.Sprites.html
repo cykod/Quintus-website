@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Quintus.Sprites - Quintus</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="Quintus"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.2.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/platformerControls.html">platformerControls</a></li>
+            
+                <li><a href="../classes/Q.Class.html">Q.Class</a></li>
+            
+                <li><a href="../classes/Q.Component.html">Q.Component</a></li>
+            
+                <li><a href="../classes/Q.Evented.html">Q.Evented</a></li>
+            
+                <li><a href="../classes/Q.GameObject.html">Q.GameObject</a></li>
+            
+                <li><a href="../classes/Q.GameState.html">Q.GameState</a></li>
+            
+                <li><a href="../classes/Q.InputSystem.html">Q.InputSystem</a></li>
+            
+                <li><a href="../classes/Q.Matrix2D.html">Q.Matrix2D</a></li>
+            
+                <li><a href="../classes/Q.MovingSprite.html">Q.MovingSprite</a></li>
+            
+                <li><a href="../classes/Q.Scene.html">Q.Scene</a></li>
+            
+                <li><a href="../classes/Q.Sprite.html">Q.Sprite</a></li>
+            
+                <li><a href="../classes/Q.SpriteSheet.html">Q.SpriteSheet</a></li>
+            
+                <li><a href="../classes/Q.Stage.html">Q.Stage</a></li>
+            
+                <li><a href="../classes/Quintus.html">Quintus</a></li>
+            
+                <li><a href="../classes/Quintus.Input.html">Quintus.Input</a></li>
+            
+                <li><a href="../classes/Quintus.Scenes.html">Quintus.Scenes</a></li>
+            
+                <li><a href="../classes/Quintus.Sprites.html">Quintus.Sprites</a></li>
+            
+                <li><a href="../classes/Quintus.TMX.html">Quintus.TMX</a></li>
+            
+                <li><a href="../classes/stepControls.html">stepControls</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/Quintus.html">Quintus</a></li>
+            
+                <li><a href="../modules/Quintus.Input.html">Quintus.Input</a></li>
+            
+                <li><a href="../modules/Quintus.Scenes.html">Quintus.Scenes</a></li>
+            
+                <li><a href="../modules/Quintus.Sprites.html">Quintus.Sprites</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>Quintus.Sprites Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/lib_quintus_sprites.js.html#l14"><code>lib&#x2F;quintus_sprites.js:14</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/Quintus.Sprites.html">Quintus.Sprites</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>Quintus Sprites Module Class</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_Q._generateCollisionPoints">Q._generateCollisionPoints</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_q._generatePoints">q._generatePoints</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Q.compileSheets">Q.compileSheets</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Q.sheet">Q.sheet</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_ACTIVE">Q.SPRITE_ACTIVE</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_ALL">Q.SPRITE_ALL</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_DEFAULT">Q.SPRITE_DEFAULT</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_ENEMY">Q.SPRITE_ENEMY</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_FRIENDLY">Q.SPRITE_FRIENDLY</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_NONE">Q.SPRITE_NONE</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_PARTICLE">Q.SPRITE_PARTICLE</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_POWERUP">Q.SPRITE_POWERUP</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_Q.SPRITE_UI">Q.SPRITE_UI</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_Q._generateCollisionPoints" class="method item">
+    <h3 class="name"><code>Q._generateCollisionPoints</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>obj</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l278"><code>lib&#x2F;quintus_sprites.js:278</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Generate a square set of  <code>c.points</code> on an object from the object transform matrix and <code>p.points</code></p>
+<p><code>c.points</code> represents the collision points of an sprite in world coordinates, scaled, rotate and taking into account any parent transforms.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">obj</code>
+                        <span class="type">q.sprite</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>object to add collision points to</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_q._generatePoints" class="method item">
+    <h3 class="name"><code>q._generatePoints</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>obj</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>force</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l252"><code>lib&#x2F;quintus_sprites.js:252</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>generate a square set of  <code>p.points</code> on an object from <code>p.w</code> and <code>p.h</code></p>
+<p><code>p.points</code> represent the collision points for an object in object coordinates.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">obj</code>
+                        <span class="type"><a href="../classes/Q.Sprite.html" class="crosslink">Q.Sprite</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>object to add points to</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">force</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>if set to true, will regenerate <code>p.points</code> even if it already exists, otherwise  if p.points exist it&#39;ll be left alone</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Q.compileSheets" class="method item">
+    <h3 class="name"><code>Q.compileSheets</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>imageAsset</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>{String</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l152"><code>lib&#x2F;quintus_sprites.js:152</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Create a number of <code>Q.SpriteSheet</code> objects from an image asset and a sprite data JSON asset</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">imageAsset</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">{String</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>spriteDataAsset</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_Q.sheet" class="method item">
+    <h3 class="name"><code>Q.sheet</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[asset]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l135"><code>lib&#x2F;quintus_sprites.js:135</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Return a <code>Q.SpriteSheet</code> or  create a new sprite sheet</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>name of sheet to return or create</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[asset]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>if provided, will create a sprite sheet using this asset</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <ul>
+<li>if provided, will be passed as options to <code>Q.SpriteSheet</code></li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_Q.SPRITE_ACTIVE" class="property item">
+    <h3 class="name"><code>Q.SPRITE_ACTIVE</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l195"><code>lib&#x2F;quintus_sprites.js:195</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>active sprite type 4</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_ALL" class="property item">
+    <h3 class="name"><code>Q.SPRITE_ALL</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l242"><code>lib&#x2F;quintus_sprites.js:242</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>all sprite type - 0xFFFF</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_DEFAULT" class="property item">
+    <h3 class="name"><code>Q.SPRITE_DEFAULT</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l177"><code>lib&#x2F;quintus_sprites.js:177</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>default sprite type 1</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_ENEMY" class="property item">
+    <h3 class="name"><code>Q.SPRITE_ENEMY</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l213"><code>lib&#x2F;quintus_sprites.js:213</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>enemy sprite type 16</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_FRIENDLY" class="property item">
+    <h3 class="name"><code>Q.SPRITE_FRIENDLY</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l204"><code>lib&#x2F;quintus_sprites.js:204</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>friendly sprite type 8</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_NONE" class="property item">
+    <h3 class="name"><code>Q.SPRITE_NONE</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l168"><code>lib&#x2F;quintus_sprites.js:168</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Bitmask 0 to indicate no sprites</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_PARTICLE" class="property item">
+    <h3 class="name"><code>Q.SPRITE_PARTICLE</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l186"><code>lib&#x2F;quintus_sprites.js:186</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>particle sprite type 2</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_POWERUP" class="property item">
+    <h3 class="name"><code>Q.SPRITE_POWERUP</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l223"><code>lib&#x2F;quintus_sprites.js:223</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>powerup sprite type 32</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Q.SPRITE_UI" class="property item">
+    <h3 class="name"><code>Q.SPRITE_UI</code></h3>
+    <span class="type">Unknown</span>
+
+    
+
+    
+
+    
+        <span class="flag final">final</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_quintus_sprites.js.html#l233"><code>lib&#x2F;quintus_sprites.js:233</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>UI sprite type 64</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

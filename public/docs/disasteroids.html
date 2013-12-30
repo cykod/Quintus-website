@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>disasteroids.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="audio.html">
+                audio.js
+              </a>
+            
+              
+              <a class="source" href="ball.html">
+                ball.js
+              </a>
+            
+              
+              <a class="source" href="breakout-levels.html">
+                breakout-levels.js
+              </a>
+            
+              
+              <a class="source" href="breakout-scenes.html">
+                breakout-scenes.js
+              </a>
+            
+              
+              <a class="source" href="breakout-sprites.html">
+                breakout-sprites.js
+              </a>
+            
+              
+              <a class="source" href="breakout-ui.html">
+                breakout-ui.js
+              </a>
+            
+              
+              <a class="source" href="breakout.html">
+                breakout.js
+              </a>
+            
+              
+              <a class="source" href="cannon.html">
+                cannon.js
+              </a>
+            
+              
+              <a class="source" href="collision.html">
+                collision.js
+              </a>
+            
+              
+              <a class="source" href="disasteroids.html">
+                disasteroids.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platforms.html">
+                platforms.js
+              </a>
+            
+              
+              <a class="source" href="sprite.html">
+                sprite.js
+              </a>
+            
+              
+              <a class="source" href="touch.html">
+                touch.js
+              </a>
+            
+              
+              <a class="source" href="tower_man.html">
+                tower_man.js
+              </a>
+            
+              
+              <a class="source" href="tween.html">
+                tween.js
+              </a>
+            
+              
+              <a class="source" href="ui.html">
+                ui.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>disasteroids.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <ol>
+<li>Wait for the onload even</li>
+</ol>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+
+      <span class="keyword">var</span> Q = window.Q = Quintus({ development: <span class="literal">true</span> })
+              .include(<span class="string">"Sprites, Scenes, Input, 2D, Touch, UI"</span>)
+              .setup({ maximize: <span class="literal">true</span> }).touch();
+
+      Q.input.keyboardControls();
+      Q.input.joypadControls();
+
+      Q.gravityX = <span class="number">0</span>;
+      Q.gravityY = <span class="number">0</span>;
+
+      Q.SPRITE_SHIP = <span class="number">1</span>;
+      Q.SPRITE_BULLET = <span class="number">2</span>;
+      Q.SPRITE_ASTEROID = <span class="number">4</span>;
+
+      Q.component(<span class="string">"reposition"</span>, {
+
+        added: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+
+          <span class="keyword">this</span>.entity.on(<span class="string">"step"</span>,<span class="keyword">this</span>,<span class="string">"step"</span>);
+        },
+
+        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+          <span class="keyword">var</span> p = <span class="keyword">this</span>.entity.p;
+          <span class="keyword">var</span> maxSide = Math.sqrt(p.h * p.h  + p.w + p.w);
+          <span class="keyword">if</span>(p.x &gt; Q.width + maxSide) { p.x -= Q.width + maxSide }
+          <span class="keyword">if</span>(p.x &lt; -maxSide) { p.x += Q.width + maxSide }
+
+          <span class="keyword">if</span>(p.y &gt; Q.height + maxSide) { p.y -= Q.height + maxSide }
+          <span class="keyword">if</span>(p.y &lt; -maxSide) { p.y += Q.height + maxSide }
+        }
+
+      });
+
+      Q.Sprite.extend(<span class="string">"VectorSprite"</span>,{
+
+        draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+          <span class="keyword">var</span> p = <span class="keyword">this</span>.p;
+          ctx.fillStyle = <span class="string">"#FFF"</span>;
+
+          ctx.beginPath();
+          ctx.moveTo(p.points[<span class="number">0</span>][<span class="number">0</span>], p.points[<span class="number">0</span>][<span class="number">1</span>]);
+          <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">1</span>, max = p.points.length;i&lt;max;i++) {
+            ctx.lineTo(p.points[i][<span class="number">0</span>], p.points[i][<span class="number">1</span>]);
+          }
+          ctx.fill();
+        }
+      });
+
+      Q.VectorSprite.extend(<span class="string">"Ship"</span>, {
+        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+          <span class="keyword">this</span>._super(p, {
+            type: Q.SPRITE_NONE,
+            collisionMask: Q.SPRITE_ASTEROID,
+            w: <span class="number">10</span>,
+            h: <span class="number">20</span>,
+            omega: <span class="number">0</span>,
+            omegaDelta: <span class="number">700</span>,
+            maxOmega: <span class="number">400</span>,
+            acceleration: <span class="number">8</span>,
+            points: [ [<span class="number">0</span>, -<span class="number">10</span> ], [ <span class="number">5</span>, <span class="number">10</span> ], [ -<span class="number">5</span>,<span class="number">10</span> ]],
+            bulletSpeed: <span class="number">500</span>,
+            activated: <span class="literal">false</span>
+          });
+          <span class="keyword">this</span>.add(<span class="string">"2d, reposition"</span>);
+
+          Q.input.on(<span class="string">"fire"</span>,<span class="keyword">this</span>,<span class="string">"fire"</span>);
+
+          <span class="keyword">this</span>.activationObject = <span class="keyword">new</span> Q.Sprite({ x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>, w: <span class="number">100</span>, h: <span class="number">100</span> });
+        },
+
+        fire: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+          <span class="keyword">var</span> p = <span class="keyword">this</span>.p;
+          <span class="keyword">var</span> dx =  Math.sin(p.angle * Math.PI / <span class="number">180</span>),
+              dy = -Math.cos(p.angle * Math.PI / <span class="number">180</span>);
+          <span class="keyword">this</span>.stage.insert(
+            <span class="keyword">new</span> Q.Bullet({ x: <span class="keyword">this</span>.c.points[<span class="number">0</span>][<span class="number">0</span>], 
+                           y: <span class="keyword">this</span>.c.points[<span class="number">0</span>][<span class="number">1</span>],
+                           vx: dx * p.bulletSpeed,
+                           vy: dy * p.bulletSpeed
+                    })
+          );
+        },
+
+        checkActivation: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+          <span class="keyword">if</span>(!<span class="keyword">this</span>.stage.search(<span class="keyword">this</span>.activationObject, Q.SPRITE_ASTEROID)) {
+            <span class="keyword">this</span>.p.activated = <span class="literal">true</span>;
+          }
+        },
+
+        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+          <span class="keyword">if</span>(!<span class="keyword">this</span>.p.activated) {
+            <span class="keyword">return</span> <span class="keyword">this</span>.checkActivation();
+          }
+
+          <span class="keyword">var</span> p = <span class="keyword">this</span>.p;
+          p.angle += p.omega * dt;
+          p.omega *=  <span class="number">1</span> - <span class="number">1</span> * dt;
+
+          <span class="keyword">if</span>(Q.inputs[<span class="string">"right"</span>]) { 
+            p.omega += p.omegaDelta * dt;
+            <span class="keyword">if</span>(p.omega &gt; p.maxOmega) { p.omega = p.maxOmega; }
+          } <span class="keyword">else</span> <span class="keyword">if</span>(Q.inputs[<span class="string">"left"</span>]) {
+            p.omega -= p.omegaDelta * dt;
+            <span class="keyword">if</span>(p.omega &lt; -p.maxOmega) { p.omega = -p.maxOmega; }
+          }
+
+          <span class="keyword">if</span>(p.angle &gt; <span class="number">360</span>) { p.angle -= <span class="number">360</span>; }
+          <span class="keyword">if</span>(p.angle &lt; <span class="number">0</span>) { p.angle += <span class="number">360</span>; }
+
+          <span class="keyword">if</span>(Q.inputs[<span class="string">"up"</span>]) {
+            <span class="keyword">var</span> thrustX = Math.sin(p.angle * Math.PI / <span class="number">180</span>),
+                thrustY = -Math.cos(p.angle * Math.PI / <span class="number">180</span>);
+
+            p.vx += thrustX * p.acceleration;
+            p.vy += thrustY * p.acceleration;
+          }
+
+        },
+
+        draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+          <span class="keyword">if</span>(<span class="keyword">this</span>.p.activated) { <span class="keyword">this</span>._super(ctx); }
+        },
+
+        reset: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+          Q._extend(<span class="keyword">this</span>.p,{ 
+            x: Q.width/<span class="number">2</span>,
+            y: Q.height/<span class="number">2</span>,
+            vx: <span class="number">0</span>,
+            vy: <span class="number">0</span>,
+            angle: <span class="number">0</span>,
+            omega: <span class="number">0</span>,
+            activated: <span class="literal">false</span>
+          });
+
+        }
+      });
+
+      Q.Sprite.extend(<span class="string">"Bullet"</span>,{
+        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+
+          <span class="keyword">this</span>._super(p,{ 
+            w:<span class="number">2</span>,
+            h:<span class="number">2</span>,
+            type: Q.SPRITE_BULLET,
+            collisionMask: Q.SPRITE_ASTEROID
+          });
+          
+          <span class="keyword">this</span>.add(<span class="string">"2d"</span>);
+          <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="keyword">this</span>,<span class="string">"collision"</span>);
+        },
+
+        collision: <span class="function"><span class="keyword">function</span><span class="params">(col)</span> {</span>
+          <span class="keyword">var</span> objP = col.obj.p;
+          <span class="keyword">if</span>(objP.size &gt; <span class="number">20</span>) { 
+            <span class="keyword">this</span>.stage.insert(<span class="keyword">new</span> Q.Asteroid({ 
+              x: objP.x,
+              y: objP.y,
+              size: objP.size * <span class="number">2</span> / <span class="number">3</span>,
+              startAngle: objP.startAngle + <span class="number">90</span>
+            }));
+            <span class="keyword">this</span>.stage.insert(<span class="keyword">new</span> Q.Asteroid({ 
+              x: objP.x,
+              y: objP.y,
+              size: objP.size * <span class="number">2</span> / <span class="number">3</span>,
+              startAngle: objP.startAngle - <span class="number">90</span>
+            }));
+          }
+
+
+          col.obj.destroy();
+          <span class="keyword">this</span>.destroy();
+        },
+
+        draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+          ctx.fillStyle = <span class="string">"#FFF"</span>;
+          ctx.fillRect(-<span class="keyword">this</span>.p.cx,-<span class="keyword">this</span>.p.cy,<span class="keyword">this</span>.p.w,<span class="keyword">this</span>.p.h);
+        },
+
+        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+          <span class="keyword">if</span>(!Q.overlap(<span class="keyword">this</span>,<span class="keyword">this</span>.stage)) {
+            <span class="keyword">this</span>.destroy();
+          }
+        }
+      });
+
+      Q.VectorSprite.extend(<span class="string">"Asteroid"</span>, {
+
+        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+          p = <span class="keyword">this</span>.createShape(p);
+
+          <span class="keyword">if</span>(!p.vx) {
+            p.startAngle = p.startAngle || Math.random()*<span class="number">360</span>;
+            <span class="keyword">var</span> speed = Math.random()*<span class="number">100</span> + <span class="number">50</span>;
+            p.vx = Math.cos(p.startAngle)*speed;
+            p.vy = Math.sin(p.startAngle)*speed;
+          }
+
+          <span class="keyword">this</span>._super(p, {
+            type: Q.SPRITE_ASTEROID,
+            collisionMask: Q.SPRITE_SHIP,
+            omega: Math.random() * <span class="number">100</span>,
+            skipCollide: <span class="literal">true</span>
+          });
+          <span class="keyword">this</span>.add(<span class="string">"2d, reposition"</span>);
+
+          <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="keyword">this</span>,<span class="string">"collision"</span>);
+        },
+
+        collision: <span class="function"><span class="keyword">function</span><span class="params">(col)</span> {</span>
+          <span class="keyword">if</span>(col.obj.isA(<span class="string">"Ship"</span>)) {
+            col.obj.reset(); 
+          }
+        },
+
+        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+          <span class="keyword">this</span>.p.angle += <span class="keyword">this</span>.p.omega * dt;
+        },
+
+        createShape: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+          <span class="keyword">var</span> angle = Math.random()*<span class="number">2</span>*Math.PI,
+              numPoints = <span class="number">7</span> + Math.floor(Math.random()*<span class="number">5</span>),
+              minX = <span class="number">0</span>, maxX = <span class="number">0</span>,
+              minY = <span class="number">0</span>, maxY = <span class="number">0</span>,
+              curX, curY;
+
+          p = p || {};
+
+          p.points = [];
+
+          <span class="keyword">var</span> startAmount = p.size;
+
+          <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; numPoints;i++) {
+            curX = Math.floor(Math.cos(angle)*startAmount);
+            curY = Math.floor(Math.sin(angle)*startAmount);
+
+            <span class="keyword">if</span>(curX &lt; minX) minX = curX;
+            <span class="keyword">if</span>(curX &gt; maxX) maxX = curX;
+
+            <span class="keyword">if</span>(curY &lt; minY) minY = curY;
+            <span class="keyword">if</span>(curY &gt; maxY) maxY = curY;
+
+            p.points.push([curX,curY]);
+
+            startAmount += Math.floor(Math.random()*<span class="number">3</span>);
+            angle += (Math.PI * <span class="number">2</span>) / (numPoints+<span class="number">1</span>);
+          };
+
+          maxX += <span class="number">30</span>;
+          minX -= <span class="number">30</span>;
+          maxY += <span class="number">30</span>;
+          minY -= <span class="number">30</span>;
+
+          p.w = maxX - minX;
+          p.h = maxY - minY;
+
+          <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; numPoints;i++) {
+            p.points[i][<span class="number">0</span>] -= minX + p.w/<span class="number">2</span>;
+            p.points[i][<span class="number">1</span>] -= minY + p.h/<span class="number">2</span>;
+          }
+
+
+          p.x = p.x || Math.random()*Q.width;
+          p.y = p.y || Math.random()*Q.height;
+          p.cx = p.w/<span class="number">2</span>;
+          p.cy = p.h/<span class="number">2</span>;
+          p.angle = angle;
+         <span class="keyword">return</span> p;
+       },
+      });
+
+
+      Q.scene(<span class="string">"level1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+        <span class="keyword">var</span> player = stage.insert(<span class="keyword">new</span> Q.Ship({ x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>}));
+
+        stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
+        stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
+        stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
+        stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
+        stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
+
+        stage.on(<span class="string">"step"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+          <span class="keyword">if</span>(Q(<span class="string">"Asteroid"</span>).length == <span class="number">0</span> &amp;&amp; !Q.stage(<span class="number">1</span>)) { 
+            Q.stageScene(<span class="string">"endGame"</span>,<span class="number">1</span>, { label: <span class="string">"You Win!"</span> }); 
+          }
+        });
+      });
+
+      Q.scene(<span class="string">'endGame'</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+        <span class="keyword">var</span> container = stage.insert(<span class="keyword">new</span> Q.UI.Container({
+          x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>, fill: <span class="string">"rgba(255,255,255,0.5)"</span>
+          }));
+
+          <span class="keyword">var</span> button = container.insert(<span class="keyword">new</span> Q.UI.Button({ x: <span class="number">0</span>, y: <span class="number">0</span>, fill: <span class="string">"#CCCCCC"</span>,
+                                                         label: <span class="string">"Play Again"</span> }))         
+          <span class="keyword">var</span> label = container.insert(<span class="keyword">new</span> Q.UI.Text({x:<span class="number">10</span>, y: -<span class="number">10</span> - button.p.h, 
+                                       label: stage.options.label }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>When the button is clicked, clear all the stages
+and restart the game.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          button.on(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            Q.clearStages();
+            Q.stageScene(<span class="string">'level1'</span>);
+          });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Expand the container to visibily fit it&#39;s contents</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          container.fit(<span class="number">20</span>);
+        });
+
+      Q.stageScene(<span class="string">"level1"</span>);
+
+    });</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
