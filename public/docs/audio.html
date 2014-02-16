@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,16 +129,16 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-audio-example">Quintus Audio Example</h1>
-<p><a href="../examples/audio/index.html">Run the example</a></p>
+              <h1>Quintus Audio Example</h1>
+<p><a href="../quintus/examples/audio/index.html">Run the example</a></p>
 <p>This example demonstrates the Quintus audio library</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="keyword">function</span>(e) {</pre></div></div>
             
         </li>
         
@@ -165,7 +170,7 @@
     loadAssetsAndGo();
   }
 
-  Q.scene(<span class="string">"selector"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"selector"</span>,<span class="keyword">function</span>(stage) {
     <span class="keyword">var</span> container = stage.insert(<span class="keyword">new</span> Q.UI.Container({
       w: <span class="string">"0%"</span>,
       y: <span class="number">50</span>
@@ -206,7 +211,7 @@
     container.fit(<span class="number">20</span>);
   });
 
-  Q.scene(<span class="string">"loading"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"loading"</span>,<span class="keyword">function</span>(stage) {
     stage.insert(<span class="keyword">new</span> Q.UI.Text({
       label: <span class="string">"Loading..."</span>,
       x: Q.width/<span class="number">2</span>,
@@ -214,7 +219,7 @@
     }));
   });
 
-  Q.scene(<span class="string">"play"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"play"</span>,<span class="keyword">function</span>(stage) {
     sounds = [<span class="string">"Guitar 1"</span>, <span class="string">"Guitar 2"</span>, <span class="string">"Guitar 3"</span>, <span class="string">"Kick"</span>, <span class="string">"Snare"</span>, <span class="string">"TomTom"</span>];
 
     stage.insert(<span class="keyword">new</span> Q.UI.Text({
@@ -232,7 +237,7 @@
 
     <span class="keyword">for</span>(<span class="keyword">var</span> x=<span class="number">0</span>;x&lt;<span class="number">2</span>;x++) { 
       <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;sounds.length;i++) {
-        (<span class="function"><span class="keyword">function</span><span class="params">(sound,x)</span> {</span>
+        (<span class="keyword">function</span>(sound,x) {
           stage.insert(<span class="keyword">new</span> Q.UI.Button({
             label: sound,
             align: <span class="string">"center"</span>,
@@ -243,7 +248,7 @@
             x: x * Q.width/<span class="number">2</span> + Q.width/<span class="number">4</span>,
             y: i*<span class="number">40</span> + <span class="number">60</span>,
             font: <span class="string">"400 18px arial"</span>
-          }, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+          }, <span class="keyword">function</span>() {
             Q.audio.play(sound, { loop: x == <span class="number">1</span>  });
           }));
         }(sounds[i],x));
@@ -259,7 +264,7 @@
       w: <span class="number">200</span>,
       x: Q.width/<span class="number">2</span>,
       y: i*<span class="number">60</span> + <span class="number">20</span>
-    }, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    }, <span class="keyword">function</span>() {
       Q.audio.stop();
     }));
 
@@ -291,7 +296,7 @@ normally you&#39;ll want mp3 + ogg </p>
           <span class="string">"Kick"</span>: <span class="string">"16287__ltibbits__kick-high-vol.mp3"</span>,
           <span class="string">"Snare"</span>: <span class="string">"16292__ltibbits__rim1-snare.mp3"</span>,
           <span class="string">"TomTom"</span>: <span class="string">"16295__ltibbits__rim4-tom-16.mp3"</span>
-        },<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> Q.stageScene(<span class="string">"play"</span>); });
+        },<span class="keyword">function</span>() { Q.stageScene(<span class="string">"play"</span>); });
   }
 
 });</pre></div></div>

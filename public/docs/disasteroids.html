@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -151,7 +156,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>    window.addEventListener(<span class="string">"load"</span>,<span class="keyword">function</span>() {
 
       <span class="keyword">var</span> Q = window.Q = Quintus({ development: <span class="literal">true</span> })
               .include(<span class="string">"Sprites, Scenes, Input, 2D, Touch, UI"</span>)
@@ -169,12 +174,12 @@
 
       Q.component(<span class="string">"reposition"</span>, {
 
-        added: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        added: <span class="keyword">function</span>() {
 
           <span class="keyword">this</span>.entity.on(<span class="string">"step"</span>,<span class="keyword">this</span>,<span class="string">"step"</span>);
         },
 
-        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+        step: <span class="keyword">function</span>(dt) {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.entity.p;
           <span class="keyword">var</span> maxSide = Math.sqrt(p.h * p.h  + p.w + p.w);
           <span class="keyword">if</span>(p.x &gt; Q.width + maxSide) { p.x -= Q.width + maxSide }
@@ -188,7 +193,7 @@
 
       Q.Sprite.extend(<span class="string">"VectorSprite"</span>,{
 
-        draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+        draw: <span class="keyword">function</span>(ctx) {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.p;
           ctx.fillStyle = <span class="string">"#FFF"</span>;
 
@@ -202,7 +207,7 @@
       });
 
       Q.VectorSprite.extend(<span class="string">"Ship"</span>, {
-        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        init: <span class="keyword">function</span>(p) {
           <span class="keyword">this</span>._super(p, {
             type: Q.SPRITE_NONE,
             collisionMask: Q.SPRITE_ASTEROID,
@@ -223,7 +228,7 @@
           <span class="keyword">this</span>.activationObject = <span class="keyword">new</span> Q.Sprite({ x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>, w: <span class="number">100</span>, h: <span class="number">100</span> });
         },
 
-        fire: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        fire: <span class="keyword">function</span>() {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.p;
           <span class="keyword">var</span> dx =  Math.sin(p.angle * Math.PI / <span class="number">180</span>),
               dy = -Math.cos(p.angle * Math.PI / <span class="number">180</span>);
@@ -236,13 +241,13 @@
           );
         },
 
-        checkActivation: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        checkActivation: <span class="keyword">function</span>() {
           <span class="keyword">if</span>(!<span class="keyword">this</span>.stage.search(<span class="keyword">this</span>.activationObject, Q.SPRITE_ASTEROID)) {
             <span class="keyword">this</span>.p.activated = <span class="literal">true</span>;
           }
         },
 
-        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+        step: <span class="keyword">function</span>(dt) {
           <span class="keyword">if</span>(!<span class="keyword">this</span>.p.activated) {
             <span class="keyword">return</span> <span class="keyword">this</span>.checkActivation();
           }
@@ -272,11 +277,11 @@
 
         },
 
-        draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+        draw: <span class="keyword">function</span>(ctx) {
           <span class="keyword">if</span>(<span class="keyword">this</span>.p.activated) { <span class="keyword">this</span>._super(ctx); }
         },
 
-        reset: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        reset: <span class="keyword">function</span>() {
           Q._extend(<span class="keyword">this</span>.p,{ 
             x: Q.width/<span class="number">2</span>,
             y: Q.height/<span class="number">2</span>,
@@ -291,7 +296,7 @@
       });
 
       Q.Sprite.extend(<span class="string">"Bullet"</span>,{
-        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        init: <span class="keyword">function</span>(p) {
 
           <span class="keyword">this</span>._super(p,{ 
             w:<span class="number">2</span>,
@@ -304,7 +309,7 @@
           <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="keyword">this</span>,<span class="string">"collision"</span>);
         },
 
-        collision: <span class="function"><span class="keyword">function</span><span class="params">(col)</span> {</span>
+        collision: <span class="keyword">function</span>(col) {
           <span class="keyword">var</span> objP = col.obj.p;
           <span class="keyword">if</span>(objP.size &gt; <span class="number">20</span>) { 
             <span class="keyword">this</span>.stage.insert(<span class="keyword">new</span> Q.Asteroid({ 
@@ -326,12 +331,12 @@
           <span class="keyword">this</span>.destroy();
         },
 
-        draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+        draw: <span class="keyword">function</span>(ctx) {
           ctx.fillStyle = <span class="string">"#FFF"</span>;
           ctx.fillRect(-<span class="keyword">this</span>.p.cx,-<span class="keyword">this</span>.p.cy,<span class="keyword">this</span>.p.w,<span class="keyword">this</span>.p.h);
         },
 
-        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+        step: <span class="keyword">function</span>(dt) {
           <span class="keyword">if</span>(!Q.overlap(<span class="keyword">this</span>,<span class="keyword">this</span>.stage)) {
             <span class="keyword">this</span>.destroy();
           }
@@ -340,7 +345,7 @@
 
       Q.VectorSprite.extend(<span class="string">"Asteroid"</span>, {
 
-        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        init: <span class="keyword">function</span>(p) {
           p = <span class="keyword">this</span>.createShape(p);
 
           <span class="keyword">if</span>(!p.vx) {
@@ -361,17 +366,17 @@
           <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="keyword">this</span>,<span class="string">"collision"</span>);
         },
 
-        collision: <span class="function"><span class="keyword">function</span><span class="params">(col)</span> {</span>
+        collision: <span class="keyword">function</span>(col) {
           <span class="keyword">if</span>(col.obj.isA(<span class="string">"Ship"</span>)) {
             col.obj.reset(); 
           }
         },
 
-        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+        step: <span class="keyword">function</span>(dt) {
           <span class="keyword">this</span>.p.angle += <span class="keyword">this</span>.p.omega * dt;
         },
 
-        createShape: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        createShape: <span class="keyword">function</span>(p) {
           <span class="keyword">var</span> angle = Math.random()*<span class="number">2</span>*Math.PI,
               numPoints = <span class="number">7</span> + Math.floor(Math.random()*<span class="number">5</span>),
               minX = <span class="number">0</span>, maxX = <span class="number">0</span>,
@@ -424,7 +429,7 @@
       });
 
 
-      Q.scene(<span class="string">"level1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+      Q.scene(<span class="string">"level1"</span>,<span class="keyword">function</span>(stage) {
         <span class="keyword">var</span> player = stage.insert(<span class="keyword">new</span> Q.Ship({ x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>}));
 
         stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
@@ -433,14 +438,14 @@
         stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
         stage.insert(<span class="keyword">new</span> Q.Asteroid({ size: <span class="number">60</span> }));
 
-        stage.on(<span class="string">"step"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        stage.on(<span class="string">"step"</span>,<span class="keyword">function</span>() {
           <span class="keyword">if</span>(Q(<span class="string">"Asteroid"</span>).length == <span class="number">0</span> &amp;&amp; !Q.stage(<span class="number">1</span>)) { 
             Q.stageScene(<span class="string">"endGame"</span>,<span class="number">1</span>, { label: <span class="string">"You Win!"</span> }); 
           }
         });
       });
 
-      Q.scene(<span class="string">'endGame'</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+      Q.scene(<span class="string">'endGame'</span>,<span class="keyword">function</span>(stage) {
         <span class="keyword">var</span> container = stage.insert(<span class="keyword">new</span> Q.UI.Container({
           x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>, fill: <span class="string">"rgba(255,255,255,0.5)"</span>
           }));
@@ -464,7 +469,7 @@ and restart the game.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>          button.on(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>          button.on(<span class="string">"click"</span>,<span class="keyword">function</span>() {
             Q.clearStages();
             Q.stageScene(<span class="string">'level1'</span>);
           });</pre></div></div>

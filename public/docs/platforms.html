@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,11 +129,11 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-platforms-example">Quintus platforms example</h1>
-<p><a href="../examples/platforms/index.html">Run the example</a>
+              <h1>Quintus platforms example</h1>
+<p><a href="../quintus/examples/platforms/index.html">Run the example</a>
 WARNING: this game must be run from a non-file:// url
 as it loads a level json file.</p>
 <p>This example uses convex polygons as structures for the 
@@ -136,7 +141,7 @@ player to jump across</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -192,10 +197,10 @@ includes the <code>TileLayer</code> class as well as the <code>2d</code> compone
         <li id="section-5">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <h2 id="player-sprite">Player Sprite</h2>
+              <h2>Player Sprite</h2>
 <p>The very basic player sprite, this is just a normal sprite
 using the player sprite sheet with default controls added to it.</p>
 
@@ -216,7 +221,7 @@ using the player sprite sheet with default controls added to it.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  init: <span class="keyword">function</span>(p) {</pre></div></div>
             
         </li>
         
@@ -253,7 +258,7 @@ hit.sprite is called everytime the player collides with a sprite</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="function"><span class="keyword">function</span><span class="params">(collision)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="keyword">function</span>(collision) {</pre></div></div>
             
         </li>
         
@@ -275,7 +280,7 @@ hit.sprite is called everytime the player collides with a sprite</p>
     });
   },
 
-  step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+  step: <span class="keyword">function</span>(dt) {
     <span class="keyword">if</span>(<span class="keyword">this</span>.p.y &gt; <span class="number">200</span>) {
       Q.stageScene(<span class="string">"endGame"</span>,<span class="number">1</span>, { label: <span class="string">"You Fell!"</span> });
     }
@@ -292,27 +297,27 @@ hit.sprite is called everytime the player collides with a sprite</p>
         <li id="section-10">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <h2 id="tower-sprite">Tower Sprite</h2>
+              <h2>Tower Sprite</h2>
 <p>Sprites can be simple, the Tower sprite just sets a custom sprite sheet</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>Q.Sprite.extend(<span class="string">"Tower"</span>, {
-  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+  init: <span class="keyword">function</span>(p) {
     <span class="keyword">this</span>._super(p, { sheet: <span class="string">'tower'</span> });
   }
 });
 
 
 Q.Sprite.extend(<span class="string">"Block"</span>, {
-  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+  init: <span class="keyword">function</span>(p) {
     <span class="keyword">this</span>._super(p);
   },
 
-  draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+  draw: <span class="keyword">function</span>(ctx) {
     <span class="keyword">if</span>(!<span class="keyword">this</span>.p.points) {
       Q._generatePoints(<span class="keyword">this</span>);
     }
@@ -336,15 +341,15 @@ Q.Sprite.extend(<span class="string">"Block"</span>, {
         <li id="section-11">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <h2 id="level1-scene">Level1 scene</h2>
+              <h2>Level1 scene</h2>
 <p>Create a new scene called level 1</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">"level1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">"level1"</span>,<span class="keyword">function</span>(stage) {</pre></div></div>
             
         </li>
         
@@ -439,7 +444,7 @@ to control the displayed message.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">'endGame'</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">'endGame'</span>,<span class="keyword">function</span>(stage) {
   <span class="keyword">var</span> container = stage.insert(<span class="keyword">new</span> Q.UI.Container({
     x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>, fill: <span class="string">"rgba(0,0,0,0.5)"</span>
   }));
@@ -463,7 +468,7 @@ and restart the game.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  button.on(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>  button.on(<span class="string">"click"</span>,<span class="keyword">function</span>() {
     Q.clearStages();
     Q.stageScene(<span class="string">'level1'</span>);
   });</pre></div></div>
@@ -491,17 +496,17 @@ and restart the game.</p>
         <li id="section-19">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
-              <h2 id="asset-loading-and-game-launch">Asset Loading and Game Launch</h2>
+              <h2>Asset Loading and Game Launch</h2>
 <p>Q.load can be called at any time to load additional assets
 assets that are already loaded will be skipped
 The callback will be triggered when everything is loaded</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Q.load(<span class="string">"sprites.png, sprites.json,  background-wall.png"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>Q.load(<span class="string">"sprites.png, sprites.json,  background-wall.png"</span>, <span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -554,10 +559,10 @@ The callback will be triggered when everything is loaded</p>
         <li id="section-23">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <h2 id="possible-experimentations-">Possible Experimentations:</h2>
+              <h2>Possible Experimentations:</h2>
 <p>The are lots of things to try out here.</p>
 <ol>
 <li>Modify level.json to change the level around and add in some more enemies.</li>

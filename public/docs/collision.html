@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,11 +129,11 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-sat-collision-detection-example">Quintus SAT Collision detection example</h1>
-<p><a href="../examples/collision/index.html">Run the example</a></p>
+              <h1>Quintus SAT Collision detection example</h1>
+<p><a href="../quintus/examples/collision/index.html">Run the example</a></p>
 <p>This example creates a number of random convex shapes to
 exercise the SAT-based (Separating-axis-theorem) collision 
 detection. The Shapes also rotate at different speeds and scale
@@ -139,7 +144,7 @@ the step method.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="keyword">function</span>(e) {</pre></div></div>
             
         </li>
         
@@ -174,7 +179,7 @@ generates random convex shapes with anywhere from 3 to 7 points.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>  Q.Sprite.extend(<span class="string">"RandomShape"</span>, {
-     init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+     init: <span class="keyword">function</span>(p) {
         <span class="keyword">var</span> angle = Math.random()*<span class="number">2</span>*Math.PI,
             numPoints = <span class="number">3</span> + Math.floor(Math.random()*<span class="number">5</span>),
             minX = <span class="number">0</span>, maxX = <span class="number">0</span>,
@@ -234,7 +239,7 @@ generates random convex shapes with anywhere from 3 to 7 points.</p>
         <span class="keyword">this</span>._super(p);
      },
 
-    step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    step: <span class="keyword">function</span>(dt) {
       <span class="keyword">var</span> p = <span class="keyword">this</span>.p;
 
       p.x += p.dx * p.speed * dt;
@@ -267,10 +272,10 @@ generates random convex shapes with anywhere from 3 to 7 points.</p>
         <li id="section-4">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h3">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <h3 id="checking-for-collisions-">Checking for collisions.</h3>
+              <h3>Checking for collisions.</h3>
 <p>This code actually runs detection for the object and moves it away
 from any collisions. There&#39;s a loop in there so that the object will
 move away from up to 3 collisions per frame. </p>
@@ -331,7 +336,7 @@ the <code>2d</code> component to your class will handle it for you automatically
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"start"</span>,<span class="keyword">new</span> Q.Scene(<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"start"</span>,<span class="keyword">new</span> Q.Scene(<span class="keyword">function</span>(stage) {
     <span class="keyword">var</span> shapesLeft = numShapes;
     <span class="keyword">while</span>(shapesLeft-- &gt; <span class="number">0</span>) {
       stage.insert(<span class="keyword">new</span> Q.RandomShape());
@@ -378,10 +383,10 @@ in this situation, otherwise nothing would get rendered</p>
         <li id="section-9">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <h2 id="possible-experimentations-">Possible Experimentations:</h2>
+              <h2>Possible Experimentations:</h2>
 <ol>
 <li>Try staging the <code>start</code> scene on multiple stages (e.g. add Q.stageScene(&quot;start&quot;,1)), notice
 the shapes only collide with other shapes on their own stage</li>

@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -136,7 +141,7 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="keyword">function</span>() {
 
   <span class="keyword">var</span> Q = Quintus().include(<span class="string">"Sprites, Scenes, Input, Anim, 2D, Audio, Touch, UI"</span>)
                    .include(<span class="string">"BreakoutUI, BreakoutSprites, BreakoutScenes, BreakoutLevels"</span>)
@@ -195,7 +200,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>      <span class="string">"bg.tmx"</span>, <span class="string">"sprites.json"</span>
-    ],<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> 
+    ],<span class="keyword">function</span>() { 
       Q.useTiles = window.location.href.indexOf(<span class="string">'usetiles'</span>) &gt; -<span class="number">1</span>;</pre></div></div>
             
         </li>

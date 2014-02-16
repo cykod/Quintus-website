@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>runner.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="audio.html">
+                audio.js
+              </a>
+            
+              
+              <a class="source" href="ball.html">
+                ball.js
+              </a>
+            
+              
+              <a class="source" href="breakout-levels.html">
+                breakout-levels.js
+              </a>
+            
+              
+              <a class="source" href="breakout-scenes.html">
+                breakout-scenes.js
+              </a>
+            
+              
+              <a class="source" href="breakout-sprites.html">
+                breakout-sprites.js
+              </a>
+            
+              
+              <a class="source" href="breakout-ui.html">
+                breakout-ui.js
+              </a>
+            
+              
+              <a class="source" href="breakout.html">
+                breakout.js
+              </a>
+            
+              
+              <a class="source" href="cannon.html">
+                cannon.js
+              </a>
+            
+              
+              <a class="source" href="collision.html">
+                collision.js
+              </a>
+            
+              
+              <a class="source" href="disasteroids.html">
+                disasteroids.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platformer.html">
+                platformer.js
+              </a>
+            
+              
+              <a class="source" href="platforms.html">
+                platforms.js
+              </a>
+            
+              
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
+              <a class="source" href="sprite.html">
+                sprite.js
+              </a>
+            
+              
+              <a class="source" href="touch.html">
+                touch.js
+              </a>
+            
+              
+              <a class="source" href="tower_man.html">
+                tower_man.js
+              </a>
+            
+              
+              <a class="source" href="tween.html">
+                tween.js
+              </a>
+            
+              
+              <a class="source" href="ui.html">
+                ui.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>runner.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="keyword">function</span>() {
+
+<span class="keyword">var</span> Q = window.Q = Quintus()
+        .include(<span class="string">"Sprites, Scenes, Input, 2D, Anim, Touch, UI"</span>)
+        .setup({ maximize: <span class="literal">true</span> })
+        .controls().touch()
+
+<span class="keyword">var</span> SPRITE_BOX = <span class="number">1</span>;
+
+Q.gravityY = <span class="number">2000</span>;
+
+Q.Sprite.extend(<span class="string">"Player"</span>,{
+
+  init: <span class="keyword">function</span>(p) {
+
+    <span class="keyword">this</span>._super(p,{
+      sheet: <span class="string">"player"</span>,
+      sprite: <span class="string">"player"</span>,
+      collisionMask: SPRITE_BOX, 
+      x: <span class="number">40</span>,
+      y: <span class="number">555</span>,
+      standingPoints: [ [ -<span class="number">16</span>, <span class="number">44</span>], [ -<span class="number">23</span>, <span class="number">35</span> ], [-<span class="number">23</span>,-<span class="number">48</span>], [<span class="number">23</span>,-<span class="number">48</span>], [<span class="number">23</span>, <span class="number">35</span> ], [ <span class="number">16</span>, <span class="number">44</span> ]],
+      duckingPoints : [ [ -<span class="number">16</span>, <span class="number">44</span>], [ -<span class="number">23</span>, <span class="number">35</span> ], [-<span class="number">23</span>,-<span class="number">10</span>], [<span class="number">23</span>,-<span class="number">10</span>], [<span class="number">23</span>, <span class="number">35</span> ], [ <span class="number">16</span>, <span class="number">44</span> ]],
+      speed: <span class="number">500</span>,
+      jump: -<span class="number">700</span>
+    });
+
+    <span class="keyword">this</span>.p.points = <span class="keyword">this</span>.p.standingPoints;
+
+    <span class="keyword">this</span>.add(<span class="string">"2d, animation"</span>);
+  },
+
+  step: <span class="keyword">function</span>(dt) {
+    <span class="keyword">this</span>.p.vx += (<span class="keyword">this</span>.p.speed - <span class="keyword">this</span>.p.vx)/<span class="number">4</span>;
+
+    <span class="keyword">if</span>(<span class="keyword">this</span>.p.y &gt; <span class="number">555</span>) {
+      <span class="keyword">this</span>.p.y = <span class="number">555</span>;
+      <span class="keyword">this</span>.p.landed = <span class="number">1</span>;
+      <span class="keyword">this</span>.p.vy = <span class="number">0</span>;
+    } <span class="keyword">else</span> {
+      <span class="keyword">this</span>.p.landed = <span class="number">0</span>;
+    }
+
+    <span class="keyword">if</span>(Q.inputs[<span class="string">'up'</span>] &amp;&amp; <span class="keyword">this</span>.p.landed &gt; <span class="number">0</span>) {
+      <span class="keyword">this</span>.p.vy = <span class="keyword">this</span>.p.jump;
+    } 
+
+    <span class="keyword">this</span>.p.points = <span class="keyword">this</span>.p.standingPoints;
+    <span class="keyword">if</span>(<span class="keyword">this</span>.p.landed) {
+      <span class="keyword">if</span>(Q.inputs[<span class="string">'down'</span>]) { 
+        <span class="keyword">this</span>.play(<span class="string">"duck_right"</span>);
+        <span class="keyword">this</span>.p.points = <span class="keyword">this</span>.p.duckingPoints;
+      } <span class="keyword">else</span> {
+        <span class="keyword">this</span>.play(<span class="string">"walk_right"</span>);
+      }
+    } <span class="keyword">else</span> {
+      <span class="keyword">this</span>.play(<span class="string">"jump_right"</span>);
+    }
+
+    <span class="keyword">this</span>.stage.viewport.centerOn(<span class="keyword">this</span>.p.x + <span class="number">300</span>, <span class="number">400</span> );
+
+  }
+});
+
+Q.Sprite.extend(<span class="string">"Box"</span>,{
+  init: <span class="keyword">function</span>() {
+
+    <span class="keyword">var</span> levels = [ <span class="number">565</span>, <span class="number">540</span>, <span class="number">500</span>, <span class="number">450</span> ];
+
+    <span class="keyword">var</span> player = Q(<span class="string">"Player"</span>).first();
+    <span class="keyword">this</span>._super({
+      x: player.p.x + Q.width + <span class="number">50</span>,
+      y: levels[Math.floor(Math.random() * <span class="number">3</span>)],
+      frame: Math.random() &lt; <span class="number">0.5</span> ? <span class="number">1</span> : <span class="number">0</span>,
+      scale: <span class="number">2</span>,
+      type: SPRITE_BOX,
+      sheet: <span class="string">"crates"</span>,
+      vx: -<span class="number">600</span> + <span class="number">200</span> * Math.random(),
+      vy: <span class="number">0</span>,
+      ay: <span class="number">0</span>,
+      theta: (<span class="number">300</span> * Math.random() + <span class="number">200</span>) * (Math.random() &lt; <span class="number">0.5</span> ? <span class="number">1</span> : -<span class="number">1</span>)
+    });
+
+
+    <span class="keyword">this</span>.on(<span class="string">"hit"</span>);
+  },
+
+  step: <span class="keyword">function</span>(dt) {
+    <span class="keyword">this</span>.p.x += <span class="keyword">this</span>.p.vx * dt;
+
+
+    <span class="keyword">this</span>.p.vy += <span class="keyword">this</span>.p.ay * dt;
+    <span class="keyword">this</span>.p.y += <span class="keyword">this</span>.p.vy * dt;
+    <span class="keyword">if</span>(<span class="keyword">this</span>.p.y != <span class="number">565</span>) {
+      <span class="keyword">this</span>.p.angle += <span class="keyword">this</span>.p.theta * dt;
+    }
+
+    <span class="keyword">if</span>(<span class="keyword">this</span>.p.y &gt; <span class="number">800</span>) { <span class="keyword">this</span>.destroy(); }
+
+  },
+
+  hit: <span class="keyword">function</span>() {
+    <span class="keyword">this</span>.p.type = <span class="number">0</span>;
+    <span class="keyword">this</span>.p.collisionMask = Q.SPRITE_NONE;
+    <span class="keyword">this</span>.p.vx = <span class="number">200</span>;
+    <span class="keyword">this</span>.p.ay = <span class="number">400</span>;
+    <span class="keyword">this</span>.p.vy = -<span class="number">300</span>;
+    <span class="keyword">this</span>.p.opacity = <span class="number">0.5</span>;
+  }
+  
+
+});
+
+Q.GameObject.extend(<span class="string">"BoxThrower"</span>,{
+  init: <span class="keyword">function</span>() {
+    <span class="keyword">this</span>.p = {
+      launchDelay: <span class="number">0.75</span>,
+      launchRandom: <span class="number">1</span>,
+      launch: <span class="number">2</span>
+    }
+  },
+
+  update: <span class="keyword">function</span>(dt) {
+    <span class="keyword">this</span>.p.launch -= dt;
+
+    <span class="keyword">if</span>(<span class="keyword">this</span>.p.launch &lt; <span class="number">0</span>) {
+      <span class="keyword">this</span>.stage.insert(<span class="keyword">new</span> Q.Box());
+      <span class="keyword">this</span>.p.launch = <span class="keyword">this</span>.p.launchDelay + <span class="keyword">this</span>.p.launchRandom * Math.random();
+    }
+  }
+
+});
+
+
+Q.scene(<span class="string">"level1"</span>,<span class="keyword">function</span>(stage) {
+
+  stage.insert(<span class="keyword">new</span> Q.Repeater({ asset: <span class="string">"background-wall.png"</span>,
+                                speedX: <span class="number">0.5</span> }));
+
+  stage.insert(<span class="keyword">new</span> Q.Repeater({ asset: <span class="string">"background-floor.png"</span>,
+                                repeatY: <span class="literal">false</span>,
+                                speedX: <span class="number">1.0</span>,
+                                y: <span class="number">300</span> }));
+
+  stage.insert(<span class="keyword">new</span> Q.BoxThrower());
+
+  stage.insert(<span class="keyword">new</span> Q.Player());
+  stage.add(<span class="string">"viewport"</span>);
+
+});
+  
+Q.load(<span class="string">"player.json, player.png, background-wall.png, background-floor.png, crates.png, crates.json"</span>, <span class="keyword">function</span>() {
+    Q.compileSheets(<span class="string">"player.png"</span>,<span class="string">"player.json"</span>);
+    Q.compileSheets(<span class="string">"crates.png"</span>,<span class="string">"crates.json"</span>);
+    Q.animations(<span class="string">"player"</span>, {
+      walk_right: { frames: [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>], rate: <span class="number">1</span>/<span class="number">15</span>, flip: <span class="literal">false</span>, loop: <span class="literal">true</span> },
+      jump_right: { frames: [<span class="number">13</span>], rate: <span class="number">1</span>/<span class="number">10</span>, flip: <span class="literal">false</span> },
+      stand_right: { frames:[<span class="number">14</span>], rate: <span class="number">1</span>/<span class="number">10</span>, flip: <span class="literal">false</span> },
+      duck_right: { frames: [<span class="number">15</span>], rate: <span class="number">1</span>/<span class="number">10</span>, flip: <span class="literal">false</span> },
+    });
+    Q.stageScene(<span class="string">"level1"</span>);
+  
+});
+
+
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

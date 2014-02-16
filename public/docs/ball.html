@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,11 +129,11 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-moving-ball-example">Quintus moving ball example</h1>
-<p><a href="../examples/ball/index.html">Run the example</a></p>
+              <h1>Quintus moving ball example</h1>
+<p><a href="../quintus/examples/ball/index.html">Run the example</a></p>
 <p>This is one of the simplest possible examples of using 
 Quintus that doesn&#39;t use the scene/stage functionality, 
 but rather just creates a single sprite and steps and 
@@ -140,7 +145,7 @@ you actually need.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -194,7 +199,7 @@ shape directly on the canvas instead. </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    draw: <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+            <div class="content"><div class='highlight'><pre>    draw: <span class="keyword">function</span>(ctx) {
       ctx.fillStyle = <span class="string">"black"</span>;
       ctx.beginPath();
       ctx.arc(-<span class="keyword">this</span>.p.cx,
@@ -244,7 +249,7 @@ for you.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  Q.gameLoop(<span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  Q.gameLoop(<span class="keyword">function</span>(dt) {</pre></div></div>
             
         </li>
         
@@ -298,10 +303,10 @@ for you.</p>
         <li id="section-10">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <h2 id="possible-experimentations-">Possible Experimentations:</h2>
+              <h2>Possible Experimentations:</h2>
 <ol>
 <li>Try adding multiple balls of different positions and sizes
 and looping over them manually in game loop</li>

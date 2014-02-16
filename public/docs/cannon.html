@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -136,7 +141,7 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="keyword">function</span>(e) {
   <span class="keyword">var</span> Q = window.Q = Quintus()
                      .include(<span class="string">'Input,Sprites,Scenes,SVG,Physics'</span>)
                      .svgOnly()
@@ -144,7 +149,7 @@
 
   
   Q.Sprite.extend(<span class="string">'CannonBall'</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">(props)</span> {</span>
+    init: <span class="keyword">function</span>(props) {
       <span class="keyword">this</span>._super({
         shape: <span class="string">'circle'</span>,
         color: <span class="string">'red'</span>,
@@ -159,7 +164,7 @@
       <span class="keyword">this</span>.on(<span class="string">'step'</span>,<span class="keyword">this</span>,<span class="string">'countdown'</span>);
     },
 
-    countdown: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    countdown: <span class="keyword">function</span>(dt) {
       <span class="keyword">this</span>.p.seconds -= dt;
       <span class="keyword">if</span>(<span class="keyword">this</span>.p.seconds &lt; <span class="number">0</span>) { 
         <span class="keyword">this</span>.destroy();
@@ -170,7 +175,7 @@
   });
 
   Q.Sprite.extend(<span class="string">'Cannon'</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">(props)</span> {</span>
+    init: <span class="keyword">function</span>(props) {
       <span class="keyword">this</span>._super({
         shape:<span class="string">'polygon'</span>,
         color: <span class="string">'black'</span>,
@@ -181,7 +186,7 @@
       });
     },
 
-    fire: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    fire: <span class="keyword">function</span>() {
       <span class="keyword">var</span> dx = Math.cos(<span class="keyword">this</span>.p.angle / <span class="number">180</span> * Math.PI),
           dy = Math.sin(<span class="keyword">this</span>.p.angle / <span class="number">180</span> * Math.PI),
           ball = <span class="keyword">new</span> Q.CannonBall({ dx: dx, dy: dy, angle: <span class="keyword">this</span>.p.angle });
@@ -192,7 +197,7 @@
 
   <span class="keyword">var</span> targetCount = <span class="number">0</span>;
   Q.Sprite.extend(<span class="string">'Target'</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">(props)</span> {</span>
+    init: <span class="keyword">function</span>(props) {
       <span class="keyword">this</span>._super( Q._extend(props,{
         shape: <span class="string">'circle'</span>,
         color: <span class="string">'pink'</span>,
@@ -203,7 +208,7 @@
       <span class="keyword">this</span>.on(<span class="string">'contact'</span>,<span class="keyword">this</span>,<span class="string">'checkHit'</span>);
     },
 
-    checkHit: <span class="function"><span class="keyword">function</span><span class="params">(sprite)</span> {</span>
+    checkHit: <span class="keyword">function</span>(sprite) {
       <span class="keyword">if</span>(sprite <span class="keyword">instanceof</span> Q.CannonBall) {
         targetCount--;
         <span class="keyword">this</span>.destroy();
@@ -215,7 +220,7 @@
 
 
 
-  Q.scene(<span class="string">'level'</span>,<span class="keyword">new</span> Q.Scene(<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">'level'</span>,<span class="keyword">new</span> Q.Scene(<span class="keyword">function</span>(stage) {
     targetCount = <span class="number">0</span>;
     stage.add(<span class="string">"world"</span>);
     stage.insert(<span class="keyword">new</span> Q.Sprite({ 
@@ -240,7 +245,7 @@
     stage.insert(<span class="keyword">new</span> Q.Sprite({ w: <span class="number">50</span>, h:<span class="number">50</span>, x: <span class="number">300</span>, y: <span class="number">150</span> }));
     stage.insert(<span class="keyword">new</span> Q.Sprite({ w: <span class="number">25</span>, h:<span class="number">25</span>, x: <span class="number">300</span>, y: <span class="number">115</span> }));
 
-    stage.each(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> <span class="keyword">this</span>.add(<span class="string">"physics"</span>); });
+    stage.each(<span class="keyword">function</span>() { <span class="keyword">this</span>.add(<span class="string">"physics"</span>); });
 
     stage.insert(<span class="keyword">new</span> Q.Target({ x: <span class="number">525</span>, y: <span class="number">90</span> }));
     stage.insert(<span class="keyword">new</span> Q.Target({ x: <span class="number">300</span>, y: <span class="number">90</span> }));
@@ -253,7 +258,7 @@
        
   }));
   	Q.stageScene(<span class="string">"level"</span>);
-  	<span class="keyword">var</span> cannonMove=<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+  	<span class="keyword">var</span> cannonMove=<span class="keyword">function</span>(e) {
     <span class="keyword">var</span> stage = Q.stage(<span class="number">0</span>), 
         cannon = stage.cannon,
         touch = e.changedTouches ?  
@@ -265,15 +270,15 @@
 	    cannon.p.angle = angle * <span class="number">180</span> / Math.PI;
 	    e.preventDefault();
   	};
-    Q._each([<span class="string">"touchstart"</span>,<span class="string">"mousemove"</span>,<span class="string">"touchmove"</span>],<span class="function"><span class="keyword">function</span><span class="params">(evt)</span> {</span>
+    Q._each([<span class="string">"touchstart"</span>,<span class="string">"mousemove"</span>,<span class="string">"touchmove"</span>],<span class="keyword">function</span>(evt) {
         Q.wrapper.addEventListener(evt,cannonMove);
     },<span class="keyword">this</span>);
 
-	<span class="keyword">var</span> canonFire=<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+	<span class="keyword">var</span> canonFire=<span class="keyword">function</span>(e) {
 		Q.stage(<span class="number">0</span>).cannon.fire();
    		e.preventDefault();
 	}
-	Q._each([<span class="string">"touchend"</span>,<span class="string">"mouseup"</span>],<span class="function"><span class="keyword">function</span><span class="params">(evt)</span> {</span>
+	Q._each([<span class="string">"touchend"</span>,<span class="string">"mouseup"</span>],<span class="keyword">function</span>(evt) {
 		Q.wrapper.addEventListener(evt,canonFire);
 	});
 

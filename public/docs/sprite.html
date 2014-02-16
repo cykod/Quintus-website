@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,11 +129,11 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-basic-sprite-example">Quintus Basic Sprite Example</h1>
-<p><a href="../examples/sprite/index.html">Run the example</a></p>
+              <h1>Quintus Basic Sprite Example</h1>
+<p><a href="../quintus/examples/sprite/index.html">Run the example</a></p>
 <p>This example creates two simple sprites to test basic collision detection
 with regards to rotation, scaling and movement.</p>
 <p>Use the arrows keys to rotate and scale the top sprite and
@@ -136,7 +141,7 @@ Z or Space to move the sprite up. X resets the position.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="keyword">function</span>(e) {</pre></div></div>
             
         </li>
         
@@ -193,7 +198,7 @@ Sprites and Scene module (for the stage support) loaded.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"start"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"start"</span>,<span class="keyword">function</span>(stage) {</pre></div></div>
             
         </li>
         
@@ -235,7 +240,7 @@ Sprites and Scene module (for the stage support) loaded.</p>
             
             <div class="content"><div class='highlight'><pre>    sprite1.add(<span class="string">'2d'</span>)
 
-    sprite1.on(<span class="string">'step'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    sprite1.on(<span class="string">'step'</span>,<span class="keyword">function</span>() {
 
     });</pre></div></div>
             
@@ -253,7 +258,7 @@ Sprites and Scene module (for the stage support) loaded.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> sprite2 = <span class="keyword">new</span> Q.Sprite({ x: <span class="number">500</span>, y: <span class="number">600</span>, w: <span class="number">300</span>, h: <span class="number">200</span> });
-    sprite2.draw= <span class="function"><span class="keyword">function</span><span class="params">(ctx)</span> {</span>
+    sprite2.draw= <span class="keyword">function</span>(ctx) {
       ctx.fillStyle = <span class="string">'#FF0000'</span>;
       ctx.fillRect(-<span class="keyword">this</span>.p.cx,-<span class="keyword">this</span>.p.cy,<span class="keyword">this</span>.p.w,<span class="keyword">this</span>.p.h);
     };
@@ -272,27 +277,27 @@ Sprites and Scene module (for the stage support) loaded.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    Q.input.on(<span class="string">'up'</span>,stage,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span> 
+            <div class="content"><div class='highlight'><pre>    Q.input.on(<span class="string">'up'</span>,stage,<span class="keyword">function</span>(e) { 
       sprite1.p.scale -= <span class="number">0.1</span>;
     });
 
-    Q.input.on(<span class="string">'down'</span>,stage,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span> 
+    Q.input.on(<span class="string">'down'</span>,stage,<span class="keyword">function</span>(e) { 
       sprite1.p.scale += <span class="number">0.1</span>;
     });
 
-    Q.input.on(<span class="string">'left'</span>,stage,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    Q.input.on(<span class="string">'left'</span>,stage,<span class="keyword">function</span>(e) {
       sprite1.p.angle -= <span class="number">5</span>;
     });
 
-    Q.input.on(<span class="string">'right'</span>,stage,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    Q.input.on(<span class="string">'right'</span>,stage,<span class="keyword">function</span>(e) {
       sprite1.p.angle += <span class="number">5</span>;
     });
 
-    Q.input.on(<span class="string">'fire'</span>,stage,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    Q.input.on(<span class="string">'fire'</span>,stage,<span class="keyword">function</span>(e) {
       sprite1.p.vy = -<span class="number">600</span>;
     });
 
-    Q.input.on(<span class="string">'action'</span>,stage,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+    Q.input.on(<span class="string">'action'</span>,stage,<span class="keyword">function</span>(e) {
       sprite1.p.x = <span class="number">500</span>;
       sprite1.p.y = <span class="number">100</span>;
     });</pre></div></div>
@@ -313,7 +318,7 @@ Sprites and Scene module (for the stage support) loaded.</p>
             <div class="content"><div class='highlight'><pre>    stage.on(<span class="string">'postrender'</span>,drawLines);
   });
 
-  Q.load(<span class="string">'enemy.png'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+  Q.load(<span class="string">'enemy.png'</span>,<span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         

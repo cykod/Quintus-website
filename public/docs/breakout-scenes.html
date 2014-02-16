@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -136,9 +141,9 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>;Quintus.BreakoutScenes = <span class="function"><span class="keyword">function</span><span class="params">(Q)</span> {</span>
+            <div class="content"><div class='highlight'><pre>;Quintus.BreakoutScenes = <span class="keyword">function</span>(Q) {
 
-  Q.scene(<span class="string">"title"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"title"</span>,<span class="keyword">function</span>(stage) {
     Q.state.set(<span class="string">"level"</span>,<span class="number">0</span>);</pre></div></div>
             
         </li>
@@ -157,7 +162,7 @@
             <div class="content"><div class='highlight'><pre>    Q.clearStage(<span class="number">1</span>); 
 
     <span class="keyword">var</span> bg = stage.insert(<span class="keyword">new</span> Q.Background({ type: Q.SPRITE_UI }));
-    bg.on(<span class="string">"touch"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>  Q.stageScene(<span class="string">"level1"</span>);  });
+    bg.on(<span class="string">"touch"</span>,<span class="keyword">function</span>() {  Q.stageScene(<span class="string">"level1"</span>);  });
 
     stage.insert(<span class="keyword">new</span> Q.Title());
 
@@ -183,10 +188,10 @@
     }));
   });
 
-  Q.scene(<span class="string">"gameOver"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"gameOver"</span>,<span class="keyword">function</span>(stage) {
 
     <span class="keyword">var</span> bg = stage.insert(<span class="keyword">new</span> Q.Background({ type: Q.SPRITE_UI }));
-    bg.on(<span class="string">"touch"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>  Q.stageScene(<span class="string">"title"</span>);  });
+    bg.on(<span class="string">"touch"</span>,<span class="keyword">function</span>() {  Q.stageScene(<span class="string">"title"</span>);  });
 
     stage.insert(<span class="keyword">new</span> Q.Title());
 
@@ -201,10 +206,10 @@
 
   });
 
-  Q.scene(<span class="string">"winner"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"winner"</span>,<span class="keyword">function</span>(stage) {
 
     <span class="keyword">var</span> bg = stage.insert(<span class="keyword">new</span> Q.Background({ type: Q.SPRITE_UI }));
-    bg.on(<span class="string">"touch"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>  Q.stageScene(<span class="string">"title"</span>);  });
+    bg.on(<span class="string">"touch"</span>,<span class="keyword">function</span>() {  Q.stageScene(<span class="string">"title"</span>);  });
 
     stage.insert(<span class="keyword">new</span> Q.Title());
 
@@ -219,7 +224,7 @@
 
   });
 
-  Q.scene(<span class="string">"hud"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"hud"</span>,<span class="keyword">function</span>(stage) {
     stage.insert(<span class="keyword">new</span> Q.Score());
     stage.insert(<span class="keyword">new</span> Q.Lives());
     stage.insert(<span class="keyword">new</span> Q.Level());
@@ -241,7 +246,7 @@
 
   }
 
-  Q.scene(<span class="string">"level1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span></pre></div></div>
+  Q.scene(<span class="string">"level1"</span>,<span class="keyword">function</span>(stage) {</pre></div></div>
             
         </li>
         
@@ -303,25 +308,25 @@ to load the next level</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    stage.on(<span class="string">"complete"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> Q.stageScene(<span class="string">"level2"</span>); });
+            <div class="content"><div class='highlight'><pre>    stage.on(<span class="string">"complete"</span>,<span class="keyword">function</span>() { Q.stageScene(<span class="string">"level2"</span>); });
   });
 
-  Q.scene(<span class="string">"level2"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"level2"</span>,<span class="keyword">function</span>(stage) {
     Q.state.set(<span class="string">"level"</span>,<span class="number">2</span>);
     setupLevel(<span class="string">"level2"</span>,stage);
-    stage.on(<span class="string">"complete"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> Q.stageScene(<span class="string">"level3"</span>); });
+    stage.on(<span class="string">"complete"</span>,<span class="keyword">function</span>() { Q.stageScene(<span class="string">"level3"</span>); });
   });
 
-  Q.scene(<span class="string">"level3"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"level3"</span>,<span class="keyword">function</span>(stage) {
     Q.state.set(<span class="string">"level"</span>,<span class="number">3</span>);
     setupLevel(<span class="string">"level3"</span>,stage);
-    stage.on(<span class="string">"complete"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> Q.stageScene(<span class="string">"level4"</span>); });
+    stage.on(<span class="string">"complete"</span>,<span class="keyword">function</span>() { Q.stageScene(<span class="string">"level4"</span>); });
   });
 
-  Q.scene(<span class="string">"level4"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+  Q.scene(<span class="string">"level4"</span>,<span class="keyword">function</span>(stage) {
     Q.state.set(<span class="string">"level"</span>,<span class="number">4</span>);
     setupLevel(<span class="string">"level4"</span>,stage);
-    stage.on(<span class="string">"complete"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> Q.stageScene(<span class="string">"winner"</span>); });
+    stage.on(<span class="string">"complete"</span>,<span class="keyword">function</span>() { Q.stageScene(<span class="string">"winner"</span>); });
   });</pre></div></div>
             
         </li>
@@ -337,7 +342,7 @@ to load the next level</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  Q.input.on(<span class="string">'left'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>  Q.input.on(<span class="string">'left'</span>,<span class="keyword">function</span>() {
     <span class="keyword">var</span> level = Q.state.get(<span class="string">"level"</span>);
 
     <span class="keyword">if</span>(level &gt; <span class="number">1</span>) {
@@ -347,7 +352,7 @@ to load the next level</p>
     }
   });
 
-  Q.input.on(<span class="string">'right'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  Q.input.on(<span class="string">'right'</span>,<span class="keyword">function</span>() {
     <span class="keyword">var</span> level = Q.state.get(<span class="string">"level"</span>) || <span class="number">0</span>;
 
     <span class="keyword">if</span>(level &lt; <span class="number">4</span>) {

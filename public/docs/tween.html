@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,17 +129,17 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-tweened-animation-example">Quintus Tweened Animation Example</h1>
-<p><a href="../examples/tween/index.html">Run the example</a></p>
+              <h1>Quintus Tweened Animation Example</h1>
+<p><a href="../quintus/examples/tween/index.html">Run the example</a></p>
 <p>This example shows how to use the tween component to
 play tweened animations in sprites.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -168,7 +173,7 @@ Sprites and Scene module (for the stage support) loaded.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"scene1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"scene1"</span>,<span class="keyword">function</span>(stage) {
       <span class="keyword">var</span> sprite = <span class="keyword">new</span> Q.Sprite({ asset: <span class="string">"enemy01.png"</span>, x: <span class="number">32</span>, y: <span class="number">32</span>, scale: <span class="number">1</span> });
       sprite.add(<span class="string">"tween"</span>);
       stage.insert(sprite);</pre></div></div>
@@ -190,14 +195,14 @@ between the current value and the input value.</p>
             <div class="content"><div class='highlight'><pre>      sprite
         .animate({ x: <span class="number">288</span>, y:  <span class="number">288</span> }, <span class="number">2</span>, Q.Easing.Quadratic.InOut, { delay: <span class="number">1</span> })
         .chain({ angle: <span class="number">360</span> }) 
-        .chain({ angle:   <span class="number">0</span> }, <span class="number">1</span>, { callback: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> console.log(<span class="string">"0"</span>); } }) 
-        .chain({ angle: <span class="number">360</span> }, <span class="number">1</span>, { callback: <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span> <span class="comment">/*normalization*/</span> <span class="keyword">this</span>.p.angle = <span class="number">0</span>; console.log(<span class="string">"Callback"</span>); } })
+        .chain({ angle:   <span class="number">0</span> }, <span class="number">1</span>, { callback: <span class="keyword">function</span>() { console.log(<span class="string">"0"</span>); } }) 
+        .chain({ angle: <span class="number">360</span> }, <span class="number">1</span>, { callback: <span class="keyword">function</span>(){ <span class="comment">/*normalization*/</span> <span class="keyword">this</span>.p.angle = <span class="number">0</span>; console.log(<span class="string">"Callback"</span>); } })
         .chain({ angle: -<span class="number">360</span> }) 
         .chain({ x: <span class="number">160</span>, y: <span class="number">160</span>, scale: <span class="number">4</span>, opacity: <span class="number">0</span> }, <span class="number">1</span>, Q.Easing.Quadratic.In )
         .chain({ x: <span class="number">160</span>, y: <span class="number">160</span>, scale: <span class="number">0.1</span>, opacity: <span class="number">1</span> }, <span class="number">1</span>, Q.Easing.Quadratic.In );
   });
 
-  Q.load([<span class="string">"enemy01.png"</span>], <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  Q.load([<span class="string">"enemy01.png"</span>], <span class="keyword">function</span>() {
       Q.stageScene(<span class="string">"scene1"</span>);
   });
  

@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,11 +129,11 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-platformer-example">Quintus platformer example</h1>
-<p><a href="../examples/platformer/index.html">Run the example</a>
+              <h1>Quintus platformer example</h1>
+<p><a href="../quintus/examples/platformer/index.html">Run the example</a>
 WARNING: this game must be run from a non-file:// url
 as it loads a level json file.</p>
 <p>This is the example from the website homepage, it consists
@@ -137,7 +142,7 @@ target for the player.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">"load"</span>,<span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -193,10 +198,10 @@ includes the <code>TileLayer</code> class as well as the <code>2d</code> compone
         <li id="section-5">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <h2 id="player-sprite">Player Sprite</h2>
+              <h2>Player Sprite</h2>
 <p>The very basic player sprite, this is just a normal sprite
 using the player sprite sheet with default controls added to it.</p>
 
@@ -217,7 +222,7 @@ using the player sprite sheet with default controls added to it.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  init: <span class="keyword">function</span>(p) {</pre></div></div>
             
         </li>
         
@@ -240,7 +245,7 @@ using the player sprite sheet with default controls added to it.</p>
 
     <span class="keyword">this</span>.add(<span class="string">'2d, platformerControls'</span>);
 
-    <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="function"><span class="keyword">function</span><span class="params">(collision)</span> {</span>
+    <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="keyword">function</span>(collision) {
 
       <span class="keyword">if</span>(collision.obj.isA(<span class="string">"Tower"</span>)) {
         Q.stageScene(<span class="string">"endGame"</span>,<span class="number">1</span>, { label: <span class="string">"You Won!"</span> }); 
@@ -256,16 +261,16 @@ using the player sprite sheet with default controls added to it.</p>
         <li id="section-8">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <h2 id="tower-sprite">Tower Sprite</h2>
+              <h2>Tower Sprite</h2>
 <p>Sprites can be simple, the Tower sprite just sets a custom sprite sheet</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>Q.Sprite.extend(<span class="string">"Tower"</span>, {
-  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+  init: <span class="keyword">function</span>(p) {
     <span class="keyword">this</span>._super(p, { sheet: <span class="string">'tower'</span> });
   }
 });</pre></div></div>
@@ -276,28 +281,28 @@ using the player sprite sheet with default controls added to it.</p>
         <li id="section-9">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <h2 id="enemy-sprite">Enemy Sprite</h2>
+              <h2>Enemy Sprite</h2>
 <p>Create the Enemy class to add in some baddies</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>Q.Sprite.extend(<span class="string">"Enemy"</span>,{
-  init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+  init: <span class="keyword">function</span>(p) {
     <span class="keyword">this</span>._super(p, { sheet: <span class="string">'enemy'</span>, vx: <span class="number">100</span>, visibleOnly: <span class="literal">true</span> });
 
     <span class="keyword">this</span>.add(<span class="string">'2d, aiBounce'</span>);
 
-    <span class="keyword">this</span>.on(<span class="string">"bump.left,bump.right,bump.bottom"</span>,<span class="function"><span class="keyword">function</span><span class="params">(collision)</span> {</span>
+    <span class="keyword">this</span>.on(<span class="string">"bump.left,bump.right,bump.bottom"</span>,<span class="keyword">function</span>(collision) {
       <span class="keyword">if</span>(collision.obj.isA(<span class="string">"Player"</span>)) { 
         Q.stageScene(<span class="string">"endGame"</span>,<span class="number">1</span>, { label: <span class="string">"You Died"</span> }); 
         collision.obj.destroy();
       }
     });
 
-    <span class="keyword">this</span>.on(<span class="string">"bump.top"</span>,<span class="function"><span class="keyword">function</span><span class="params">(collision)</span> {</span>
+    <span class="keyword">this</span>.on(<span class="string">"bump.top"</span>,<span class="keyword">function</span>(collision) {
       <span class="keyword">if</span>(collision.obj.isA(<span class="string">"Player"</span>)) { 
         <span class="keyword">this</span>.destroy();
         collision.obj.p.vy = -<span class="number">300</span>;
@@ -312,21 +317,21 @@ using the player sprite sheet with default controls added to it.</p>
         <li id="section-10">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <h2 id="level1-scene">Level1 scene</h2>
+              <h2>Level1 scene</h2>
 <p>Create a new scene called level 1</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">"level1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+            <div class="content"><div class='highlight'><pre>Q.scene(<span class="string">"level1"</span>,<span class="keyword">function</span>(stage) {
   Q.stageTMX(<span class="string">"level1.tmx"</span>,stage);
   stage.add(<span class="string">"viewport"</span>).follow(Q(<span class="string">"Player"</span>).first());
 });
 
 
-Q.scene(<span class="string">'endGame'</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+Q.scene(<span class="string">'endGame'</span>,<span class="keyword">function</span>(stage) {
   <span class="keyword">var</span> container = stage.insert(<span class="keyword">new</span> Q.UI.Container({
     x: Q.width/<span class="number">2</span>, y: Q.height/<span class="number">2</span>, fill: <span class="string">"rgba(0,0,0,0.5)"</span>
   }));
@@ -335,7 +340,7 @@ Q.scene(<span class="string">'endGame'</span>,<span class="function"><span class
                                                   label: <span class="string">"Play Again"</span> }))         
   <span class="keyword">var</span> label = container.insert(<span class="keyword">new</span> Q.UI.Text({x:<span class="number">10</span>, y: -<span class="number">10</span> - button.p.h, 
                                                    label: stage.options.label }));
-  button.on(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  button.on(<span class="string">"click"</span>,<span class="keyword">function</span>() {
     Q.clearStages();
     Q.stageScene(<span class="string">'level1'</span>);
   });
@@ -357,7 +362,7 @@ and load all the assets referenced in them</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>Q.loadTMX(<span class="string">"level1.tmx, sprites.json"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>Q.loadTMX(<span class="string">"level1.tmx, sprites.json"</span>, <span class="keyword">function</span>() {
   Q.compileSheets(<span class="string">"sprites.png"</span>,<span class="string">"sprites.json"</span>);
   Q.stageScene(<span class="string">"level1"</span>);
 });</pre></div></div>
@@ -368,10 +373,10 @@ and load all the assets referenced in them</p>
         <li id="section-12">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <h2 id="possible-experimentations-">Possible Experimentations:</h2>
+              <h2>Possible Experimentations:</h2>
 <p>The are lots of things to try out here.</p>
 <ol>
 <li>Modify level.json to change the level around and add in some more enemies.</li>

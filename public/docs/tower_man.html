@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -151,7 +156,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    window.addEventListener(<span class="string">"load"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    window.addEventListener(<span class="string">"load"</span>,<span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -228,7 +233,7 @@ an entity</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        added: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>        added: <span class="keyword">function</span>() {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.entity.p;</pre></div></div>
             
         </li>
@@ -263,7 +268,7 @@ call our step method</p>
             <div class="content"><div class='highlight'><pre>          <span class="keyword">this</span>.entity.on(<span class="string">"step"</span>,<span class="keyword">this</span>,<span class="string">"step"</span>);
         },
 
-        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span></pre></div></div>
+        step: <span class="keyword">function</span>(dt) {</pre></div></div>
             
         </li>
         
@@ -348,7 +353,7 @@ in that direction</p>
 
 
       Q.Sprite.extend(<span class="string">"Player"</span>, {
-        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        init: <span class="keyword">function</span>(p) {
 
           <span class="keyword">this</span>._super(p,{
             sheet:<span class="string">"player"</span>,
@@ -374,7 +379,7 @@ in that direction</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>      Q.Sprite.extend(<span class="string">"Dot"</span>, {
-        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        init: <span class="keyword">function</span>(p) {
           <span class="keyword">this</span>._super(p,{
             sheet: <span class="string">'dot'</span>,
             type: SPRITE_DOT,</pre></div></div>
@@ -414,7 +419,7 @@ the player to stop or change direction</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        sensor: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        sensor: <span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -464,7 +469,7 @@ to keep track of the total number of dots on the stage</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        inserted: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            <div class="content"><div class='highlight'><pre>        inserted: <span class="keyword">function</span>() {
           <span class="keyword">this</span>.stage.dotCount = <span class="keyword">this</span>.stage.dotCount || <span class="number">0</span>
           <span class="keyword">this</span>.stage.dotCount++;
         }
@@ -485,7 +490,7 @@ sensor and counting functionality</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>      Q.Dot.extend(<span class="string">"Tower"</span>, {
-        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        init: <span class="keyword">function</span>(p) {
           <span class="keyword">this</span>._super(Q._defaults(p,{
             sheet: <span class="string">'tower'</span>
           }));
@@ -506,12 +511,12 @@ in our tile map</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      Q.tilePos = <span class="function"><span class="keyword">function</span><span class="params">(col,row)</span> {</span>
+            <div class="content"><div class='highlight'><pre>      Q.tilePos = <span class="keyword">function</span>(col,row) {
         <span class="keyword">return</span> { x: col*<span class="number">32</span> + <span class="number">16</span>, y: row*<span class="number">32</span> + <span class="number">16</span> };
       }
 
       Q.TileLayer.extend(<span class="string">"TowerManMap"</span>,{
-        init: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        init: <span class="keyword">function</span>() {
           <span class="keyword">this</span>._super({
             type: SPRITE_TILES,
             dataAsset: <span class="string">'level.json'</span>,
@@ -520,7 +525,7 @@ in our tile map</p>
 
         },
         
-        setup: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+        setup: <span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         
@@ -556,7 +561,7 @@ in our tile map</p>
       Q.component(<span class="string">"enemyControls"</span>, {
         defaults: { speed: <span class="number">100</span>, direction: <span class="string">'left'</span>, switchPercent: <span class="number">2</span> },
 
-        added: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        added: <span class="keyword">function</span>() {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.entity.p;
 
           Q._defaults(p,<span class="keyword">this</span>.defaults);
@@ -565,7 +570,7 @@ in our tile map</p>
           <span class="keyword">this</span>.entity.on(<span class="string">'hit'</span>,<span class="keyword">this</span>,<span class="string">"changeDirection"</span>);
         },
 
-        step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+        step: <span class="keyword">function</span>(dt) {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.entity.p;
 
           <span class="keyword">if</span>(Math.random() &lt; p.switchPercent / <span class="number">100</span>) {
@@ -580,7 +585,7 @@ in our tile map</p>
           }
         },
 
-        tryDirection: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        tryDirection: <span class="keyword">function</span>() {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.entity.p; 
           <span class="keyword">var</span> from = p.direction;
           <span class="keyword">if</span>(p.vy != <span class="number">0</span> &amp;&amp; p.vx == <span class="number">0</span>) {
@@ -590,7 +595,7 @@ in our tile map</p>
           }
         },
 
-        changeDirection: <span class="function"><span class="keyword">function</span><span class="params">(collision)</span> {</span>
+        changeDirection: <span class="keyword">function</span>(collision) {
           <span class="keyword">var</span> p = <span class="keyword">this</span>.entity.p;
           <span class="keyword">if</span>(p.vx == <span class="number">0</span> &amp;&amp; p.vy == <span class="number">0</span>) {
             <span class="keyword">if</span>(collision.normalY) {
@@ -604,7 +609,7 @@ in our tile map</p>
 
 
       Q.Sprite.extend(<span class="string">"Enemy"</span>, {
-        init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+        init: <span class="keyword">function</span>(p) {
 
           <span class="keyword">this</span>._super(p,{
             sheet:<span class="string">"enemy"</span>,
@@ -616,14 +621,14 @@ in our tile map</p>
           <span class="keyword">this</span>.on(<span class="string">"hit.sprite"</span>,<span class="keyword">this</span>,<span class="string">"hit"</span>);
         },
 
-        hit: <span class="function"><span class="keyword">function</span><span class="params">(col)</span> {</span>
+        hit: <span class="keyword">function</span>(col) {
           <span class="keyword">if</span>(col.obj.isA(<span class="string">"Player"</span>)) {
             Q.stageScene(<span class="string">"level1"</span>);
           }
         }
       });
 
-      Q.scene(<span class="string">"level1"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+      Q.scene(<span class="string">"level1"</span>,<span class="keyword">function</span>(stage) {
         <span class="keyword">var</span> map = stage.collisionLayer(<span class="keyword">new</span> Q.TowerManMap());
         map.setup();
 
@@ -634,7 +639,7 @@ in our tile map</p>
         stage.insert(<span class="keyword">new</span> Q.Enemy(Q.tilePos(<span class="number">5</span>,<span class="number">10</span>)));
       });
 
-      Q.load(<span class="string">"sprites.png, sprites.json, level.json, tiles.png"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+      Q.load(<span class="string">"sprites.png, sprites.json, level.json, tiles.png"</span>, <span class="keyword">function</span>() {
         Q.sheet(<span class="string">"tiles"</span>,<span class="string">"tiles.png"</span>, { tileW: <span class="number">32</span>, tileH: <span class="number">32</span> });
 
         Q.compileSheets(<span class="string">"sprites.png"</span>,<span class="string">"sprites.json"</span>);

@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,17 +129,17 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-touch-and-drag-example">Quintus Touch and Drag Example</h1>
-<p><a href="../examples/touch/index.html">Run the example</a></p>
+              <h1>Quintus Touch and Drag Example</h1>
+<p><a href="../quintus/examples/touch/index.html">Run the example</a></p>
 <p>This example creates a number of random convex shapes 
 and then adds touch and drag support to them.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="keyword">function</span>(e) {</pre></div></div>
             
         </li>
         
@@ -169,7 +174,7 @@ Sprites and Scene module (for the stage support) loaded.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>  Q.Sprite.extend(<span class="string">"RandomShape"</span>, {
-     init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span></pre></div></div>
+     init: <span class="keyword">function</span>(p) {</pre></div></div>
             
         </li>
         
@@ -219,18 +224,18 @@ touch module</p>
        <span class="keyword">this</span>.on(<span class="string">"touchEnd"</span>);
      },
 
-     drag: <span class="function"><span class="keyword">function</span><span class="params">(touch)</span> {</span>
+     drag: <span class="keyword">function</span>(touch) {
        <span class="keyword">this</span>.p.dragging = <span class="literal">true</span>;
        <span class="keyword">this</span>.p.x = touch.origX + touch.dx;
        <span class="keyword">this</span>.p.y = touch.origY + touch.dy;
      },
 
-     touchEnd: <span class="function"><span class="keyword">function</span><span class="params">(touch)</span> {</span>
+     touchEnd: <span class="keyword">function</span>(touch) {
        <span class="keyword">this</span>.p.dragging = <span class="literal">false</span>;
 
      },
 
-     createShape: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+     createShape: <span class="keyword">function</span>(p) {
         <span class="keyword">var</span> angle = Math.random()*<span class="number">2</span>*Math.PI,
             numPoints = <span class="number">3</span> + Math.floor(Math.random()*<span class="number">5</span>),
             minX = <span class="number">0</span>, maxX = <span class="number">0</span>,
@@ -297,7 +302,7 @@ hit variable, scale this sucker up a bit.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>     step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+            <div class="content"><div class='highlight'><pre>     step: <span class="keyword">function</span>(dt) {
        <span class="keyword">if</span>(<span class="keyword">this</span>.p.over) {
          <span class="keyword">this</span>.p.scale = <span class="number">1.2</span>;
        } <span class="keyword">else</span> {
@@ -368,7 +373,7 @@ otherwise, move us</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"start"</span>,<span class="keyword">new</span> Q.Scene(<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span>
+            <div class="content"><div class='highlight'><pre>  Q.scene(<span class="string">"start"</span>,<span class="keyword">new</span> Q.Scene(<span class="keyword">function</span>(stage) {
     <span class="keyword">var</span> shapesLeft = numShapes;
     <span class="keyword">while</span>(shapesLeft-- &gt; <span class="number">0</span>) {
       stage.insert(<span class="keyword">new</span> Q.RandomShape());
@@ -427,7 +432,7 @@ sprites on desktop.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  Q.el.addEventListener(<span class="string">'mousemove'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span>
+            <div class="content"><div class='highlight'><pre>  Q.el.addEventListener(<span class="string">'mousemove'</span>,<span class="keyword">function</span>(e) {
     <span class="keyword">var</span> x = e.offsetX || e.layerX,
         y = e.offsetY || e.layerY,
         stage = Q.stage();</pre></div></div>

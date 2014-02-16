@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -136,13 +141,13 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>;Quintus.BreakoutSprites = <span class="function"><span class="keyword">function</span><span class="params">(Q)</span> {</span>
+            <div class="content"><div class='highlight'><pre>;Quintus.BreakoutSprites = <span class="keyword">function</span>(Q) {
 
   Q.gravityY = <span class="number">0</span>;
   Q.gravityX = <span class="number">0</span>;
 
   Q.TileLayer.extend(<span class="string">"GameTiles"</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super({
         dataAsset: <span class="string">"bg.tmx"</span>,
         sheet: <span class="string">'tiles'</span>,
@@ -167,7 +172,7 @@ then pass the data array to the original implementation</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    load: <span class="function"><span class="keyword">function</span><span class="params">(dataAsset)</span> {</span>
+            <div class="content"><div class='highlight'><pre>    load: <span class="keyword">function</span>(dataAsset) {
       <span class="keyword">var</span> parser = <span class="keyword">new</span> DOMParser(),
           doc = parser.parseFromString(Q.asset(dataAsset), <span class="string">"application/xml"</span>);
 
@@ -190,14 +195,14 @@ then pass the data array to the original implementation</p>
       <span class="keyword">this</span>._super(data);
     },
 
-    collidableTile: <span class="function"><span class="keyword">function</span><span class="params">(tileNum)</span> {</span>
+    collidableTile: <span class="keyword">function</span>(tileNum) {
       <span class="keyword">return</span> tileNum != <span class="number">23</span>;
     }
     
   });
 
   Q.Sprite.extend(<span class="string">"BlockTracker"</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super(p, {
         x: Q.width/<span class="number">2</span>,
         y: <span class="number">64</span>,
@@ -211,9 +216,9 @@ then pass the data array to the original implementation</p>
       <span class="keyword">this</span>.on(<span class="string">"inserted"</span>,<span class="keyword">this</span>,<span class="string">"setupBlocks"</span>);
     },
 
-    setupBlocks: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-      Q._each(<span class="keyword">this</span>.p.data,<span class="function"><span class="keyword">function</span><span class="params">(row,y)</span> {</span>
-        Q._each(row,<span class="function"><span class="keyword">function</span><span class="params">(block,x)</span> {</span>
+    setupBlocks: <span class="keyword">function</span>() {
+      Q._each(<span class="keyword">this</span>.p.data,<span class="keyword">function</span>(row,y) {
+        Q._each(row,<span class="keyword">function</span>(block,x) {
           <span class="keyword">if</span>(block) {</pre></div></div>
             
         </li>
@@ -241,7 +246,7 @@ container</p>
       },<span class="keyword">this</span>);
     },
 
-    step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    step: <span class="keyword">function</span>(dt) {
       <span class="keyword">if</span>(<span class="keyword">this</span>.children.length == <span class="number">0</span>) {
         <span class="keyword">this</span>.stage.trigger(<span class="string">"complete"</span>);
       }
@@ -250,7 +255,7 @@ container</p>
 
 
   Q.Sprite.extend(<span class="string">"Ball"</span>, {
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super({
         sheet:<span class="string">"ball"</span>,
         sprite: <span class="string">"ball"</span>,
@@ -283,11 +288,11 @@ container</p>
 
     },
 
-    inserted: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span> 
+    inserted: <span class="keyword">function</span>() { 
       <span class="keyword">this</span>.stage.on(<span class="string">"start"</span>,<span class="keyword">this</span>,<span class="string">"start"</span>);
     },
 
-    collide: <span class="function"><span class="keyword">function</span><span class="params">(col)</span> {</span>
+    collide: <span class="keyword">function</span>(col) {
       <span class="keyword">if</span>(col.obj.isA(<span class="string">"Paddle"</span>)) { 
         <span class="keyword">var</span> dx = (<span class="keyword">this</span>.p.x - col.obj.p.x) / col.obj.p.w * <span class="number">2.5</span>;
 
@@ -322,13 +327,13 @@ container</p>
 
     },
 
-    start:<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    start:<span class="keyword">function</span>() {
       <span class="keyword">this</span>.p.vy = <span class="keyword">this</span>.p.speed;
       <span class="keyword">this</span>.p.vx = <span class="keyword">this</span>.p.speed;
 
     },
 
-    step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    step: <span class="keyword">function</span>(dt) {
       <span class="keyword">this</span>.p.x += <span class="keyword">this</span>.p.vx * dt;
       <span class="keyword">this</span>.p.y += <span class="keyword">this</span>.p.vy * dt;
 
@@ -348,7 +353,7 @@ container</p>
   });
 
   Q.Sprite.extend(<span class="string">"Block"</span>, {
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super({
         sheet: <span class="string">"block"</span> + p.num,
         sprite: <span class="string">"block"</span>
@@ -359,7 +364,7 @@ container</p>
       <span class="keyword">this</span>.on(<span class="string">"destroy"</span>); <span class="comment">// will just call destroy </span>
     },
 
-    destroyed: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    destroyed: <span class="keyword">function</span>() {
       Q.state.inc(<span class="string">"score"</span>,<span class="number">100</span>);
 
       <span class="keyword">var</span> rand = Math.round(Math.random()*<span class="number">7</span>);
@@ -378,7 +383,7 @@ container</p>
 
   
   Q.Sprite.extend(<span class="string">"Paddle"</span>, {
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super({
         sheet: <span class="string">"paddlelg"</span>,
         type: Q.SPRITE_DEFAULT | Q.SPRITE_FRIENDLY,
@@ -391,7 +396,7 @@ container</p>
       <span class="keyword">this</span>.on(<span class="string">"powerup"</span>);
     },
 
-    step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    step: <span class="keyword">function</span>(dt) {
       <span class="keyword">this</span>.p.x = Q.inputs[<span class="string">'mouseX'</span>];
 
       <span class="keyword">if</span>(Q(<span class="string">"Ball"</span>).length == <span class="number">0</span>) {
@@ -413,12 +418,12 @@ container</p>
       }
     },
 
-    powerup: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    powerup: <span class="keyword">function</span>() {
       <span class="keyword">var</span> ball = <span class="keyword">this</span>.stage.insert(<span class="keyword">new</span> Q.Ball());
       ball.start();
     },
 
-    powerdown: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    powerdown: <span class="keyword">function</span>() {
       <span class="keyword">this</span>.sheet(<span class="string">"paddlesm"</span>,<span class="literal">true</span>);
       <span class="keyword">this</span>.p.powerdown = <span class="number">10</span>;
     }
@@ -427,7 +432,7 @@ container</p>
 
 
   Q.Sprite.extend(<span class="string">"Powerdown"</span>, {
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super({
         sheet: <span class="string">"powerdown"</span>,
         type: Q.SPRITE_POWERUP,
@@ -439,19 +444,19 @@ container</p>
       <span class="keyword">this</span>.on(<span class="string">"hit"</span>)
     },
 
-    hit: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    hit: <span class="keyword">function</span>() {
       <span class="keyword">this</span>.destroy();
       Q.audio.play(<span class="string">"powerdown.ogg"</span>);
       Q(<span class="string">"Paddle"</span>).trigger(<span class="string">"powerdown"</span>);
     },
 
-    step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    step: <span class="keyword">function</span>(dt) {
       <span class="keyword">if</span>(<span class="keyword">this</span>.p.y &gt; Q.height) <span class="keyword">this</span>.destroy();
     }
   });
 
   Q.Sprite.extend(<span class="string">"Powerup"</span>, {
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super({
         sheet: <span class="string">"powerup"</span>,
         type: Q.SPRITE_POWERUP,
@@ -463,20 +468,20 @@ container</p>
       <span class="keyword">this</span>.on(<span class="string">"hit"</span>)
     },
 
-    hit: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    hit: <span class="keyword">function</span>() {
       <span class="keyword">this</span>.destroy();
       Q.audio.play(<span class="string">"powerup.ogg"</span>);
       Q(<span class="string">"Paddle"</span>).trigger(<span class="string">"powerup"</span>);
     },
 
-    step: <span class="function"><span class="keyword">function</span><span class="params">(dt)</span> {</span>
+    step: <span class="keyword">function</span>(dt) {
       <span class="keyword">if</span>(<span class="keyword">this</span>.p.y &gt; Q.height) <span class="keyword">this</span>.destroy();
     }
   });
 
 
   Q.Sprite.extend(<span class="string">"Countdown"</span>, {
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
 
       <span class="keyword">this</span>._super({
         sheet: <span class="string">"count"</span>,
@@ -520,11 +525,11 @@ container</p>
       Q.audio.play(<span class="string">"countdownBlip.ogg"</span>);
     },
 
-    animFrame: <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    animFrame: <span class="keyword">function</span>(){
       Q.audio.play(<span class="string">"countdownBlip.ogg"</span>);
     },
 
-    start: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    start: <span class="keyword">function</span>() {
       <span class="keyword">this</span>.stage.trigger(<span class="string">"start"</span>);
       <span class="keyword">this</span>.destroy();
     }

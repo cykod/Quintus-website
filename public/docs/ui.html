@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -124,16 +129,16 @@
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h1">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1 id="quintus-ui-elements-example">Quintus UI Elements example</h1>
-<p><a href="../examples/ui/index.html">Run the example</a></p>
+              <h1>Quintus UI Elements example</h1>
+<p><a href="../quintus/examples/ui/index.html">Run the example</a></p>
 <p>This example creates a couple of UI elements</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span><span class="params">(e)</span> {</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>window.addEventListener(<span class="string">'load'</span>,<span class="keyword">function</span>(e) {</pre></div></div>
             
         </li>
         
@@ -152,7 +157,7 @@ Sprites, Scene, Touch and UI </p>
             <div class="content"><div class='highlight'><pre>  <span class="keyword">var</span> Q = window.Q = Quintus().include(<span class="string">"Sprites, Scenes, Touch, UI"</span>)
                               .setup().touch();
 
-  Q.scene(<span class="string">"start"</span>,<span class="function"><span class="keyword">function</span><span class="params">(stage)</span> {</span></pre></div></div>
+  Q.scene(<span class="string">"start"</span>,<span class="keyword">function</span>(stage) {</pre></div></div>
             
         </li>
         
@@ -238,7 +243,7 @@ which is a on click callback</p>
       label: <span class="string">"A Button"</span>,
       y: <span class="number">150</span>,
       x: Q.width/<span class="number">2</span>
-    }, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    }, <span class="keyword">function</span>() {
       <span class="keyword">this</span>.p.label = <span class="string">"Pressed"</span>;
     }));</pre></div></div>
             
@@ -264,7 +269,7 @@ have fills and borders as well</p>
       border: <span class="number">5</span>,
       shadow: <span class="number">10</span>,
       shadowColor: <span class="string">"rgba(0,0,0,0.5)"</span>,
-    }, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    }, <span class="keyword">function</span>() {
       <span class="keyword">this</span>.p.label = <span class="string">"Pressed"</span>;
     }));
 
@@ -295,13 +300,13 @@ and will render themselves as images</p>
       x: Q.width/<span class="number">2</span>,
       scale: <span class="number">0.5</span>,
       y: <span class="number">370</span>
-    }, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    }, <span class="keyword">function</span>() {
       <span class="keyword">this</span>.p.angle += <span class="number">90</span>;
     }));
   });
 
 
-  Q.load(<span class="string">"enemy.png"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span></pre></div></div>
+  Q.load(<span class="string">"enemy.png"</span>, <span class="keyword">function</span>() {</pre></div></div>
             
         </li>
         

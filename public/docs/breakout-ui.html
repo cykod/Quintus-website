@@ -89,6 +89,11 @@
               </a>
             
               
+              <a class="source" href="runner.html">
+                runner.js
+              </a>
+            
+              
               <a class="source" href="sprite.html">
                 sprite.js
               </a>
@@ -136,10 +141,10 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>;Quintus.BreakoutUI = <span class="function"><span class="keyword">function</span><span class="params">(Q)</span> {</span>
+            <div class="content"><div class='highlight'><pre>;Quintus.BreakoutUI = <span class="keyword">function</span>(Q) {
 
   Q.Sprite.extend(<span class="string">"Title"</span>, {
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super({
         y: <span class="number">150</span>,
         x: Q.width/<span class="number">2</span>,
@@ -150,7 +155,7 @@
   });
 
   Q.Sprite.extend(<span class="string">"Background"</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">(p)</span> {</span>
+    init: <span class="keyword">function</span>(p) {
       <span class="keyword">this</span>._super(p,{
         x: Q.width/<span class="number">2</span>,
         y: Q.height/<span class="number">2</span>,
@@ -161,7 +166,7 @@
   });
 
   Q.UI.Text.extend(<span class="string">"Level"</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    init: <span class="keyword">function</span>() {
       <span class="keyword">this</span>._super({
         label: <span class="string">"level: 1"</span>,
         align: <span class="string">"right"</span>,
@@ -175,13 +180,13 @@
       Q.state.on(<span class="string">"change.level"</span>,<span class="keyword">this</span>,<span class="string">"level"</span>);
     },
 
-    level: <span class="function"><span class="keyword">function</span><span class="params">(lvl)</span> {</span>
+    level: <span class="keyword">function</span>(lvl) {
       <span class="keyword">this</span>.p.label = <span class="string">"level: "</span> + lvl;
     }
   });
 
   Q.UI.Text.extend(<span class="string">"Lives"</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    init: <span class="keyword">function</span>() {
       <span class="keyword">this</span>._super({
         label: <span class="string">"lives: 3"</span>,
         align: <span class="string">"left"</span>,
@@ -194,13 +199,13 @@
       Q.state.on(<span class="string">"change.lives"</span>,<span class="keyword">this</span>,<span class="string">"lives"</span>);
     },
 
-    lives: <span class="function"><span class="keyword">function</span><span class="params">(lives)</span> {</span>
+    lives: <span class="keyword">function</span>(lives) {
       <span class="keyword">this</span>.p.label = <span class="string">"lives: "</span> + lives;
     }
   });
 
   Q.UI.Text.extend(<span class="string">"Score"</span>,{
-    init: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    init: <span class="keyword">function</span>() {
       <span class="keyword">this</span>._super({
         label: <span class="string">"score: 0"</span>,
         align: <span class="string">"center"</span>,
@@ -213,7 +218,7 @@
       Q.state.on(<span class="string">"change.score"</span>,<span class="keyword">this</span>,<span class="string">"score"</span>);
     },
 
-    score: <span class="function"><span class="keyword">function</span><span class="params">(score)</span> {</span>
+    score: <span class="keyword">function</span>(score) {
       <span class="keyword">this</span>.p.label = <span class="string">"score: "</span> + score;
     }
   });
