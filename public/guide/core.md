@@ -95,6 +95,15 @@ In addition to maximize, setup also takes a number of different options to contr
       downsampleWidth: 1024, // Halve the pixel density if resolution
       downsampleHeight: 768  // is larger than or equal to 1024x768
     });
+
+Another alternative is to scale your game so that it fits the screen of the device, keeping the game's width:height ratio.
+
+
+    var Q = Quintus.setup({
+      width:   800, // Set the default width to 800 pixels
+      height:  600, // Set the default height to 600 pixels
+      scaleToFit: true // Scale the game to fit the screen of the player's device
+    }); 
     
 ## The canvas context
 
