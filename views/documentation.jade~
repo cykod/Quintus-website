@@ -97,8 +97,6 @@ block content
           a(href="http://www.gamedevacademy.org/create-a-mobile-educational-game-with-html5/") Create a Mobile Educational Game with HTML5
         li 
           a(href="http://www.remcodraijer.nl/quintus/tutorial.html") Quintus Tutorial by Remco Draijer
-        li 
-          a(href="http://mliu95.github.io/2014/07/13/Creating-an-online-multiplayer-web-game-using-Socketio-and-Quintus-Part1/") Quintus and Sockets.io Multiplayer Game Tutorial
 
       h1
         | Online Courses
